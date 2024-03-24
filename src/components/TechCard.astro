@@ -1,0 +1,25 @@
+---
+interface Props {
+  title: string
+  tech: string[]
+}
+
+const { title, tech } = Astro.props
+---
+
+<li class="card">
+  <h3>
+    {title}
+  </h3>
+  <ul>
+    {tech.map((item) => <li>{item}</li>)}
+  </ul>
+</li>
+
+<style>
+  .card {
+    padding: 0.5rem;
+    border: 1px solid black;
+    border-radius: 1rem;
+  }
+</style>

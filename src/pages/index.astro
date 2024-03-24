@@ -1,11 +1,13 @@
 ---
+import ProjectCard from "../components/ProjectCard.astro"
+import TechCard from "../components/TechCard.astro"
 import Layout from "../layouts/Layout.astro"
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Vladislav Iujev Portfolio">
   <main>
     <section>
-      <h1>Hi, my name is Vlad</h1>
+      <h1>Hi, I'm Vlad</h1>
       <p>I am a web developer</p>
     </section>
     <section>
@@ -13,74 +15,61 @@ import Layout from "../layouts/Layout.astro"
         I tend to focus primarily on Front-end, though I also have some
         knowledge in Back-end.
       </p>
-      <p>
+      <!-- <p>
         I genuinely like web development, so I desire to create more, both for
         the benefit of others and for my own personal growth.
-      </p>
+      </p> -->
     </section>
 
     <section>
-      <h2>Technologies I know:</h2>
-      <ul>
-        <li>
-          <h3>Base languages:</h3>
-          <p>HTML, CSS, JavaScript, SQL</p>
-        </li>
-        <li>
-          <h3>Supersets, RDBMS's and libraries:</h3>
-          <p>Typescript, React, Tailwind, MySQL</p>
-        </li>
-        <li>
-          <h3>Frameworks, ORM's and pre-processors:</h3>
-          <p>NextJS, Astro, Sass, Drizzle</p>
-        </li>
+      <h2>Technologies I know</h2>
+      <ul class="cards">
+        <TechCard
+          title="Base languages:"
+          tech={["HTML", "CSS", "JavaScript", "SQL"]}
+        />
+        <TechCard
+          title="Supersets, RDBMS's and libraries:"
+          tech={["Typescript", "React", "Tailwind", "MySQL"]}
+        />
+        <TechCard
+          title="Frameworks, ORM's and pre-processors:"
+          tech={["NextJS", "Astro", "Sass", "Drizzle"]}
+        />
       </ul>
     </section>
     <section>
       <h2>My recent projects</h2>
-      <ul>
-        <li>
-          <h3>My leisure</h3>
-          <p>Pic</p>
-          <p>Site link</p>
-          <p>Github repo link</p>
-          <ul>
-            <li>TypeScript</li>
-            <li>Tailwind</li>
-            <li>NextJS</li>
-          </ul>
-          <p>
-            This app allows you to scroll through large database of movies and
-            books to find something to watch or read tonight.
-          </p>
-        </li>
-        <li>
-          <h3>New furniture</h3>
-          <p>Pic</p>
-          <p>Site link</p>
-          <p>Github repo link</p>
-          <ul>
-            <li>TypeScript</li>
-            <li>Tailwind</li>
-            <li>NextJS</li>
-            <li>MySQL</li>
-            <li>Drizzle</li>
-          </ul>
-          <p>Marketplace where you can find and buy furniture.</p>
-        </li>
-        <li>
-          <h3>Playground</h3>
-          <p>Pic</p>
-          <p>Site link</p>
-          <p>Github repo link</p>
-          <ul>
-            <li>TypeScript</li>
-            <li>ThreeJS</li>
-            <li>Astro</li>
-          </ul>
-          <p>This is my project where I experiment with WebGL using ThreeJS.</p>
-        </li>
+      <ul class="cards">
+        <ProjectCard
+          title="My leisure"
+          image=""
+          siteLink="#"
+          githubLink="#"
+          tech={["TypeScript", "Tailwind", "NextJS"]}
+          description="This app allows you to scroll through large database of movies and books to find something to watch or read tonight."
+        />
+        <ProjectCard
+          title="New furniture"
+          image=""
+          siteLink="#"
+          githubLink="#"
+          tech={["TypeScript", "Tailwind", "NextJS", "MySQL", "Drizzle"]}
+          description="Marketplace where you can find and buy furniture."
+        />
+        <ProjectCard
+          title="Playground"
+          image=""
+          siteLink="#"
+          githubLink="#"
+          tech={["TypeScript", "ThreeJS", "Astro"]}
+          description="This is my project where I experiment with WebGL using ThreeJS."
+        />
       </ul>
+    </section>
+    <section>
+      <h2>Get in touch with me</h2>
+      <p>Post form</p>
     </section>
   </main>
 </Layout>
@@ -89,20 +78,9 @@ import Layout from "../layouts/Layout.astro"
   main {
     margin: auto;
     padding: 1rem;
-    width: 800px;
     max-width: calc(100% - 2rem);
-    color: white;
     font-size: 20px;
     line-height: 1.6;
-  }
-  .astro-a {
-    position: absolute;
-    top: -32px;
-    left: 50%;
-    transform: translatex(-50%);
-    width: 220px;
-    height: auto;
-    z-index: -1;
   }
   h1 {
     font-size: 4rem;
@@ -111,38 +89,9 @@ import Layout from "../layouts/Layout.astro"
     text-align: center;
     margin-bottom: 1em;
   }
-  .text-gradient {
-    background-image: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 400%;
-    background-position: 0%;
-  }
-  .instructions {
-    margin-bottom: 2rem;
-    border: 1px solid rgba(var(--accent-light), 25%);
-    background: linear-gradient(
-      rgba(var(--accent-dark), 66%),
-      rgba(var(--accent-dark), 33%)
-    );
-    padding: 1.5rem;
-    border-radius: 8px;
-  }
-  .instructions code {
-    font-size: 0.8em;
-    font-weight: bold;
-    background: rgba(var(--accent-light), 12%);
-    color: rgb(var(--accent-light));
-    border-radius: 4px;
-    padding: 0.3em 0.4em;
-  }
-  .instructions strong {
-    color: rgb(var(--accent-light));
-  }
-  .link-card-grid {
+  .cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 2rem;
-    padding: 0;
   }
 </style>

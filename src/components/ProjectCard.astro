@@ -1,0 +1,33 @@
+---
+interface Props {
+  title: string
+  image: string
+  siteLink: string
+  githubLink: string
+  tech: string[]
+  description: string
+}
+
+const { title, image, siteLink, githubLink, tech, description } = Astro.props
+---
+
+<li class="card">
+  <img src={image} alt="Project image" />
+  <h3>
+    {title}
+  </h3>
+  <a href={siteLink}>Live link</a>
+  <a href={githubLink}>Github repo</a>
+  <ul>
+    {tech.map((item) => <li>{item}</li>)}
+  </ul>
+  <p>{description}</p>
+</li>
+
+<style>
+  .card {
+    padding: 0.5rem;
+    border: 1px solid black;
+    border-radius: 1rem;
+  }
+</style>
