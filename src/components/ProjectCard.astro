@@ -3,12 +3,12 @@ import { Image } from "astro:assets"
 
 type Props = {
   title: string
-  image: string
+  image: ImageMetadata
   siteLink: string
   githubLink: string
   tech: {
     name: string
-    image: string
+    image: ImageMetadata
   }[]
   description: string
 }
@@ -33,7 +33,7 @@ const { title, image, siteLink, githubLink, tech, description } = Astro.props
     {
       tech.map((item) => (
         <li>
-          <img src={item.image} alt={item.name} loading="lazy" />
+          <Image src={item.image} alt={item.name} loading="lazy" />
           <p>{item.name}</p>
         </li>
       ))

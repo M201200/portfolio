@@ -1,8 +1,10 @@
 ---
+import { Image } from "astro:assets"
+
 type Props = {
   tech: {
     name: string
-    image: string
+    image: ImageMetadata
   }[]
 }
 
@@ -15,7 +17,7 @@ const { tech } = Astro.props
       tech.map((item) => (
         <li class="item">
           <div>
-            <img src={item.image} alt={item.name} loading="lazy" />
+            <Image src={item.image} alt={item.name} loading="lazy" />
             <p>{item.name}</p>
           </div>
         </li>
