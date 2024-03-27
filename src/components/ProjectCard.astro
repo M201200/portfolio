@@ -1,10 +1,15 @@
 ---
-interface Props {
+import { Image } from "astro:assets"
+
+type Props = {
   title: string
   image: string
   siteLink: string
   githubLink: string
-  tech: string[]
+  tech: {
+    name: string
+    image: string
+  }[]
   description: string
 }
 
@@ -12,22 +17,97 @@ const { title, image, siteLink, githubLink, tech, description } = Astro.props
 ---
 
 <li class="card">
-  <img src={image} alt="Project image" />
+  <Image
+    class="project_image"
+    src={image}
+    width="720"
+    height="480"
+    alt={title}
+  />
   <h3>
     {title}
   </h3>
-  <a href={siteLink}>Live link</a>
-  <a href={githubLink}>Github repo</a>
+  <a href={siteLink}> &#10095;&#10095; Live link</a>
+  <a href={githubLink}> &#10095;&#10095; Github repo</a>
   <ul>
-    {tech.map((item) => <li>{item}</li>)}
+    {
+      tech.map((item) => (
+        <li>
+          <img src={item.image} alt={item.name} loading="lazy" />
+          <p>{item.name}</p>
+        </li>
+      ))
+    }
   </ul>
-  <p>{description}</p>
+  <p class="description">{description}</p>
 </li>
 
-<style>
+<style lang="scss">
   .card {
-    padding: 0.5rem;
-    border: 1px solid black;
+    padding: 1rem;
     border-radius: 1rem;
+
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  a {
+    color: rgb(73, 72, 72);
+    text-decoration: none;
+
+    &:hover {
+      color: black;
+    }
+
+    justify-self: start;
+
+    padding: 0.25rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding-left: 1rem;
+  }
+
+  .project_image {
+    border-radius: 1rem;
+    border: solid 1px rgb(172, 172, 172);
+
+    transition: scale 300ms;
+
+    &:hover {
+      scale: 1.05;
+    }
+  }
+
+  ul {
+    display: flex;
+    gap: 0.5rem;
+    padding-left: 1rem;
+
+    align-self: end;
+    li {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+
+      img {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+
+      p {
+        font-size: 0.85rem;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .description {
+    font-size: 1rem;
+    font-weight: 400;
+
+    padding: 1rem 0;
   }
 </style>
