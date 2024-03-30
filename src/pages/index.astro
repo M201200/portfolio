@@ -23,6 +23,14 @@ import sass from "./../images/tech/sass.svg"
 import threejs from "./../images/tech/threejs.svg"
 import gsap from "./../images/tech/gsap.svg"
 
+import stock from "./../images/stock-img.png"
+
+import "@fontsource/roboto/500.css"
+import "@fontsource/roboto/700.css"
+import "@fontsource/roboto/900.css"
+
+import { Image } from "astro:assets"
+
 const base = [
   { name: "JavaScript", image: javaScript },
   { name: "HTML", image: html },
@@ -68,53 +76,60 @@ const playground = [
 <Layout title="Vladislav Iujev">
   <main>
     <section class="intro">
-      <div class="lines_image">
-        <div class="lines">
-          <p class="line-1">Hi!</p>
-          <p class="line-2">I'm Vlad</p>
-        </div>
-        <div class="image"></div>
+      <div class="line">
+        <p class="line_1">Hi, I'm Vlad Iujev</p>
+        <p class="line_2">I'm a <span>Front-end</span> developer</p>
+        <p class="line_3">
+          I genuinely enjoy web development and am always eager to create more,
+          both for the benefit of others and for my own personal growth.
+        </p>
       </div>
-      <p class="line-3"><span>Specialty:</span> Front-end</p>
+      <Image class="image" src={stock} alt={"Profile image"} />
     </section>
 
     <section class="projects">
-      <h2>RECENT PROJECTS</h2>
+      <h1>RECENT PROJECTS</h1>
       <p class="projects_description">
-        I am more proficient with Next.js, but I don't limit myself to just one
-        framework or library. I'm adaptable and able to learn and utilize any
-        tool as needed.
+        "While Next.js is my main proficiency, I do not limit myself to just one
+        framework or library. I'm able to learn and utilize any tool as needed.
       </p>
       <ul class="projects_cards">
-        <ProjectCard
-          title="MY LEISURE"
-          image={myLeisureImg}
-          siteLink="#"
-          githubLink="#"
-          tech={myLeisure}
-          description="This app allows you to scroll through large database of movies and books to find something to watch or read tonight."
-        />
-        <ProjectCard
-          title="NEW FURNITURE"
-          image={newFurnitureImg}
-          siteLink="#"
-          githubLink="#"
-          tech={newFurniture}
-          description="Marketplace where you can find and buy furniture."
-        />
-        <ProjectCard
-          title="PLAYGROUND"
-          image={playgroundImg}
-          siteLink="#"
-          githubLink="#"
-          tech={playground}
-          description="This is my project where I experiment with WebGL using ThreeJS library and GSAP."
-        />
+        <li>
+          <ProjectCard
+            title="MY LEISURE"
+            image={myLeisureImg}
+            siteLink="#"
+            githubLink="#"
+            tech={myLeisure}
+            description="This app allows you to scroll through large database of movies and books to find something to watch or read tonight."
+          />
+        </li>
+        <li>
+          <ProjectCard
+            title="NEW FURNITURE"
+            image={newFurnitureImg}
+            siteLink="#"
+            githubLink="#"
+            tech={newFurniture}
+            description="Marketplace where you can find and buy furniture."
+            flip={true}
+          />
+        </li>
+        <li>
+          <ProjectCard
+            title="PLAYGROUND"
+            image={playgroundImg}
+            siteLink="#"
+            githubLink="#"
+            tech={playground}
+            description="This is my project where I experiment with WebGL using ThreeJS library and GSAP."
+          />
+        </li>
       </ul>
     </section>
 
     <section class="tech">
-      <h2>TECH-STACK</h2>
+      <h1>TECH-STACK</h1>
       <p class="tech_description">
         I primarily specialize on Front-end, although I also possess some
         proficiency in Back-end.
@@ -126,189 +141,201 @@ const playground = [
       </ul>
     </section>
 
-    <section>
-      <h2>Get in touch</h2>
-      <p>Post form</p>
+    <section class="contact">
+      <a class="contact_link" href="#"> &#10095;&#10095; get in touch</a>
     </section>
   </main>
 </Layout>
 
 <style lang="scss">
   main {
-    padding: 1rem;
-
     display: grid;
     gap: 6rem;
+
+    color: var(--blue-12);
+    overflow-x: clip;
   }
   h1 {
-    font-size: 4rem;
-    font-weight: 700;
-    line-height: 1;
-    text-align: center;
-  }
-
-  h2 {
-    font-size: 2.5rem;
-    font-weight: 600;
-    line-height: 1.25;
+    font-size: var(--font-size-fluid-2);
+    font-weight: var(--font-weight-8);
+    line-height: var(--font-lineheight-0);
 
     padding-left: 2rem;
 
     font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
   .intro {
-    --line1-chars: 3;
-    --line2-chars: 7;
-    --line3-chars: 20;
-
     display: grid;
     justify-content: center;
-    align-items: center;
-    min-height: 90vh;
-    min-width: 50rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0 4rem;
 
-    font-family: Arial, Helvetica, sans-serif;
-  }
+    font-family: Roboto, sans-serif;
+    min-height: calc(100vh - 6rem);
+    min-height: calc(100dvh - 6rem);
+    background-image: url("/bg-intro.jpg"), var(--gradient-7);
 
-  .lines_image {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem 4rem;
-    justify-content: center;
-    min-width: 50rem;
-  }
-  .lines {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 0.5rem;
-  }
-
-  .line-1 {
-    --line-width: 8rem;
-    border-right: 2px solid transparent;
-    white-space: nowrap;
-    overflow: hidden;
-    animation:
-      typewriter 200ms steps(var(--line1-chars)) 500ms 1 normal both,
-      blinkTextCursor 500ms steps(var(--line1-chars)) var(--line1-chars) normal;
-
-    font-size: 6rem;
-    font-weight: 600;
-    line-height: 1;
-  }
-
-  .line-2 {
-    --line-width: 23rem;
-    border-right: 2px solid transparent;
-    white-space: nowrap;
-    overflow: hidden;
-    animation:
-      typewriter 1s steps(var(--line2-chars)) calc((var(--line1-chars)) * 500ms)
-        1 normal both,
-      blinkTextCursor 500ms steps(var(--line2-chars))
-        calc((var(--line1-chars)) * 500ms) calc(var(--line1-chars) + 2) normal;
-
-    font-size: 6rem;
-    font-weight: 600;
-    line-height: 1;
-  }
-
-  .image {
-    border: 1px solid black;
-    border-radius: 100rem;
-    background-image: url("/stock-img.jpg");
-    background-size: cover;
-    background-position: center;
     background-repeat: no-repeat;
-    object-fit: cover;
-    width: 20rem;
-    height: 20rem;
+    background-size: cover;
+    background-origin: content-box;
+    background-blend-mode: hard-light;
 
-    opacity: 0;
-    animation: fadeIn 3s forwards;
-  }
-  .line-3 {
-    --line-width: 38rem;
-    border-right: 2px solid transparent;
-    white-space: nowrap;
-    overflow: hidden;
-    animation:
-      typewriter 2s steps(var(--line3-chars))
-        calc((var(--line2-chars) + 1) * 500ms) 1 normal both,
-      blinkTextCursor 500ms steps(var(--line3-chars))
-        calc((var(--line2-chars) + 1) * 500ms) 7 normal;
+    .line {
+      display: flex;
+      flex-direction: column;
+      padding-left: 1rem;
+      justify-content: center;
+      // justify-self: end;
 
-    font-size: 4rem;
-    font-weight: 600;
-    line-height: 1.3;
+      grid-column: 1 / 3;
+      grid-row: 1 / 2;
+      &_1 {
+        font-size: var(--font-size-fluid-3);
+        font-weight: var(--font-weight-9);
+        line-height: var(--font-lineheight-0);
 
-    align-self: start;
+        opacity: 0;
+        animation: fadeIn 500ms forwards;
+      }
 
-    span {
-      font-weight: 500;
+      &_2 {
+        font-size: var(--font-size-fluid-2);
+        font-weight: var(--font-weight-5);
+        line-height: var(--font-lineheight-1);
+
+        opacity: 0;
+        animation: fadeIn 500ms 1000ms forwards;
+
+        span {
+          font-weight: var(--font-weight-9);
+        }
+      }
+
+      &_3 {
+        padding-top: 2em;
+        font-size: var(--font-size-2);
+        font-weight: var(--font-weight-5);
+        line-height: var(--font-lineheight-4);
+        letter-spacing: var(--font-letterspacing-1);
+
+        display: none;
+
+        align-self: start;
+        max-width: 60ch;
+        text-wrap: wrap;
+
+        opacity: 0;
+        animation: fadeIn 1500ms 1500ms forwards;
+
+        @media screen and (min-width: 1024px) {
+          display: block;
+        }
+      }
+
+      @media screen and (min-width: 1024px) {
+        justify-content: center;
+        justify-self: end;
+
+        grid-column: 1 / 4;
+        grid-row: 1 / 2;
+      }
     }
-  }
 
-  .tech {
-    padding: 2rem 5rem;
+    .image {
+      grid-column: 1 / -1;
+      grid-row: 1 / 2;
+      align-self: end;
 
-    display: grid;
-    gap: 3rem;
+      width: clamp(20rem, 85em, 90rem);
 
-    min-height: 90vh;
+      filter: grayscale(0.6) contrast(1.2);
 
-    &_description {
-      align-self: start;
-      font-size: 1.4rem;
+      transform: translateX(30%) translateY(-20%) scale(1.4);
 
-      max-width: 60ch;
+      @media screen and (min-width: 1024px) {
+        grid-column: 3 / -1;
+        grid-row: 1 / 2;
+        transform: translateX(0%) scale(1);
+      }
     }
 
-    &_cards {
-      display: grid;
-      gap: 2rem;
+    @media screen and (min-width: 1024px) {
+      grid-template-columns: repeat(6, 1fr);
+      align-items: center;
     }
   }
 
   .projects {
-    padding: 2rem;
+    display: grid;
+    gap: 3rem;
+
+    padding: 1rem;
+    &_description {
+      align-self: start;
+      font-size: var(--font-size-3);
+      line-height: var(--font-lineheight-4);
+
+      max-width: 70ch;
+    }
+
+    &_cards {
+      display: grid;
+    }
+
+    li {
+      padding: 3rem 0;
+      margin: 0 2rem;
+    }
+    li:nth-child(2) {
+      border-top: solid 1px rgba(172, 172, 172, 0.7);
+      border-bottom: solid 1px rgb(172, 172, 172, 0.7);
+    }
+  }
+
+  .tech {
+    padding: 1rem;
+    justify-self: center;
 
     display: grid;
-    justify-content: center;
-    gap: 2rem;
+    gap: 3rem;
 
-    min-height: 90vh;
+    min-width: 50vw;
 
     &_description {
       align-self: start;
-      font-size: 1.4rem;
+      font-size: var(--font-size-3);
+      line-height: var(--font-lineheight-4);
 
       max-width: 60ch;
     }
 
     &_cards {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      justify-content: center;
       gap: 2rem;
     }
   }
 
-  @keyframes typewriter {
-    from {
-      width: 0;
-    }
-    to {
-      width: var(--line-width);
-    }
-  }
-  @keyframes blinkTextCursor {
-    from {
-      border-right-color: rgba(0, 0, 0, 0.75);
-    }
-    to {
-      border-right-color: transparent;
+  .contact {
+    display: grid;
+    justify-self: center;
+    align-items: start;
+    align-content: start;
+
+    margin-bottom: 8rem;
+
+    &_link {
+      font-size: var(--font-size-fluid-2);
+      font-weight: var(--font-weight-8);
+      line-height: var(--font-lineheight-5);
+      color: var(--blue-0);
+      text-transform: uppercase;
+
+      background-color: var(--indigo-10);
+      border-radius: 2rem;
+
+      padding: 1.5rem 3rem;
+      &:hover {
+      }
     }
   }
 

@@ -11,103 +11,124 @@ type Props = {
     image: ImageMetadata
   }[]
   description: string
+  flip?: boolean
 }
 
-const { title, image, siteLink, githubLink, tech, description } = Astro.props
+const { title, image, siteLink, githubLink, tech, description, flip } =
+  Astro.props
 ---
 
-<li class="card">
-  <Image
-    class="project_image"
-    src={image}
-    width="720"
-    height="480"
-    alt={title}
-  />
-  <h3>
-    {title}
-  </h3>
-  <a href={siteLink}> &#10095;&#10095; Live link</a>
-  <a href={githubLink}> &#10095;&#10095; Github repo</a>
-  <ul>
-    {
-      tech.map((item) => (
-        <li>
-          <Image src={item.image} alt={item.name} loading="lazy" />
-          <p>{item.name}</p>
-        </li>
-      ))
-    }
-  </ul>
-  <p class="description">{description}</p>
-</li>
+<div class="card">
+  <Image class:list={["card_image", { right: flip }]} src={image} alt={title} />
+  <div class:list={[{ left: flip }]}>
+    <h2>
+      {title}
+    </h2>
+    <ul>
+      {
+        tech.map((item) => (
+          <li>
+            <Image src={item.image} alt={item.name} loading="lazy" />
+            <p>{item.name}</p>
+          </li>
+        ))
+      }
+    </ul>
+    <a href={siteLink}> &#10095;&#10095; Live link</a>
+    <a href={githubLink}> &#10095;&#10095; Github repo</a>
+    <p>{description}</p>
+  </div>
+</div>
 
 <style lang="scss">
   .card {
     padding: 1rem;
-    border-radius: 1rem;
-
     display: grid;
-    gap: 0.5rem;
-  }
+    gap: 4rem;
 
-  a {
-    color: rgb(73, 72, 72);
-    text-decoration: none;
+    &_image {
+      border-radius: 1rem;
+      box-shadow: var(--shadow-2);
+      width: 100%;
 
-    &:hover {
-      color: black;
+      transition: scale 300ms;
+      &:hover {
+        scale: 1.05;
+      }
     }
 
-    justify-self: start;
-
-    padding: 0.25rem;
-  }
-
-  h3 {
-    font-size: 1.5rem;
-    font-weight: 500;
-    padding-left: 1rem;
-  }
-
-  .project_image {
-    border-radius: 1rem;
-    border: solid 1px rgb(172, 172, 172);
-
-    transition: scale 300ms;
-
-    &:hover {
-      scale: 1.05;
+    div {
+      display: grid;
+      align-content: start;
+      gap: 1rem;
     }
-  }
+    h2 {
+      font-size: var(--font-size-fluid-2);
+      font-weight: 500;
+      padding-left: 1rem;
+    }
+    a {
+      justify-self: start;
 
-  ul {
-    display: flex;
-    gap: 0.5rem;
-    padding-left: 1rem;
+      color: rgb(73, 72, 72);
+      text-decoration: none;
+      padding: 0.25rem;
 
-    align-self: end;
-    li {
+      transition: color 100ms;
+
+      font-size: var(--font-size-fluid-1);
+      font-weight: var(--font-weight-2);
+      &:hover {
+        color: black;
+      }
+    }
+
+    ul {
       display: flex;
-      gap: 0.5rem;
-      align-items: center;
+      gap: 1.5rem;
+      padding-left: 1rem;
 
-      img {
-        width: 1.5rem;
-        height: 1.5rem;
-      }
+      li {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
 
-      p {
-        font-size: 0.85rem;
-        font-weight: 500;
+        img {
+          width: 1.5rem;
+          height: 1.5rem;
+        }
+
+        p {
+          font-size: var(--font-size-fluid-0);
+          font-weight: var(--font-weight-4);
+        }
       }
+    }
+
+    p {
+      font-size: var(--font-size-fluid-1);
+      font-weight: var(--font-weight-4);
+      line-height: var(--font-lineheight-4);
+
+      padding: 1rem 0;
+
+      max-width: 60ch;
+    }
+
+    @media screen and (min-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 
-  .description {
-    font-size: 1rem;
-    font-weight: 400;
+  @media screen and (min-width: 1024px) {
+    .right {
+      grid-column: 2/-1;
+      grid-row: 1/2;
+    }
 
-    padding: 1rem 0;
+    .left {
+      grid-column: 1/2;
+      grid-row: 1/2;
+    }
   }
 </style>
