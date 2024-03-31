@@ -1,6 +1,9 @@
 ---
 import { Image } from "astro:assets"
 
+import "@fontsource/roboto/500.css"
+import "@fontsource/roboto/900.css"
+
 type Props = {
   title: string
   image: ImageMetadata
@@ -45,6 +48,7 @@ const { title, image, siteLink, githubLink, tech, description, flip } =
     padding: 1rem;
     display: grid;
     gap: 4rem;
+    font-family: Roboto, sans-serif;
 
     &_image {
       border-radius: 1rem;
@@ -64,28 +68,30 @@ const { title, image, siteLink, githubLink, tech, description, flip } =
     }
     h2 {
       font-size: var(--font-size-fluid-2);
-      font-weight: 500;
+      font-weight: var(--font-weight-9);
+      line-height: var(--font-lineheight-0);
       padding-left: 1rem;
     }
     a {
       justify-self: start;
 
-      color: rgb(73, 72, 72);
+      color: var(--stone-11);
       text-decoration: none;
       padding: 0.25rem;
 
       transition: color 100ms;
 
-      font-size: var(--font-size-fluid-1);
-      font-weight: var(--font-weight-2);
+      font-size: var(--font-size-3);
+      font-weight: var(--font-weight-5);
       &:hover {
-        color: black;
+        color: var(--stone-8);
       }
     }
 
     ul {
       display: flex;
-      gap: 1.5rem;
+      flex-wrap: wrap;
+      gap: 0 1.5rem;
       padding-left: 1rem;
 
       li {
@@ -94,8 +100,8 @@ const { title, image, siteLink, githubLink, tech, description, flip } =
         align-items: center;
 
         img {
-          width: 1.5rem;
-          height: 1.5rem;
+          width: var(--size-fluid-2);
+          aspect-ratio: 1;
         }
 
         p {
@@ -106,13 +112,15 @@ const { title, image, siteLink, githubLink, tech, description, flip } =
     }
 
     p {
-      font-size: var(--font-size-fluid-1);
-      font-weight: var(--font-weight-4);
+      font-size: var(--font-size-1);
+      font-weight: var(--font-weight-5);
       line-height: var(--font-lineheight-4);
+
+      color: var(--stone-10);
 
       padding: 1rem 0;
 
-      max-width: 60ch;
+      max-width: 70ch;
     }
 
     @media screen and (min-width: 1024px) {

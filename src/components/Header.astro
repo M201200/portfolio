@@ -1,0 +1,110 @@
+---
+import "@fontsource/merriweather/700.css"
+import "@fontsource/merriweather/900.css"
+
+import menu from "./../images/hamburger-menu.svg"
+
+import { Image } from "astro:assets"
+---
+
+<header>
+  <a href="#">VLAD IUJEV</a>
+  <div aria-closed="true">
+    <button><Image src={menu} alt="Menu" /></button>
+    <ul>
+      <li><a href="#">MAIN</a></li>
+      <li><a href="#">CONTACTS</a></li>
+    </ul>
+  </div>
+</header>
+
+<style lang="scss">
+  header {
+    display: grid;
+    grid-template-columns: 1fr 2rem;
+    padding: 2rem;
+    gap: 2rem;
+    min-height: 6.5rem;
+
+    overflow-x: clip;
+    position: fixed;
+    z-index: 100;
+
+    top: 0;
+    width: 100%;
+
+    background-color: var(--stone-0);
+    box-shadow: var(--shadow-1);
+
+    div {
+      justify-self: end;
+      display: grid;
+      justify-content: end;
+
+      button {
+        justify-self: end;
+
+        width: 2rem;
+        aspect-ratio: 1;
+        padding: 0;
+        border-radius: 5px;
+        border: none;
+        background: none;
+        cursor: pointer;
+
+        @media screen and (min-width: 1024px) {
+          display: none;
+        }
+      }
+
+      ul {
+        display: flex;
+        gap: 2rem;
+
+        overflow: hidden;
+
+        @media screen and (max-width: 1024px) {
+          flex-direction: column;
+          align-items: end;
+
+          padding: 1rem;
+
+          position: absolute;
+          top: 7rem;
+          right: 3rem;
+          background-color: var(--stone-1);
+          box-shadow: var(--shadow-1);
+          border-radius: 5px;
+
+          transform: translateX(150%);
+        }
+      }
+
+      @media screen and (max-width: 1024px) {
+        div[aria-closed="true"] {
+          ul {
+            display: none;
+          }
+        }
+      }
+      @media screen and (min-width: 1024px) {
+        ul {
+          display: flex;
+        }
+      }
+    }
+
+    @media screen and (min-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  a {
+    font-size: var(--font-size-3);
+    font-weight: var(--font-weight-9);
+    letter-spacing: var(--font-letterspacing-1);
+    font-family: "Merriweather", serif;
+    padding: 0.5rem;
+  }
+</style>
+
+<script></script>

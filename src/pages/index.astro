@@ -28,6 +28,8 @@ import stock from "./../images/stock.jpg"
 import "@fontsource/roboto/500.css"
 import "@fontsource/roboto/700.css"
 import "@fontsource/roboto/900.css"
+import "@fontsource/merriweather/700.css"
+import "@fontsource/merriweather/900.css"
 
 import { Image } from "astro:assets"
 
@@ -81,10 +83,12 @@ const playground = [
         <p class="line_2">I'm a <span>Front-end</span> developer</p>
         <p class="line_3">
           I genuinely enjoy web development and am always eager to create more,
-          both for the benefit of others and for my own personal growth.
+          both for the benefit of others and my own personal growth.
         </p>
       </div>
-      <Image class="image" src={stock} alt={"Profile image"} />
+      <div class="image">
+        <Image src={stock} alt={"Profile image"} />
+      </div>
     </section>
 
     <section class="projects">
@@ -154,26 +158,24 @@ const playground = [
 
     color: var(--stone-12);
     overflow-x: clip;
+    font-family: Roboto, sans-serif;
   }
   h1 {
     font-size: var(--font-size-fluid-2);
-    font-weight: var(--font-weight-8);
+    font-weight: var(--font-weight-9);
     line-height: var(--font-lineheight-0);
 
     padding-left: 2rem;
 
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "Merriweather", serif;
   }
   .intro {
     display: grid;
     justify-content: center;
-    // grid-template-columns: repeat(3, 1fr);
     gap: 0 4rem;
 
-    font-family: Roboto, sans-serif;
-    height: calc(100vh - 6rem);
-    height: calc(100dvh - 6rem);
-    overflow: hidden;
+    min-height: calc(100vh - 6rem);
+    min-height: calc(100dvh - 6rem);
     background-image: url("/bg-2.jpg"), var(--gradient-16);
 
     background-repeat: no-repeat;
@@ -184,16 +186,17 @@ const playground = [
     .line {
       display: flex;
       flex-direction: column;
-      padding-left: 1rem;
+      padding: 1rem;
+      gap: 0.75rem;
       justify-content: center;
-      // justify-self: end;
+      font-family: "Merriweather", serif;
 
-      // grid-column: 1 / 3;
-      // grid-row: 1 / 2;
       &_1 {
         font-size: var(--font-size-fluid-3);
         font-weight: var(--font-weight-9);
         line-height: var(--font-lineheight-0);
+
+        text-wrap: nowrap;
 
         opacity: 0;
         animation: fadeIn 500ms forwards;
@@ -201,7 +204,7 @@ const playground = [
 
       &_2 {
         font-size: var(--font-size-fluid-2);
-        font-weight: var(--font-weight-5);
+        font-weight: var(--font-weight-7);
         line-height: var(--font-lineheight-1);
 
         opacity: 0;
@@ -209,15 +212,18 @@ const playground = [
 
         span {
           font-weight: var(--font-weight-9);
+          text-wrap: nowrap;
         }
       }
 
       &_3 {
-        padding-top: 2em;
+        padding-top: 1.5em;
         font-size: var(--font-size-2);
         font-weight: var(--font-weight-5);
         line-height: var(--font-lineheight-4);
         letter-spacing: var(--font-letterspacing-1);
+        font-family: Roboto, sans-serif;
+        color: var(--stone-10);
 
         display: none;
 
@@ -228,48 +234,38 @@ const playground = [
         opacity: 0;
         animation: fadeIn 1500ms 1500ms forwards;
 
-        @media screen and (min-width: 1024px) {
+        @media screen and (min-width: 1280px) {
           display: block;
         }
       }
 
-      @media screen and (min-width: 1024px) {
+      @media screen and (min-width: 1280px) {
         justify-content: center;
         justify-self: end;
-
-        // grid-column: 1 / 4;
-        // grid-row: 1 / 2;
       }
     }
 
     .image {
-      contain: paint;
-      // grid-column: 1 / -1;
-      // grid-row: 1 / 2;
-      // align-self: end;
-      // margin-top: 5rem;
+      justify-self: center;
+      padding: 1.5em;
 
-      width: clamp(20rem, 25rem + 10vw, 60rem);
+      display: grid;
 
-      filter: grayscale(0.25) contrast(1.05);
+      filter: contrast(1.1);
 
-      // border: solid 1px var(--gray-7);
+      img {
+        box-shadow: var(--shadow-2);
+        border-radius: 1.5rem;
 
-      background-color: var(--gray-3);
+        align-self: start;
+      }
 
-      box-shadow: var(--shadow-2);
-      border-radius: 1.5rem;
-
-      transform: translateX(30%) translateY(-20%) scale(1.4);
-
-      @media screen and (min-width: 1024px) {
-        // grid-column: 4 / -1;
-        // grid-row: 1 / 2;
-        transform: translateX(0%) scale(1);
+      @media screen and (min-width: 1280px) {
+        justify-self: start;
       }
     }
 
-    @media screen and (min-width: 1024px) {
+    @media screen and (min-width: 1280px) {
       grid-template-columns: repeat(2, 1fr);
       align-items: center;
     }
@@ -277,15 +273,18 @@ const playground = [
 
   .projects {
     display: grid;
-    gap: 3rem;
+    gap: 2rem;
 
     padding: 1rem;
     &_description {
       align-self: start;
-      font-size: var(--font-size-3);
+      font-size: var(--font-size-1);
       line-height: var(--font-lineheight-4);
+      font-weight: var(--font-weight-5);
+      letter-spacing: var(--font-letterspacing-1);
+      color: var(--stone-10);
 
-      max-width: 70ch;
+      max-width: 75ch;
     }
 
     &_cards {
@@ -294,11 +293,10 @@ const playground = [
 
     li {
       padding: 3rem 0;
-      margin: 0 2rem;
     }
     li:nth-child(2) {
-      border-top: solid 1px rgba(172, 172, 172, 0.7);
-      border-bottom: solid 1px rgb(172, 172, 172, 0.7);
+      border-top: solid 1px var(--stone-3);
+      border-bottom: solid 1px var(--stone-3);
     }
   }
 
@@ -307,16 +305,19 @@ const playground = [
     justify-self: center;
 
     display: grid;
-    gap: 3rem;
+    gap: 2rem;
 
     min-width: 50vw;
 
     &_description {
       align-self: start;
-      font-size: var(--font-size-3);
+      font-size: var(--font-size-1);
       line-height: var(--font-lineheight-4);
+      font-weight: var(--font-weight-5);
+      letter-spacing: var(--font-letterspacing-1);
+      color: var(--stone-10);
 
-      max-width: 60ch;
+      max-width: 75ch;
     }
 
     &_cards {
@@ -335,16 +336,21 @@ const playground = [
 
     &_link {
       font-size: var(--font-size-fluid-2);
-      font-weight: var(--font-weight-8);
-      line-height: var(--font-lineheight-5);
-      color: var(--blue-0);
+      font-weight: var(--font-weight-9);
+      color: var(--stone-11);
       text-transform: uppercase;
+      font-family: "Merriweather", serif;
 
-      background-color: var(--indigo-10);
-      border-radius: 2rem;
+      border: solid 1px var(--stone-4);
 
       padding: 1.5rem 3rem;
+
+      transition:
+        scale 150ms,
+        transform 150ms;
       &:hover {
+        scale: 1.05;
+        transform: translateY(-5%);
       }
     }
   }
