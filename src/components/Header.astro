@@ -9,8 +9,8 @@ import { Image } from "astro:assets"
 
 <header>
   <a href="#">VLAD IUJEV</a>
-  <div aria-closed="true">
-    <button><Image src={menu} alt="Menu" /></button>
+  <div id="menu-wrapper" aria-expanded="false">
+    <button id="menu-button"><Image src={menu} alt="Menu" /></button>
     <ul>
       <li><a href="#">MAIN</a></li>
       <li><a href="#">CONTACTS</a></li>
@@ -26,7 +26,7 @@ import { Image } from "astro:assets"
     gap: 2rem;
     min-height: 6.5rem;
 
-    overflow-x: clip;
+    // overflow-x: clip;
     position: fixed;
     z-index: 100;
 
@@ -63,6 +63,8 @@ import { Image } from "astro:assets"
 
         overflow: hidden;
 
+        transition: transform 150ms ease-in;
+
         @media screen and (max-width: 1024px) {
           flex-direction: column;
           align-items: end;
@@ -81,9 +83,9 @@ import { Image } from "astro:assets"
       }
 
       @media screen and (max-width: 1024px) {
-        div[aria-closed="true"] {
+        &[aria-expanded="true"] {
           ul {
-            display: none;
+            transform: translateX(12%);
           }
         }
       }
@@ -107,4 +109,24 @@ import { Image } from "astro:assets"
   }
 </style>
 
-<script></script>
+<script>
+  const menuButton = document.querySelector("#menu-button") as HTMLButtonElement
+  const menuWrapper = document.querySelector("#menu-wrapper")
+
+  menuButton.addEventListener("click", () => {
+    menuWrapper?.setAttribute(
+      "aria-expanded",
+      menuWrapper.getAttribute("aria-expanded") === "false" ? "true" : "false"
+    )
+  })
+
+  function isDescendant(parent: Node | null, child: Node | null): boolean {
+    return !!parent && parent !== child && parent.contains(child)
+  }
+
+  document.body.addEventListener("click", (event: MouseEvent) => {
+    if (!isDescendant(menuWrapper, event.target as Node)) {
+      menuWrapper?.setAttribute("aria-expanded", "false")
+    }
+  })
+</script>
