@@ -8,12 +8,12 @@ import { Image } from "astro:assets"
 ---
 
 <header>
-  <a href="#">VLAD IUJEV</a>
+  <a href="/">VLAD IUJEV</a>
   <div id="menu-wrapper" aria-expanded="false">
     <button id="menu-button"><Image src={menu} alt="Menu" /></button>
     <ul>
-      <li><a href="#">MAIN</a></li>
-      <li><a href="#">CONTACTS</a></li>
+      <li><a href="/">MAIN</a></li>
+      <li><a href="/contacts">CONTACTS</a></li>
     </ul>
   </div>
 </header>
@@ -62,6 +62,7 @@ import { Image } from "astro:assets"
         gap: 2rem;
 
         overflow: hidden;
+        align-items: center;
 
         transition: transform 150ms ease-in;
 
@@ -120,7 +121,7 @@ import { Image } from "astro:assets"
     )
   })
 
-  function isDescendant(parent: Node | null, child: Node | null): boolean {
+  function isDescendant(parent: Node | null, child: Node | null) {
     return !!parent && parent !== child && parent.contains(child)
   }
 

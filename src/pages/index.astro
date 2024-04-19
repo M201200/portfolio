@@ -3,9 +3,28 @@ import ProjectCard from "../components/ProjectCard.astro"
 import TechCard from "../components/TechCard.astro"
 import Layout from "../layouts/Layout.astro"
 
-import myLeisureImg from "./../images/projects/my-leisure.jpg"
-import newFurnitureImg from "./../images/projects/new-furniture.jpg"
-import playgroundImg from "./../images/projects/playground.jpg"
+import myLeisureMain from "./../images/projects/my-leisure/en/main.jpg"
+// import myLeisureMainDark from "./../images/projects/my-leisure/en/main-dark.jpg"
+// import myLeisureMovies from "./../images/projects/my-leisure/en/movies.jpg"
+// import myLeisureMoviesDark from "./../images/projects/my-leisure/en/movies-dark.jpg"
+// import myLeisureBooks from "./../images/projects/my-leisure/en/books.jpg"
+// import myLeisureBooksDark from "./../images/projects/my-leisure/en/books-dark.jpg"
+// import myLeisureBookmarks from "./../images/projects/my-leisure/en/bookmarks.jpg"
+// import myLeisureBookmarksDark from "./../images/projects/my-leisure/en/bookmarks-dark.jpg"
+
+import newFurnitureMain from "./../images/projects/new-furniture/en/main.jpg"
+// import newFurnitureMainDark from "./../images/projects/new-furniture/en/main-dark.jpg"
+// import newFurnitureCatalog from "./../images/projects/new-furniture/en/catalog.jpg"
+// import newFurnitureCatalogDark from "./../images/projects/new-furniture/en/catalog-dark.jpg"
+// import newFurnitureCart from "./../images/projects/new-furniture/en/cart.jpg"
+// import newFurnitureCartDark from "./../images/projects/new-furniture/en/cart-dark.jpg"
+// import newFurnitureFavs from "./../images/projects/new-furniture/en/favs.jpg"
+// import newFurnitureFavsDark from "./../images/projects/new-furniture/en/favs-dark.jpg"
+
+import playgroundMain from "./../images/projects/playground/main.jpg"
+// import playgroundJigsaw from "./../images/projects/playground/jigsaw.jpg"
+// import playgroundBoard from "./../images/projects/playground/board.jpg"
+// import playgroundCards from "./../images/projects/playground/cards.jpg"
 
 import javaScript from "./../images/tech/javascript.svg"
 import html from "./../images/tech/html-5.svg"
@@ -52,13 +71,36 @@ const frameworks = [
   { name: "Drizzle", image: drizzle },
 ]
 
-const myLeisure = [
-  { name: "TypeScript", image: typescript },
-  { name: "Next.js", image: nextjs },
-  { name: "Tailwind", image: tailwind },
-]
+// const myLeisureSlides = [
+//   myLeisureMain,
+//   myLeisureMainDark,
+//   myLeisureMovies,
+//   myLeisureMoviesDark,
+//   myLeisureBooks,
+//   myLeisureBooksDark,
+//   myLeisureBookmarks,
+//   myLeisureBookmarksDark,
+// ]
 
-const newFurniture = [
+// const newFurnitureSlides = [
+//   newFurnitureMain,
+//   newFurnitureMainDark,
+//   newFurnitureCatalog,
+//   newFurnitureCatalogDark,
+//   newFurnitureCart,
+//   newFurnitureCartDark,
+// ]
+
+// const playgroundSlides = [
+//   playgroundMain,
+//   playgroundJigsaw,
+//   playgroundBoard,
+//   playgroundCards,
+//   newFurnitureFavs,
+//   newFurnitureFavsDark,
+// ]
+
+const myLeisureTech = [
   { name: "TypeScript", image: typescript },
   { name: "Next.js", image: nextjs },
   { name: "Tailwind", image: tailwind },
@@ -67,7 +109,16 @@ const newFurniture = [
   { name: "Drizzle", image: drizzle },
 ]
 
-const playground = [
+const newFurnitureTech = [
+  { name: "TypeScript", image: typescript },
+  { name: "Next.js", image: nextjs },
+  { name: "Tailwind", image: tailwind },
+  { name: "MySQL", image: mysql },
+  { name: "NextAuth", image: nextAuth },
+  { name: "Drizzle", image: drizzle },
+]
+
+const playgroundTech = [
   { name: "TypeScript", image: typescript },
   { name: "Astro", image: astro },
   { name: "ThreeJS", image: threejs },
@@ -101,20 +152,20 @@ const playground = [
         <li>
           <ProjectCard
             title="MY LEISURE"
-            image={myLeisureImg}
+            image={myLeisureMain}
             siteLink="#"
             githubLink="#"
-            tech={myLeisure}
+            tech={myLeisureTech}
             description="This app allows you to scroll through large database of movies and books to find something to watch or read tonight."
           />
         </li>
         <li>
           <ProjectCard
             title="NEW FURNITURE"
-            image={newFurnitureImg}
+            image={newFurnitureMain}
             siteLink="#"
             githubLink="#"
-            tech={newFurniture}
+            tech={newFurnitureTech}
             description="Marketplace where you can find and buy furniture."
             flip={true}
           />
@@ -122,10 +173,10 @@ const playground = [
         <li>
           <ProjectCard
             title="PLAYGROUND"
-            image={playgroundImg}
+            image={playgroundMain}
             siteLink="#"
             githubLink="#"
-            tech={playground}
+            tech={playgroundTech}
             description="This is my project where I experiment with WebGL using ThreeJS library and GSAP."
           />
         </li>
@@ -146,7 +197,9 @@ const playground = [
     </section>
 
     <section class="contact">
-      <a class="contact_link" href="#"> &#10095;&#10095; get in touch</a>
+      <a class="contact_link" href="/contacts">
+        &#10095;&#10095; get in touch</a
+      >
     </section>
   </main>
 </Layout>
@@ -154,10 +207,8 @@ const playground = [
 <style lang="scss">
   main {
     display: grid;
-    gap: 6rem;
 
     color: var(--stone-12);
-    // overflow-x: clip;
     font-family: Roboto, sans-serif;
   }
   h1 {
@@ -165,10 +216,9 @@ const playground = [
     font-weight: var(--font-weight-9);
     line-height: var(--font-lineheight-0);
 
-    padding-left: 2rem;
-
     font-family: "Merriweather", serif;
   }
+
   .intro {
     display: grid;
     justify-content: center;
@@ -188,7 +238,6 @@ const playground = [
       flex-direction: column;
       padding: 1rem;
       padding-top: 4rem;
-      gap: 0.75rem;
       justify-content: center;
       font-family: "Merriweather", serif;
 
@@ -201,12 +250,16 @@ const playground = [
 
         opacity: 0;
         animation: fadeIn 500ms forwards;
+
+        margin-bottom: var(--gap-xs);
       }
 
       &_2 {
         font-size: var(--font-size-fluid-2);
         font-weight: var(--font-weight-7);
         line-height: var(--font-lineheight-1);
+
+        margin-bottom: var(--gap-m);
 
         opacity: 0;
         animation: fadeIn 500ms 1000ms forwards;
@@ -218,7 +271,6 @@ const playground = [
       }
 
       &_3 {
-        padding-top: 1.5em;
         font-size: var(--font-size-2);
         font-weight: var(--font-weight-5);
         line-height: var(--font-lineheight-4);
@@ -229,7 +281,7 @@ const playground = [
         display: none;
 
         align-self: start;
-        max-width: 60ch;
+        max-inline-size: var(--size-content-3);
         text-wrap: wrap;
 
         opacity: 0;
@@ -274,30 +326,36 @@ const playground = [
 
   .projects {
     display: grid;
-    gap: 2rem;
 
     padding: 1rem;
+
+    h1 {
+      margin-top: var(--gap-l);
+      margin-bottom: var(--gap-s);
+      margin-left: 1em;
+    }
+
     &_description {
       align-self: start;
       font-size: var(--font-size-1);
       line-height: var(--font-lineheight-4);
       font-weight: var(--font-weight-5);
       letter-spacing: var(--font-letterspacing-1);
-      color: var(--stone-10);
+      color: var(--stone-9);
 
-      max-width: 75ch;
+      max-inline-size: 75ch;
+
+      margin-left: 2em;
+      margin-bottom: var(--gap-l);
     }
 
     &_cards {
       display: grid;
+      gap: var(--gap-xxl);
     }
 
     li {
-      padding: 3rem 0;
-    }
-    li:nth-child(2) {
-      border-top: solid 1px var(--stone-3);
-      border-bottom: solid 1px var(--stone-3);
+      margin-top: var(--gap-xl);
     }
   }
 
@@ -306,9 +364,14 @@ const playground = [
     justify-self: center;
 
     display: grid;
-    gap: 2rem;
+    margin-top: var(--gap-xl);
 
     min-width: 50vw;
+
+    h1 {
+      margin-left: 1em;
+      margin-bottom: var(--gap-s);
+    }
 
     &_description {
       align-self: start;
@@ -316,9 +379,12 @@ const playground = [
       line-height: var(--font-lineheight-4);
       font-weight: var(--font-weight-5);
       letter-spacing: var(--font-letterspacing-1);
-      color: var(--stone-10);
+      color: var(--stone-9);
 
-      max-width: 75ch;
+      max-inline-size: 75ch;
+
+      margin-left: 2em;
+      margin-bottom: var(--gap-xxl);
     }
 
     &_cards {
@@ -333,7 +399,7 @@ const playground = [
     align-items: start;
     align-content: start;
 
-    margin-bottom: 8rem;
+    margin: 6em 0;
 
     &_link {
       font-size: var(--font-size-fluid-2);

@@ -47,7 +47,7 @@ const { title, image, siteLink, githubLink, tech, description, flip } =
   .card {
     padding: 1rem;
     display: grid;
-    gap: 4rem;
+    gap: var(--gap-xxl);
     font-family: Roboto, sans-serif;
 
     &_image {
@@ -64,20 +64,20 @@ const { title, image, siteLink, githubLink, tech, description, flip } =
     div {
       display: grid;
       align-content: start;
-      gap: 1rem;
+      gap: 1em;
     }
     h2 {
       font-size: var(--font-size-fluid-2);
       font-weight: var(--font-weight-9);
       line-height: var(--font-lineheight-0);
       padding-left: 1rem;
+      margin-bottom: var(--gap-xs);
     }
     a {
       justify-self: start;
 
       color: var(--stone-11);
       text-decoration: none;
-      padding: 0.25rem;
 
       transition: color 100ms;
 
@@ -91,22 +91,24 @@ const { title, image, siteLink, githubLink, tech, description, flip } =
     ul {
       display: flex;
       flex-wrap: wrap;
-      gap: 0 1.5rem;
+      gap: 0.5em 1.5em;
       padding-left: 1rem;
 
       li {
-        display: flex;
-        gap: 0.5rem;
-        align-items: center;
+        display: grid;
+        justify-items: center;
+
+        gap: 0.5em;
 
         img {
-          width: var(--size-fluid-2);
+          width: var(--size-fluid-3);
           aspect-ratio: 1;
         }
 
         p {
-          font-size: var(--font-size-fluid-0);
+          font-size: var(--font-size-0);
           font-weight: var(--font-weight-4);
+          padding: 0;
         }
       }
     }
@@ -118,7 +120,7 @@ const { title, image, siteLink, githubLink, tech, description, flip } =
 
       color: var(--stone-10);
 
-      padding: 1rem 0;
+      padding: 0.5rem 1em;
 
       max-width: 70ch;
     }
