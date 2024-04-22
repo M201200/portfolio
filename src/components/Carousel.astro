@@ -1,0 +1,49 @@
+---
+import { Image } from "astro:assets"
+
+type Props = {
+  title: string
+  images: ImageMetadata[]
+}
+
+const { title, images } = Astro.props
+---
+
+<div class="carousel">
+  <ul>
+    {
+      images.map((image, index) => (
+        <li>
+          <a href={`#${index}`} title={"Slide " + (index + 1)}>
+            <Image class="slide_image" src={image} alt={title + index} />
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  <button class="left">&lt;</button>
+  <button class="right">&gt;</button>
+</div>
+
+<style lang="scss">
+  .carousel {
+    ul {
+      display: flex;
+      overflow: hidden;
+
+      li {
+        flex-wrap: nowrap;
+        flex-shrink: 0;
+        padding: 1rem;
+      }
+    }
+  }
+
+  .left {
+    left: 0.5rem;
+  }
+
+  .right {
+    right: 0.5rem;
+  }
+</style>

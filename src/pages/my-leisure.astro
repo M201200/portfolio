@@ -1,0 +1,148 @@
+---
+import { Image } from "astro:assets"
+import Layout from "../layouts/Layout.astro"
+
+import typescript from "./../images/tech/typescript.svg"
+import tailwind from "./../images/tech/tailwind.svg"
+import mysql from "./../images/tech/mysql.svg"
+import nextAuth from "./../images/tech/next-auth.svg"
+import drizzle from "./../images/tech/drizzle.svg"
+import nextjs from "./../images/tech/nextjs.svg"
+
+import myLeisureMain from "./../images/projects/page-images/my-leisure/en/main.jpg"
+import myLeisureMainDark from "./../images/projects/page-images/my-leisure/en/main-dark.jpg"
+import myLeisureMovies from "./../images/projects/page-images/my-leisure/en/movies.jpg"
+import myLeisureMoviesDark from "./../images/projects/page-images/my-leisure/en/movies-dark.jpg"
+import myLeisureBooks from "./../images/projects/page-images/my-leisure/en/books.jpg"
+import myLeisureBooksDark from "./../images/projects/page-images/my-leisure/en/books-dark.jpg"
+import myLeisureBookmarks from "./../images/projects/page-images/my-leisure/en/bookmarks.jpg"
+import myLeisureBookmarksDark from "./../images/projects/page-images/my-leisure/en/bookmarks-dark.jpg"
+import Carousel from "../components/Carousel.astro"
+
+import "@fontsource/roboto/500.css"
+import "@fontsource/roboto/700.css"
+import "@fontsource/roboto/900.css"
+import "@fontsource/merriweather/700.css"
+import "@fontsource/merriweather/900.css"
+
+const myLeisureSlides = [
+  myLeisureMain,
+  myLeisureMainDark,
+  myLeisureMovies,
+  myLeisureMoviesDark,
+  myLeisureBooks,
+  myLeisureBooksDark,
+  myLeisureBookmarks,
+  myLeisureBookmarksDark,
+]
+
+const tech = [
+  {
+    name: "Typescript",
+    url: "https://www.typescriptlang.org",
+    image: typescript,
+  },
+  {
+    name: "Next.js",
+    url: "https://nextjs.org/docs",
+    image: nextjs,
+  },
+  {
+    name: "Tailwind",
+    url: "https://tailwindcss.com/docs/installation",
+    image: tailwind,
+  },
+  {
+    name: "MySQL",
+    url: "https://www.mysql.com/",
+    image: mysql,
+  },
+  {
+    name: "NextAuth",
+    url: "https://next-auth.js.org/getting-started/introduction",
+    image: nextAuth,
+  },
+  {
+    name: "Drizzle",
+    url: "https://orm.drizzle.team/docs/overview",
+    image: drizzle,
+  },
+]
+---
+
+<Layout title="Projects: My Leisure">
+  <main>
+    <h1>My Leisure</h1>
+
+    <Carousel title="My Leisure" images={myLeisureSlides} />
+
+    <section>
+      <h2>Tech</h2>
+      <ul>
+        {
+          tech.map((item) => (
+            <li>
+              <Image src={item.image} alt={item.name} loading="lazy" />
+              <p>{item.name}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+    <section>
+      <a href="#"> &#10095;&#10095; Live link</a>
+      <a href="#"> &#10095;&#10095; Github repo</a>
+      <p>Desc</p>
+    </section>
+  </main>
+</Layout>
+
+<style lang="scss">
+  main {
+    display: grid;
+
+    color: var(--text-primary);
+    font-family: Roboto, sans-serif;
+  }
+  h1 {
+    font-size: var(--font-size-fluid-2);
+    font-weight: var(--font-weight-9);
+    line-height: var(--font-lineheight-0);
+
+    font-family: "Merriweather", serif;
+  }
+
+  .tech {
+    padding: 1rem;
+    justify-self: center;
+
+    display: grid;
+    margin-top: var(--gap-xl);
+
+    min-width: 50vw;
+
+    h1 {
+      margin-left: 1em;
+      margin-bottom: var(--gap-s);
+    }
+
+    &_description {
+      align-self: start;
+      font-size: var(--font-size-1);
+      line-height: var(--font-lineheight-4);
+      font-weight: var(--font-weight-5);
+      letter-spacing: var(--font-letterspacing-1);
+      color: var(--text-secondary);
+
+      max-inline-size: 75ch;
+
+      margin-left: 2em;
+      margin-bottom: var(--gap-xxl);
+    }
+
+    &_cards {
+      display: grid;
+      gap: var(--gap-xl);
+    }
+  }
+</style>

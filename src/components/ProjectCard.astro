@@ -10,6 +10,7 @@ type Props = {
     dark: ImageMetadata
     light: ImageMetadata
   }
+  pageLink: string
   siteLink: string
   githubLink: string
   tech: {
@@ -21,21 +22,31 @@ type Props = {
   flip?: boolean
 }
 
-const { title, images, siteLink, githubLink, tech, description, flip } =
-  Astro.props
+const {
+  title,
+  images,
+  pageLink,
+  siteLink,
+  githubLink,
+  tech,
+  description,
+  flip,
+} = Astro.props
 
 const imageDark = images.dark.src
 const imageLight = images.light.src
 ---
 
 <div class="card">
-  <Image
-    class:list={["card_image", { right: flip }]}
-    src={images.dark}
-    alt={title}
-    data-dark={imageDark}
-    data-light={imageLight}
-  />
+  <a href={pageLink} title={title}>
+    <Image
+      class:list={["card_image", { right: flip }]}
+      src={images.dark}
+      alt={title}
+      data-dark={imageDark}
+      data-light={imageLight}
+    />
+  </a>
   <div class:list={[{ left: flip }]}>
     <h2>
       {title}
@@ -79,7 +90,7 @@ const imageLight = images.light.src
     div {
       display: grid;
       align-content: start;
-      gap: 1em;
+      gap: var(--gap-l);
     }
     h2 {
       font-size: var(--font-size-fluid-2);
