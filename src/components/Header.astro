@@ -14,6 +14,7 @@ import { Image } from "astro:assets"
     <ul>
       <li><a href="/">MAIN</a></li>
       <li><a href="/contacts">CONTACTS</a></li>
+      <li><input data-switcher="theme" type="checkbox" /></li>
     </ul>
   </div>
 </header>
@@ -26,15 +27,16 @@ import { Image } from "astro:assets"
     gap: 2rem;
     min-height: 6.5rem;
 
-    // overflow-x: clip;
     position: fixed;
     z-index: 100;
 
     top: 0;
     width: 100%;
 
-    background-color: var(--stone-0);
+    background-color: var(--bg);
     box-shadow: var(--shadow-1);
+
+    color: var(--text-primary);
 
     div {
       justify-self: end;
@@ -44,12 +46,12 @@ import { Image } from "astro:assets"
       button {
         justify-self: end;
 
-        width: 2rem;
+        width: 2.5rem;
         aspect-ratio: 1;
         padding: 0;
         border-radius: 5px;
         border: none;
-        background: none;
+        background: var(--bg-button);
         cursor: pointer;
 
         @media screen and (min-width: 1024px) {
@@ -75,7 +77,7 @@ import { Image } from "astro:assets"
           position: absolute;
           top: 7rem;
           right: 3rem;
-          background-color: var(--stone-1);
+          background-color: var(--bg);
           box-shadow: var(--shadow-1);
           border-radius: 5px;
 
@@ -111,6 +113,10 @@ import { Image } from "astro:assets"
 </style>
 
 <script>
+  import applyTheme from "../utils/applyTheme"
+  import getTheme from "../utils/getTheme"
+  import isDescendant from "../utils/isDescendant"
+
   const menuButton = document.querySelector("#menu-button") as HTMLButtonElement
   const menuWrapper = document.querySelector("#menu-wrapper")
 
@@ -121,13 +127,20 @@ import { Image } from "astro:assets"
     )
   })
 
-  function isDescendant(parent: Node | null, child: Node | null) {
-    return !!parent && parent !== child && parent.contains(child)
-  }
-
   document.body.addEventListener("click", (event: MouseEvent) => {
     if (!isDescendant(menuWrapper, event.target as Node)) {
       menuWrapper?.setAttribute("aria-expanded", "false")
     }
+  })
+
+  const currentTheme = getTheme()
+  const themeSwitcher = document.querySelector<HTMLInputElement>(
+    '[data-switcher="theme"]'
+  )!
+
+  themeSwitcher.checked = currentTheme === "dark"
+  themeSwitcher.addEventListener("change", (e) => {
+    const target = e.target as HTMLInputElement
+    applyTheme(target.checked ? "dark" : "light")
   })
 </script>

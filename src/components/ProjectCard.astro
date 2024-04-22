@@ -6,23 +6,36 @@ import "@fontsource/roboto/900.css"
 
 type Props = {
   title: string
-  image: ImageMetadata
+  images: {
+    dark: ImageMetadata
+    light: ImageMetadata
+  }
   siteLink: string
   githubLink: string
   tech: {
     name: string
     image: ImageMetadata
+    url: string
   }[]
   description: string
   flip?: boolean
 }
 
-const { title, image, siteLink, githubLink, tech, description, flip } =
+const { title, images, siteLink, githubLink, tech, description, flip } =
   Astro.props
+
+const imageDark = images.dark.src
+const imageLight = images.light.src
 ---
 
 <div class="card">
-  <Image class:list={["card_image", { right: flip }]} src={image} alt={title} />
+  <Image
+    class:list={["card_image", { right: flip }]}
+    src={images.dark}
+    alt={title}
+    data-dark={imageDark}
+    data-light={imageLight}
+  />
   <div class:list={[{ left: flip }]}>
     <h2>
       {title}
@@ -31,8 +44,10 @@ const { title, image, siteLink, githubLink, tech, description, flip } =
       {
         tech.map((item) => (
           <li>
-            <Image src={item.image} alt={item.name} loading="lazy" />
-            <p>{item.name}</p>
+            <a href={item.url} title={item.name} target="_blank">
+              <Image src={item.image} alt={item.name} loading="lazy" />
+              <p>{item.name}</p>
+            </a>
           </li>
         ))
       }
@@ -76,7 +91,7 @@ const { title, image, siteLink, githubLink, tech, description, flip } =
     a {
       justify-self: start;
 
-      color: var(--stone-11);
+      color: var(--text-impact);
       text-decoration: none;
 
       transition: color 100ms;
@@ -91,24 +106,38 @@ const { title, image, siteLink, githubLink, tech, description, flip } =
     ul {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5em 1.5em;
+      gap: var(--gap-xs) var(--gap-s);
       padding-left: 1rem;
 
       li {
         display: grid;
         justify-items: center;
+        a {
+          display: grid;
+          justify-items: center;
 
-        gap: 0.5em;
+          gap: var(--gap-s);
 
-        img {
-          width: var(--size-fluid-3);
+          padding: 0.25rem;
           aspect-ratio: 1;
-        }
 
-        p {
-          font-size: var(--font-size-0);
-          font-weight: var(--font-weight-4);
-          padding: 0;
+          border-radius: 5px;
+
+          transition: box-shadow 150ms;
+          img {
+            width: var(--size-fluid-3);
+            aspect-ratio: 1;
+          }
+
+          p {
+            font-size: var(--font-size-0);
+            font-weight: var(--font-weight-4);
+            padding: 0;
+          }
+
+          &:hover {
+            box-shadow: var(--shadow-2);
+          }
         }
       }
     }
@@ -118,7 +147,7 @@ const { title, image, siteLink, githubLink, tech, description, flip } =
       font-weight: var(--font-weight-5);
       line-height: var(--font-lineheight-4);
 
-      color: var(--stone-10);
+      color: var(--text-secondary);
 
       padding: 0.5rem 1em;
 
@@ -142,3 +171,32 @@ const { title, image, siteLink, githubLink, tech, description, flip } =
     }
   }
 </style>
+
+<script>
+  const images = document.querySelectorAll(
+    ".card_image"
+  ) as NodeListOf<HTMLImageElement>
+
+  const root = document.documentElement
+
+  function changeImage() {
+    images.forEach((image) => {
+      const imageLight = image.dataset.light!
+      const imageDark = image.dataset.dark!
+
+      image.src = root.dataset.theme === "dark" ? imageDark : imageLight
+    })
+  }
+
+  changeImage()
+
+  const observer = new MutationObserver((mutations) =>
+    mutations.forEach((mutation) => {
+      if (mutation.type === "attributes") {
+        changeImage()
+      }
+    })
+  )
+
+  observer.observe(root, { attributes: true })
+</script>

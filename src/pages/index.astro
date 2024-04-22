@@ -1,10 +1,4 @@
 ---
-import ProjectCard from "../components/ProjectCard.astro"
-import TechCard from "../components/TechCard.astro"
-import Layout from "../layouts/Layout.astro"
-
-import myLeisureMain from "./../images/projects/my-leisure/en/main.jpg"
-// import myLeisureMainDark from "./../images/projects/my-leisure/en/main-dark.jpg"
 // import myLeisureMovies from "./../images/projects/my-leisure/en/movies.jpg"
 // import myLeisureMoviesDark from "./../images/projects/my-leisure/en/movies-dark.jpg"
 // import myLeisureBooks from "./../images/projects/my-leisure/en/books.jpg"
@@ -12,8 +6,6 @@ import myLeisureMain from "./../images/projects/my-leisure/en/main.jpg"
 // import myLeisureBookmarks from "./../images/projects/my-leisure/en/bookmarks.jpg"
 // import myLeisureBookmarksDark from "./../images/projects/my-leisure/en/bookmarks-dark.jpg"
 
-import newFurnitureMain from "./../images/projects/new-furniture/en/main.jpg"
-// import newFurnitureMainDark from "./../images/projects/new-furniture/en/main-dark.jpg"
 // import newFurnitureCatalog from "./../images/projects/new-furniture/en/catalog.jpg"
 // import newFurnitureCatalogDark from "./../images/projects/new-furniture/en/catalog-dark.jpg"
 // import newFurnitureCart from "./../images/projects/new-furniture/en/cart.jpg"
@@ -21,55 +13,9 @@ import newFurnitureMain from "./../images/projects/new-furniture/en/main.jpg"
 // import newFurnitureFavs from "./../images/projects/new-furniture/en/favs.jpg"
 // import newFurnitureFavsDark from "./../images/projects/new-furniture/en/favs-dark.jpg"
 
-import playgroundMain from "./../images/projects/playground/main.jpg"
 // import playgroundJigsaw from "./../images/projects/playground/jigsaw.jpg"
 // import playgroundBoard from "./../images/projects/playground/board.jpg"
 // import playgroundCards from "./../images/projects/playground/cards.jpg"
-
-import javaScript from "./../images/tech/javascript.svg"
-import html from "./../images/tech/html-5.svg"
-import css from "./../images/tech/css-3.svg"
-import sql from "./../images/tech/sql.svg"
-import typescript from "./../images/tech/typescript.svg"
-import react from "./../images/tech/react.svg"
-import tailwind from "./../images/tech/tailwind.svg"
-import mysql from "./../images/tech/mysql.svg"
-import nextAuth from "./../images/tech/next-auth.svg"
-import drizzle from "./../images/tech/drizzle.svg"
-import astro from "./../images/tech/astro.svg"
-import nextjs from "./../images/tech/nextjs.svg"
-import sass from "./../images/tech/sass.svg"
-import threejs from "./../images/tech/threejs.svg"
-import gsap from "./../images/tech/gsap.svg"
-
-import stock from "./../images/stock.jpg"
-
-import "@fontsource/roboto/500.css"
-import "@fontsource/roboto/700.css"
-import "@fontsource/roboto/900.css"
-import "@fontsource/merriweather/700.css"
-import "@fontsource/merriweather/900.css"
-
-import { Image } from "astro:assets"
-
-const base = [
-  { name: "JavaScript", image: javaScript },
-  { name: "HTML", image: html },
-  { name: "CSS", image: css },
-  { name: "SQL", image: sql },
-]
-const supersets = [
-  { name: "Typescript", image: typescript },
-  { name: "React", image: react },
-  { name: "Tailwind", image: tailwind },
-  { name: "MySQL", image: mysql },
-]
-const frameworks = [
-  { name: "Astro", image: astro },
-  { name: "Next.js", image: nextjs },
-  { name: "SASS", image: sass },
-  { name: "Drizzle", image: drizzle },
-]
 
 // const myLeisureSlides = [
 //   myLeisureMain,
@@ -100,30 +46,206 @@ const frameworks = [
 //   newFurnitureFavsDark,
 // ]
 
+import ProjectCard from "../components/ProjectCard.astro"
+import TechCard from "../components/TechCard.astro"
+import Layout from "../layouts/Layout.astro"
+
+import myLeisureMain from "./../images/projects/main-page/my-leisure/en/main.jpg"
+import myLeisureMainDark from "./../images/projects/main-page/my-leisure/en/main-dark.jpg"
+
+import newFurnitureMain from "./../images/projects/main-page/new-furniture/en/main.jpg"
+import newFurnitureMainDark from "./../images/projects/main-page/new-furniture/en/main-dark.jpg"
+
+import playgroundMain from "./../images/projects/main-page/playground/main.jpg"
+
+import javaScript from "./../images/tech/javascript.svg"
+import html from "./../images/tech/html-5.svg"
+import css from "./../images/tech/css-3.svg"
+import sql from "./../images/tech/sql.svg"
+import typescript from "./../images/tech/typescript.svg"
+import react from "./../images/tech/react.svg"
+import tailwind from "./../images/tech/tailwind.svg"
+import mysql from "./../images/tech/mysql.svg"
+import nextAuth from "./../images/tech/next-auth.svg"
+import drizzle from "./../images/tech/drizzle.svg"
+import astro from "./../images/tech/astro.svg"
+import nextjs from "./../images/tech/nextjs.svg"
+import sass from "./../images/tech/sass.svg"
+import threejs from "./../images/tech/threejs.svg"
+import gsap from "./../images/tech/gsap.svg"
+
+import myPic from "./../images/my-pic.jpg"
+
+import "@fontsource/roboto/500.css"
+import "@fontsource/roboto/700.css"
+import "@fontsource/roboto/900.css"
+import "@fontsource/merriweather/700.css"
+import "@fontsource/merriweather/900.css"
+
+import { Image } from "astro:assets"
+
+const base = [
+  {
+    name: "JavaScript",
+    url: "https://developer.mozilla.org/docs/Web/JavaScript",
+    image: javaScript,
+  },
+  {
+    name: "HTML",
+    url: "https://developer.mozilla.org/docs/Web/HTML",
+    image: html,
+  },
+  {
+    name: "CSS",
+    url: "https://developer.mozilla.org/docs/Web/CSS",
+    image: css,
+  },
+  {
+    name: "SQL",
+    url: "https://www.w3schools.com/sql/sql_intro.asp",
+    image: sql,
+  },
+]
+const supersets = [
+  {
+    name: "Typescript",
+    url: "https://www.typescriptlang.org",
+    image: typescript,
+  },
+  {
+    name: "React",
+    url: "https://react.dev/learn",
+    image: react,
+  },
+  {
+    name: "Tailwind",
+    url: "https://tailwindcss.com/docs/installation",
+    image: tailwind,
+  },
+  {
+    name: "MySQL",
+    url: "https://www.mysql.com/",
+    image: mysql,
+  },
+]
+const frameworks = [
+  {
+    name: "Astro",
+    url: "https://docs.astro.build/getting-started/",
+    image: astro,
+  },
+  {
+    name: "Next.js",
+    url: "https://nextjs.org/docs",
+    image: nextjs,
+  },
+  {
+    name: "SASS",
+    url: "https://sass-lang.com/documentation/",
+    image: sass,
+  },
+  {
+    name: "Drizzle",
+    url: "https://orm.drizzle.team/docs/overview",
+    image: drizzle,
+  },
+]
+
 const myLeisureTech = [
-  { name: "TypeScript", image: typescript },
-  { name: "Next.js", image: nextjs },
-  { name: "Tailwind", image: tailwind },
-  { name: "MySQL", image: mysql },
-  { name: "NextAuth", image: nextAuth },
-  { name: "Drizzle", image: drizzle },
+  {
+    name: "Typescript",
+    url: "https://www.typescriptlang.org",
+    image: typescript,
+  },
+  {
+    name: "Next.js",
+    url: "https://nextjs.org/docs",
+    image: nextjs,
+  },
+  {
+    name: "Tailwind",
+    url: "https://tailwindcss.com/docs/installation",
+    image: tailwind,
+  },
+  {
+    name: "MySQL",
+    url: "https://www.mysql.com/",
+    image: mysql,
+  },
+  {
+    name: "NextAuth",
+    url: "https://next-auth.js.org/getting-started/introduction",
+    image: nextAuth,
+  },
+  {
+    name: "Drizzle",
+    url: "https://orm.drizzle.team/docs/overview",
+    image: drizzle,
+  },
 ]
 
 const newFurnitureTech = [
-  { name: "TypeScript", image: typescript },
-  { name: "Next.js", image: nextjs },
-  { name: "Tailwind", image: tailwind },
-  { name: "MySQL", image: mysql },
-  { name: "NextAuth", image: nextAuth },
-  { name: "Drizzle", image: drizzle },
+  {
+    name: "Typescript",
+    url: "https://www.typescriptlang.org",
+    image: typescript,
+  },
+  {
+    name: "Next.js",
+    url: "https://nextjs.org/docs",
+    image: nextjs,
+  },
+  {
+    name: "Tailwind",
+    url: "https://tailwindcss.com/docs/installation",
+    image: tailwind,
+  },
+  {
+    name: "MySQL",
+    url: "https://www.mysql.com/",
+    image: mysql,
+  },
+  {
+    name: "NextAuth",
+    url: "https://next-auth.js.org/getting-started/introduction",
+    image: nextAuth,
+  },
+  {
+    name: "Drizzle",
+    url: "https://orm.drizzle.team/docs/overview",
+    image: drizzle,
+  },
 ]
 
 const playgroundTech = [
-  { name: "TypeScript", image: typescript },
-  { name: "Astro", image: astro },
-  { name: "ThreeJS", image: threejs },
-  { name: "GSAP", image: gsap },
+  {
+    name: "Typescript",
+    url: "https://www.typescriptlang.org",
+    image: typescript,
+  },
+  {
+    name: "Astro",
+    url: "https://docs.astro.build/getting-started/",
+    image: astro,
+  },
+  {
+    name: "ThreeJS",
+    url: "https://threejs.org/docs/index.html#manual/en/introduction/Installation",
+    image: threejs,
+  },
+  {
+    name: "GSAP",
+    url: "https://gsap.com/docs/v3/",
+    image: gsap,
+  },
 ]
+
+const myLeisureImages = { dark: myLeisureMainDark, light: myLeisureMain }
+const newFurnitureImages = {
+  dark: newFurnitureMainDark,
+  light: newFurnitureMain,
+}
+const playgroundImages = { dark: playgroundMain, light: playgroundMain }
 ---
 
 <Layout title="Vladislav Iujev">
@@ -138,7 +260,7 @@ const playgroundTech = [
         </p>
       </div>
       <div class="image">
-        <Image src={stock} alt={"Profile image"} />
+        <Image src={myPic} alt={"Profile image"} />
       </div>
     </section>
 
@@ -152,7 +274,7 @@ const playgroundTech = [
         <li>
           <ProjectCard
             title="MY LEISURE"
-            image={myLeisureMain}
+            images={myLeisureImages}
             siteLink="#"
             githubLink="#"
             tech={myLeisureTech}
@@ -162,7 +284,7 @@ const playgroundTech = [
         <li>
           <ProjectCard
             title="NEW FURNITURE"
-            image={newFurnitureMain}
+            images={newFurnitureImages}
             siteLink="#"
             githubLink="#"
             tech={newFurnitureTech}
@@ -173,7 +295,7 @@ const playgroundTech = [
         <li>
           <ProjectCard
             title="PLAYGROUND"
-            image={playgroundMain}
+            images={playgroundImages}
             siteLink="#"
             githubLink="#"
             tech={playgroundTech}
@@ -208,7 +330,7 @@ const playgroundTech = [
   main {
     display: grid;
 
-    color: var(--stone-12);
+    color: var(--text-primary);
     font-family: Roboto, sans-serif;
   }
   h1 {
@@ -226,12 +348,12 @@ const playgroundTech = [
 
     min-height: calc(100vh - 6rem);
     min-height: calc(100dvh - 6rem);
-    background-image: url("/bg-2.jpg"), var(--gradient-16);
+    background-image: url("/bg-2.jpg"), var(--splash);
 
     background-repeat: no-repeat;
     background-size: cover;
     background-origin: content-box;
-    background-blend-mode: hard-light;
+    background-blend-mode: var(--blend-mode);
 
     .line {
       display: flex;
@@ -276,7 +398,7 @@ const playgroundTech = [
         line-height: var(--font-lineheight-4);
         letter-spacing: var(--font-letterspacing-1);
         font-family: Roboto, sans-serif;
-        color: var(--stone-10);
+        color: var(--text-heading);
 
         display: none;
 
@@ -341,7 +463,7 @@ const playgroundTech = [
       line-height: var(--font-lineheight-4);
       font-weight: var(--font-weight-5);
       letter-spacing: var(--font-letterspacing-1);
-      color: var(--stone-9);
+      color: var(--text-secondary);
 
       max-inline-size: 75ch;
 
@@ -379,7 +501,7 @@ const playgroundTech = [
       line-height: var(--font-lineheight-4);
       font-weight: var(--font-weight-5);
       letter-spacing: var(--font-letterspacing-1);
-      color: var(--stone-9);
+      color: var(--text-secondary);
 
       max-inline-size: 75ch;
 
@@ -389,7 +511,7 @@ const playgroundTech = [
 
     &_cards {
       display: grid;
-      gap: 2rem;
+      gap: var(--gap-xl);
     }
   }
 
@@ -404,7 +526,7 @@ const playgroundTech = [
     &_link {
       font-size: var(--font-size-fluid-2);
       font-weight: var(--font-weight-9);
-      color: var(--stone-11);
+      color: var(--text-impact);
       text-transform: uppercase;
       font-family: "Merriweather", serif;
 
