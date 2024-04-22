@@ -9,41 +9,128 @@ type Props = {
 const { title, images } = Astro.props
 ---
 
-<div class="carousel">
+<div>
   <ul>
     {
       images.map((image, index) => (
-        <li>
-          <a href={`#${index}`} title={"Slide " + (index + 1)}>
-            <Image class="slide_image" src={image} alt={title + index} />
-          </a>
+        <li data-slide>
+          <Image src={image} alt={title + index} />
         </li>
       ))
     }
   </ul>
-  <button class="left">&lt;</button>
-  <button class="right">&gt;</button>
+  <button data-left>&lt;</button>
+  <button data-right>&gt;</button>
 </div>
 
 <style lang="scss">
-  .carousel {
+  div {
+    --_max-w: 60rem;
+    max-width: var(--_max-w);
+
+    position: relative;
     ul {
+      contain: paint;
       display: flex;
       overflow: hidden;
 
       li {
+        max-width: var(--_max-w);
         flex-wrap: nowrap;
         flex-shrink: 0;
-        padding: 1rem;
+        padding: var(--gap-xxl);
+
+        transition: transform 300ms;
+
+        img {
+          border-radius: 0.25rem;
+        }
       }
+    }
+
+    button {
+      --_width: 4rem;
+      position: absolute;
+
+      top: calc(50% - (var(--_width) / 2));
+      width: var(--_width);
+
+      color: var(--text-primary);
+      font-size: var(--font-size-fluid-2);
+      font-weight: 500;
+
+      border: 1px solid var(--text-secondary);
+      border-radius: 5px;
+
+      opacity: 0.25;
+      transition:
+        opacity 300ms,
+        scale 200ms;
+
+      cursor: pointer;
+
+      background-color: var(--bg);
+      aspect-ratio: 1;
+
+      &:active {
+        scale: 0.95;
+      }
+    }
+
+    &:hover button {
+      opacity: 0.75;
+    }
+
+    button:disabled {
+      opacity: 0;
+      pointer-events: none;
     }
   }
 
-  .left {
+  [data-left] {
     left: 0.5rem;
   }
 
-  .right {
+  [data-right] {
     right: 0.5rem;
   }
 </style>
+
+<script>
+  const slides = document.querySelectorAll(
+    "[data-slide]"
+  ) as NodeListOf<HTMLLIElement>
+  const slideWidth = slides[0].offsetWidth
+
+  let currentSlide = 0
+
+  const leftButton = document.querySelector("[data-left]") as HTMLButtonElement
+  const rightButton = document.querySelector(
+    "[data-right]"
+  ) as HTMLButtonElement
+
+  leftButton.disabled = currentSlide === 0
+  rightButton.disabled = currentSlide === slides.length - 1
+
+  leftButton?.addEventListener("click", () => {
+    if (currentSlide > 0) {
+      --currentSlide
+      slides.forEach((slide) => {
+        slide.style.transform = `translateX(-${currentSlide * slideWidth}px)`
+      })
+    }
+    leftButton.disabled = currentSlide === 0
+    rightButton.disabled = currentSlide === slides.length - 1
+  })
+
+  rightButton?.addEventListener("click", () => {
+    if (currentSlide < slides.length) {
+      ++currentSlide
+      slides.forEach((slide) => {
+        slide.style.transform = `translateX(-${currentSlide * slideWidth}px)`
+      })
+    }
+    leftButton.disabled = currentSlide === 0
+    rightButton.disabled = currentSlide === slides.length - 1
+  })
+</script>

@@ -72,8 +72,12 @@ const tech = [
 
 <Layout title="Projects: My Leisure">
   <main>
-    <h1>My Leisure</h1>
-
+    <section>
+      <h1>My Leisure</h1>
+      <a href="#"> &#10095;&#10095; Live link</a>
+      <a href="#"> &#10095;&#10095; Github repo</a>
+      <p>Desc</p>
+    </section>
     <Carousel title="My Leisure" images={myLeisureSlides} />
 
     <section>
@@ -89,11 +93,6 @@ const tech = [
         }
       </ul>
     </section>
-    <section>
-      <a href="#"> &#10095;&#10095; Live link</a>
-      <a href="#"> &#10095;&#10095; Github repo</a>
-      <p>Desc</p>
-    </section>
   </main>
 </Layout>
 
@@ -101,8 +100,12 @@ const tech = [
   main {
     display: grid;
 
+    // grid-template-columns: repeat(2, 1fr);
+
     color: var(--text-primary);
     font-family: Roboto, sans-serif;
+
+    padding: 2rem;
   }
   h1 {
     font-size: var(--font-size-fluid-2);
@@ -138,11 +141,6 @@ const tech = [
 
       margin-left: 2em;
       margin-bottom: var(--gap-xxl);
-    }
-
-    &_cards {
-      display: grid;
-      gap: var(--gap-xl);
     }
   }
 </style>
