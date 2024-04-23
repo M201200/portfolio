@@ -10,7 +10,7 @@ const { title, images } = Astro.props
 ---
 
 <div>
-  <ul>
+  <ul data-slide-container>
     {
       images.map((image, index) => (
         <li data-slide>
@@ -25,31 +25,40 @@ const { title, images } = Astro.props
 
 <style lang="scss">
   div {
-    --_max-w: 60rem;
-    max-width: var(--_max-w);
+    --_width: max(55vw, 20rem);
+    width: var(--_width);
+    overflow: hidden;
+    contain: paint;
 
     position: relative;
+
+    @media screen and (max-width: 1023px) {
+      --_width: max(90vw, 20rem);
+    }
     ul {
-      contain: paint;
       display: flex;
-      overflow: hidden;
+      transition: transform 300ms;
 
       li {
-        max-width: var(--_max-w);
+        width: var(--_width);
         flex-wrap: nowrap;
         flex-shrink: 0;
         padding: var(--gap-xxl);
 
-        transition: transform 300ms;
+        @media screen and (max-width: 1024px) {
+          padding: var(--gap-l);
+        }
 
         img {
           border-radius: 0.25rem;
+
+          box-shadow: var(--shadow-2);
         }
       }
     }
 
     button {
-      --_width: 4rem;
+      --_width: var(--size-fluid-5);
       position: absolute;
 
       top: calc(50% - (var(--_width) / 2));
@@ -97,6 +106,9 @@ const { title, images } = Astro.props
 </style>
 
 <script>
+  const slideContainer = document.querySelector(
+    "[data-slide-container]"
+  ) as HTMLUListElement
   const slides = document.querySelectorAll(
     "[data-slide]"
   ) as NodeListOf<HTMLLIElement>
@@ -115,9 +127,7 @@ const { title, images } = Astro.props
   leftButton?.addEventListener("click", () => {
     if (currentSlide > 0) {
       --currentSlide
-      slides.forEach((slide) => {
-        slide.style.transform = `translateX(-${currentSlide * slideWidth}px)`
-      })
+      slideContainer.style.transform = `translateX(-${currentSlide * slideWidth}px)`
     }
     leftButton.disabled = currentSlide === 0
     rightButton.disabled = currentSlide === slides.length - 1
@@ -126,9 +136,7 @@ const { title, images } = Astro.props
   rightButton?.addEventListener("click", () => {
     if (currentSlide < slides.length) {
       ++currentSlide
-      slides.forEach((slide) => {
-        slide.style.transform = `translateX(-${currentSlide * slideWidth}px)`
-      })
+      slideContainer.style.transform = `translateX(-${currentSlide * slideWidth}px)`
     }
     leftButton.disabled = currentSlide === 0
     rightButton.disabled = currentSlide === slides.length - 1

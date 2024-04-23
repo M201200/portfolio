@@ -8,7 +8,7 @@ import { Image } from "astro:assets"
 ---
 
 <header>
-  <a href="/">VLAD IUJEV</a>
+  <a class="name" href="/">VLAD IUJEV</a>
   <div id="menu-wrapper" aria-expanded="false">
     <button id="menu-button"><Image src={menu} alt="Menu" /></button>
     <ul>
@@ -21,10 +21,10 @@ import { Image } from "astro:assets"
 
 <style lang="scss">
   header {
-    display: grid;
-    grid-template-columns: 1fr 2rem;
-    padding: 2rem;
-    gap: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--gap-xl);
     min-height: 6.5rem;
 
     position: fixed;
@@ -61,18 +61,19 @@ import { Image } from "astro:assets"
 
       ul {
         display: flex;
-        gap: 2rem;
+        gap: var(--gap-xl);
 
-        overflow: hidden;
         align-items: center;
 
         transition: transform 150ms ease-in;
 
         @media screen and (max-width: 1024px) {
+          overflow: hidden;
+
           flex-direction: column;
           align-items: end;
 
-          padding: 1rem;
+          padding: var(--gap-xl);
 
           position: absolute;
           top: 7rem;

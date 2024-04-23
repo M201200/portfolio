@@ -1,51 +1,4 @@
 ---
-// import myLeisureMovies from "./../images/projects/my-leisure/en/movies.jpg"
-// import myLeisureMoviesDark from "./../images/projects/my-leisure/en/movies-dark.jpg"
-// import myLeisureBooks from "./../images/projects/my-leisure/en/books.jpg"
-// import myLeisureBooksDark from "./../images/projects/my-leisure/en/books-dark.jpg"
-// import myLeisureBookmarks from "./../images/projects/my-leisure/en/bookmarks.jpg"
-// import myLeisureBookmarksDark from "./../images/projects/my-leisure/en/bookmarks-dark.jpg"
-
-// import newFurnitureCatalog from "./../images/projects/new-furniture/en/catalog.jpg"
-// import newFurnitureCatalogDark from "./../images/projects/new-furniture/en/catalog-dark.jpg"
-// import newFurnitureCart from "./../images/projects/new-furniture/en/cart.jpg"
-// import newFurnitureCartDark from "./../images/projects/new-furniture/en/cart-dark.jpg"
-// import newFurnitureFavs from "./../images/projects/new-furniture/en/favs.jpg"
-// import newFurnitureFavsDark from "./../images/projects/new-furniture/en/favs-dark.jpg"
-
-// import playgroundJigsaw from "./../images/projects/playground/jigsaw.jpg"
-// import playgroundBoard from "./../images/projects/playground/board.jpg"
-// import playgroundCards from "./../images/projects/playground/cards.jpg"
-
-// const myLeisureSlides = [
-//   myLeisureMain,
-//   myLeisureMainDark,
-//   myLeisureMovies,
-//   myLeisureMoviesDark,
-//   myLeisureBooks,
-//   myLeisureBooksDark,
-//   myLeisureBookmarks,
-//   myLeisureBookmarksDark,
-// ]
-
-// const newFurnitureSlides = [
-//   newFurnitureMain,
-//   newFurnitureMainDark,
-//   newFurnitureCatalog,
-//   newFurnitureCatalogDark,
-//   newFurnitureCart,
-//   newFurnitureCartDark,
-// ]
-
-// const playgroundSlides = [
-//   playgroundMain,
-//   playgroundJigsaw,
-//   playgroundBoard,
-//   playgroundCards,
-//   newFurnitureFavs,
-//   newFurnitureFavsDark,
-// ]
-
 import ProjectCard from "../components/ProjectCard.astro"
 import TechCard from "../components/TechCard.astro"
 import Layout from "../layouts/Layout.astro"
@@ -234,6 +187,11 @@ const playgroundTech = [
     image: threejs,
   },
   {
+    name: "SASS",
+    url: "https://sass-lang.com/documentation/",
+    image: sass,
+  },
+  {
     name: "GSAP",
     url: "https://gsap.com/docs/v3/",
     image: gsap,
@@ -289,19 +247,19 @@ const playgroundImages = { dark: playgroundMain, light: playgroundMain }
             siteLink="#"
             githubLink="#"
             tech={newFurnitureTech}
-            pageLink="/my-leisure"
+            pageLink="/new-furniture"
             description="Marketplace where you can find and buy furniture."
             flip={true}
           />
         </li>
         <li>
           <ProjectCard
-            title="PLAYGROUND"
+            title="THE PLAYGROUND"
             images={playgroundImages}
             siteLink="#"
             githubLink="#"
             tech={playgroundTech}
-            pageLink="/my-leisure"
+            pageLink="/playground"
             description="This is my project where I experiment with WebGL using ThreeJS library and GSAP."
           />
         </li>
