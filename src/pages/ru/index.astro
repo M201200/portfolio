@@ -198,15 +198,12 @@ const playgroundTech = [
   },
 ]
 
-const myLeisureImages = {
-  dark: myLeisureMainDark.src,
-  light: myLeisureMain.src,
-}
+const myLeisureImages = { dark: myLeisureMainDark, light: myLeisureMain }
 const newFurnitureImages = {
-  dark: newFurnitureMainDark.src,
-  light: newFurnitureMain.src,
+  dark: newFurnitureMainDark,
+  light: newFurnitureMain,
 }
-const playgroundImages = { dark: playgroundMain.src, light: playgroundMain.src }
+// const playgroundImages = { dark: playgroundMain, light: playgroundMain }
 ---
 
 <Layout title="Владислав Южев" lang="ru">
@@ -238,6 +235,7 @@ const playgroundImages = { dark: playgroundMain.src, light: playgroundMain.src }
             locale="ru"
             title="My Leisure"
             images={myLeisureImages}
+            imageDefault={myLeisureMain}
             siteLink="#"
             githubLink="#"
             tech={myLeisureTech}
@@ -250,6 +248,7 @@ const playgroundImages = { dark: playgroundMain.src, light: playgroundMain.src }
             locale="ru"
             title="New Furniture"
             images={newFurnitureImages}
+            imageDefault={newFurnitureMain}
             siteLink="#"
             githubLink="#"
             tech={newFurnitureTech}
@@ -262,12 +261,12 @@ const playgroundImages = { dark: playgroundMain.src, light: playgroundMain.src }
           <ProjectCard
             locale="ru"
             title="The Playground"
-            images={playgroundImages}
+            imageDefault={playgroundMain}
             siteLink="#"
             githubLink="#"
             tech={playgroundTech}
             pageLink="/ru/playground"
-            description="В процессе разработки. В настоящее время этот веб-сайт только демонстрирует различные анимации, но я планирую превратить эти анимации в интерактивные игры."
+            description="Работа в процессе. В настоящее время этот веб-сайт только демонстрирует различные анимации, но я планирую превратить эти анимации в интерактивные игры."
           />
         </li>
       </ul>

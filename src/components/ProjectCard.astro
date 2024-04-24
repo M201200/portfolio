@@ -6,10 +6,11 @@ import "@fontsource/roboto/900.css"
 
 type Props = {
   title: string
-  images: {
-    dark: string
-    light: string
+  images?: {
+    dark: ImageMetadata
+    light: ImageMetadata
   }
+  imageDefault: ImageMetadata
   pageLink: string
   siteLink: string
   githubLink: string
@@ -33,10 +34,11 @@ const {
   description,
   flip,
   locale,
+  imageDefault,
 } = Astro.props
 
-const imageDark = images.dark
-const imageLight = images.light
+const imageDark = images?.dark.src
+const imageLight = images?.light.src
 
 const liveLink =
   locale === "ro"
@@ -60,10 +62,10 @@ const moreDetails =
 
 <div class="card">
   <a href={pageLink} title={title}>
-    <img
+    <Image
       class:list={["card_image", { right: flip }]}
       transition:name={`${title}-image`}
-      src={images.dark}
+      src={imageDefault}
       alt={title}
       data-dark={imageDark}
       data-light={imageLight}
@@ -231,31 +233,28 @@ const moreDetails =
 
 <script>
   // document.addEventListener("astro:page-load", () => {
-  const images = document.querySelectorAll(
-    ".card_image"
-  ) as NodeListOf<HTMLImageElement>
+  const image = document.querySelector(".card_image") as HTMLImageElement
 
   const root = document.documentElement
+  const imageLight = image.dataset.light!
+  const imageDark = image.dataset.dark!
 
-  function changeImage() {
-    images.forEach((image) => {
-      const imageLight = image.dataset.light!
-      const imageDark = image.dataset.dark!
+  if (!!imageLight && !!imageDark) {
+    changeImage()
 
-      image.src = root.dataset.theme === "dark" ? imageDark : imageLight
-    })
+    const observer = new MutationObserver((mutations) =>
+      mutations.forEach((mutation) => {
+        if (mutation.type === "attributes") {
+          changeImage()
+        }
+      })
+    )
+
+    observer.observe(root, { attributes: true })
   }
 
-  changeImage()
-
-  const observer = new MutationObserver((mutations) =>
-    mutations.forEach((mutation) => {
-      if (mutation.type === "attributes") {
-        changeImage()
-      }
-    })
-  )
-
-  observer.observe(root, { attributes: true })
+  function changeImage() {
+    image.src = root.dataset.theme === "dark" ? imageDark : imageLight
+  }
   // })
 </script>

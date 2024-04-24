@@ -198,15 +198,12 @@ const playgroundTech = [
   },
 ]
 
-const myLeisureImages = {
-  dark: myLeisureMainDark.src,
-  light: myLeisureMain.src,
-}
+const myLeisureImages = { dark: myLeisureMainDark, light: myLeisureMain }
 const newFurnitureImages = {
-  dark: newFurnitureMainDark.src,
-  light: newFurnitureMain.src,
+  dark: newFurnitureMainDark,
+  light: newFurnitureMain,
 }
-const playgroundImages = { dark: playgroundMain.src, light: playgroundMain.src }
+// const playgroundImages = { dark: playgroundMain, light: playgroundMain }
 ---
 
 <Layout title="Vladislav Iujev" lang="ro">
@@ -239,6 +236,7 @@ const playgroundImages = { dark: playgroundMain.src, light: playgroundMain.src }
             locale="ro"
             title="My Leisure"
             images={myLeisureImages}
+            imageDefault={myLeisureMain}
             siteLink="#"
             githubLink="#"
             tech={myLeisureTech}
@@ -251,6 +249,7 @@ const playgroundImages = { dark: playgroundMain.src, light: playgroundMain.src }
             locale="ro"
             title="New Furniture"
             images={newFurnitureImages}
+            imageDefault={newFurnitureMain}
             siteLink="#"
             githubLink="#"
             tech={newFurnitureTech}
@@ -263,7 +262,7 @@ const playgroundImages = { dark: playgroundMain.src, light: playgroundMain.src }
           <ProjectCard
             locale="ro"
             title="The Playground"
-            images={playgroundImages}
+            imageDefault={playgroundMain}
             siteLink="#"
             githubLink="#"
             tech={playgroundTech}
