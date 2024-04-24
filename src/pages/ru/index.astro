@@ -198,12 +198,15 @@ const playgroundTech = [
   },
 ]
 
-const myLeisureImages = { dark: myLeisureMainDark, light: myLeisureMain }
-const newFurnitureImages = {
-  dark: newFurnitureMainDark,
-  light: newFurnitureMain,
+const myLeisureImages = {
+  dark: myLeisureMainDark.src,
+  light: myLeisureMain.src,
 }
-const playgroundImages = { dark: playgroundMain, light: playgroundMain }
+const newFurnitureImages = {
+  dark: newFurnitureMainDark.src,
+  light: newFurnitureMain.src,
+}
+const playgroundImages = { dark: playgroundMain.src, light: playgroundMain.src }
 ---
 
 <Layout title="Владислав Южев" lang="ru">
@@ -264,7 +267,7 @@ const playgroundImages = { dark: playgroundMain, light: playgroundMain }
             githubLink="#"
             tech={playgroundTech}
             pageLink="/ru/playground"
-            description="Работа в процессе. В настоящее время этот веб-сайт только демонстрирует различные анимации, но я планирую превратить эти анимации в интерактивные игры."
+            description="В процессе разработки. В настоящее время этот веб-сайт только демонстрирует различные анимации, но я планирую превратить эти анимации в интерактивные игры."
           />
         </li>
       </ul>

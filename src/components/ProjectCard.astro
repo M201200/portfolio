@@ -7,8 +7,8 @@ import "@fontsource/roboto/900.css"
 type Props = {
   title: string
   images: {
-    dark: ImageMetadata
-    light: ImageMetadata
+    dark: string
+    light: string
   }
   pageLink: string
   siteLink: string
@@ -35,8 +35,8 @@ const {
   locale,
 } = Astro.props
 
-const imageDark = images.dark.src
-const imageLight = images.light.src
+const imageDark = images.dark
+const imageLight = images.light
 
 const liveLink =
   locale === "ro"
@@ -60,7 +60,7 @@ const moreDetails =
 
 <div class="card">
   <a href={pageLink} title={title}>
-    <Image
+    <img
       class:list={["card_image", { right: flip }]}
       transition:name={`${title}-image`}
       src={images.dark}
