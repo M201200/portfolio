@@ -230,32 +230,32 @@ const moreDetails =
 </style>
 
 <script>
-  document.addEventListener("astro:page-load", () => {
-    const images = document.querySelectorAll(
-      ".card_image"
-    ) as NodeListOf<HTMLImageElement>
+  // document.addEventListener("astro:page-load", () => {
+  const images = document.querySelectorAll(
+    ".card_image"
+  ) as NodeListOf<HTMLImageElement>
 
-    const root = document.documentElement
+  const root = document.documentElement
 
-    function changeImage() {
-      images.forEach((image) => {
-        const imageLight = image.dataset.light!
-        const imageDark = image.dataset.dark!
+  function changeImage() {
+    images.forEach((image) => {
+      const imageLight = image.dataset.light!
+      const imageDark = image.dataset.dark!
 
-        image.src = root.dataset.theme === "dark" ? imageDark : imageLight
-      })
-    }
+      image.src = root.dataset.theme === "dark" ? imageDark : imageLight
+    })
+  }
 
-    changeImage()
+  changeImage()
 
-    const observer = new MutationObserver((mutations) =>
-      mutations.forEach((mutation) => {
-        if (mutation.type === "attributes") {
-          changeImage()
-        }
-      })
-    )
+  const observer = new MutationObserver((mutations) =>
+    mutations.forEach((mutation) => {
+      if (mutation.type === "attributes") {
+        changeImage()
+      }
+    })
+  )
 
-    observer.observe(root, { attributes: true })
-  })
+  observer.observe(root, { attributes: true })
+  // })
 </script>

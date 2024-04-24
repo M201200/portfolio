@@ -194,59 +194,57 @@ const contacts =
     import isDescendant from "../utils/isDescendant"
     import { navigate } from "astro:transitions/client"
 
-    document.addEventListener("astro:page-load", () => {
-      const menuButton = document.querySelector(
-        "#menu-button"
-      ) as HTMLButtonElement
-      const menuWrapper = document.querySelector("#menu-wrapper")
+    // document.addEventListener("astro:page-load", () => {
+    const menuButton = document.querySelector(
+      "#menu-button"
+    ) as HTMLButtonElement
+    const menuWrapper = document.querySelector("#menu-wrapper")
 
-      menuButton.addEventListener("click", () => {
-        menuWrapper?.setAttribute(
-          "data-expanded",
-          menuWrapper.getAttribute("data-expanded") === "false"
-            ? "true"
-            : "false"
-        )
-      })
-
-      document.body.addEventListener("click", (event: MouseEvent) => {
-        if (!isDescendant(menuWrapper, event.target as Node)) {
-          menuWrapper?.setAttribute("data-expanded", "false")
-        }
-      })
-
-      //////////////////////////////////////////////////////////////////////////
-      //////////////////////////////////////////////////////////////////////////
-
-      const themeButton = document.querySelector(
-        '[data-switcher="theme"]'
-      ) as HTMLButtonElement
-      const themeImage = document.querySelector(
-        ".theme-image"
-      ) as HTMLImageElement
-
-      const root = document.documentElement
-
-      const lightImage = themeImage.dataset.light!
-      const darkImage = themeImage.dataset.dark!
-
-      themeImage.src = root.dataset.theme === "dark" ? lightImage : darkImage
-      themeButton.addEventListener("click", () => {
-        themeImage.src = root.dataset.theme === "dark" ? darkImage : lightImage
-        applyTheme(root.dataset.theme === "light" ? "dark" : "light")
-      })
-
-      //////////////////////////////////////////////////////////////////////////
-      //////////////////////////////////////////////////////////////////////////
-
-      const localeSelect = document.querySelector(
-        '[data-switcher="locale"]'
-      ) as HTMLSelectElement
-
-      localeSelect.addEventListener("change", (e) => {
-        const target = e.target as HTMLSelectElement
-        navigate(target.value)
-      })
+    menuButton.addEventListener("click", () => {
+      menuWrapper?.setAttribute(
+        "data-expanded",
+        menuWrapper.getAttribute("data-expanded") === "false" ? "true" : "false"
+      )
     })
+
+    document.body.addEventListener("click", (event: MouseEvent) => {
+      if (!isDescendant(menuWrapper, event.target as Node)) {
+        menuWrapper?.setAttribute("data-expanded", "false")
+      }
+    })
+
+    //////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////
+
+    const themeButton = document.querySelector(
+      '[data-switcher="theme"]'
+    ) as HTMLButtonElement
+    const themeImage = document.querySelector(
+      ".theme-image"
+    ) as HTMLImageElement
+
+    const root = document.documentElement
+
+    const lightImage = themeImage.dataset.light!
+    const darkImage = themeImage.dataset.dark!
+
+    themeImage.src = root.dataset.theme === "dark" ? lightImage : darkImage
+    themeButton.addEventListener("click", () => {
+      themeImage.src = root.dataset.theme === "dark" ? darkImage : lightImage
+      applyTheme(root.dataset.theme === "light" ? "dark" : "light")
+    })
+
+    //////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////
+
+    const localeSelect = document.querySelector(
+      '[data-switcher="locale"]'
+    ) as HTMLSelectElement
+
+    localeSelect.addEventListener("change", (e) => {
+      const target = e.target as HTMLSelectElement
+      navigate(target.value)
+    })
+    // })
   </script>
 </header>

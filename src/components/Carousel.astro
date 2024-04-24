@@ -110,46 +110,44 @@ const { title, images } = Astro.props
 </style>
 
 <script>
-  document.addEventListener("astro:page-load", () => {
-    const slideContainer = document.querySelector(
-      "[data-slide-container]"
-    ) as HTMLUListElement
-    const slides = document.querySelectorAll(
-      "[data-slide]"
-    ) as NodeListOf<HTMLLIElement>
+  // document.addEventListener("astro:page-load", () => {
+  const slideContainer = document.querySelector(
+    "[data-slide-container]"
+  ) as HTMLUListElement
+  const slides = document.querySelectorAll(
+    "[data-slide]"
+  ) as NodeListOf<HTMLLIElement>
 
-    if (!slides?.length) return
+  // if (!slides?.length) return
 
-    const slideWidth = slides[0].offsetWidth
+  const slideWidth = slides[0].offsetWidth
 
-    let currentSlide = 0
+  let currentSlide = 0
 
-    const leftButton = document.querySelector(
-      "[data-left]"
-    ) as HTMLButtonElement
-    const rightButton = document.querySelector(
-      "[data-right]"
-    ) as HTMLButtonElement
+  const leftButton = document.querySelector("[data-left]") as HTMLButtonElement
+  const rightButton = document.querySelector(
+    "[data-right]"
+  ) as HTMLButtonElement
 
+  leftButton.disabled = currentSlide === 0
+  rightButton.disabled = currentSlide === slides.length - 1
+
+  leftButton?.addEventListener("click", () => {
+    if (currentSlide > 0) {
+      --currentSlide
+      slideContainer.style.transform = `translateX(-${currentSlide * slideWidth}px)`
+    }
     leftButton.disabled = currentSlide === 0
     rightButton.disabled = currentSlide === slides.length - 1
-
-    leftButton?.addEventListener("click", () => {
-      if (currentSlide > 0) {
-        --currentSlide
-        slideContainer.style.transform = `translateX(-${currentSlide * slideWidth}px)`
-      }
-      leftButton.disabled = currentSlide === 0
-      rightButton.disabled = currentSlide === slides.length - 1
-    })
-
-    rightButton?.addEventListener("click", () => {
-      if (currentSlide < slides.length) {
-        ++currentSlide
-        slideContainer.style.transform = `translateX(-${currentSlide * slideWidth}px)`
-      }
-      leftButton.disabled = currentSlide === 0
-      rightButton.disabled = currentSlide === slides.length - 1
-    })
   })
+
+  rightButton?.addEventListener("click", () => {
+    if (currentSlide < slides.length) {
+      ++currentSlide
+      slideContainer.style.transform = `translateX(-${currentSlide * slideWidth}px)`
+    }
+    leftButton.disabled = currentSlide === 0
+    rightButton.disabled = currentSlide === slides.length - 1
+  })
+  // })
 </script>
