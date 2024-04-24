@@ -1,0 +1,85 @@
+---
+import { Image } from "astro:assets"
+import gitHub from "./../images/contacts/github.svg"
+import telegram from "./../images/contacts/telegram.svg"
+import linkedin from "./../images/contacts/linkedin.svg"
+import email from "./../images/contacts/gmail.svg"
+
+import "@fontsource/merriweather/700.css"
+import "@fontsource/merriweather/900.css"
+---
+
+<footer>
+  <ul>
+    <li>
+      <a href="https://t.me/VYm201200" target="_blank"
+        ><Image src={telegram} alt="Telegram" />Telegram</a
+      >
+    </li>
+    <li>
+      <a href="#" target="_blank"
+        ><Image src={linkedin} alt="LinkedIn" />LinkedIn</a
+      >
+    </li>
+    <li>
+      <a href="mailto:m201400@gmail.com"
+        ><Image src={email} alt="Email" />Email</a
+      >
+    </li>
+    <li>
+      <a href="https://github.com/M201200" target="_blank">
+        <Image src={gitHub} alt="GitHub" /> GitHub</a
+      >
+    </li>
+  </ul>
+</footer>
+
+<style lang="scss">
+  footer {
+    min-height: 6.5rem;
+    background-color: var(--bg-footer);
+    // box-shadow: 0px -10px 20px var(--bg-footer);
+    padding: var(--gap-xl);
+
+    ul {
+      display: flex;
+      gap: var(--gap-l);
+      align-items: center;
+      justify-content: center;
+
+      flex-wrap: wrap;
+
+      min-height: 6.5rem;
+
+      color: var(--text-primary);
+
+      li {
+        display: grid;
+        min-width: 8rem;
+
+        a {
+          display: flex;
+          gap: var(--gap-s);
+          align-items: center;
+          justify-content: center;
+
+          box-shadow: var(--shadow-2);
+          padding: 0.65rem 0.75rem;
+          border-radius: 0.25rem;
+
+          background-color: var(--bg);
+
+          transition: scale 200ms;
+
+          img {
+            width: 1.5rem;
+          }
+
+          &:active {
+            scale: 0.95;
+          }
+        }
+      }
+    }
+  }
+</style>

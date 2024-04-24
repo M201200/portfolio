@@ -1,30 +1,177 @@
 ---
+import { Image } from "astro:assets"
 import Layout from "../layouts/Layout.astro"
+import gitHub from "./../images/contacts/github.svg"
+import telegram from "./../images/contacts/telegram.svg"
+import linkedin from "./../images/contacts/linkedin.svg"
+import email from "./../images/contacts/gmail.svg"
+
+const currentTime = new Date().toLocaleString("en-GB", {
+  timeZone: "Europe/Chisinau",
+  hour: "2-digit",
+  minute: "2-digit",
+})
 ---
 
-<Layout title="Contacts">
+<Layout title="Contacts" lang="en">
   <main>
     <h1>CONTACTS</h1>
+    <h2>Current time in my region: {currentTime}</h2>
     <ul>
       <li>
-        <span>Email: </span><a href="mailto:m201400@gmail.com"
-          >m201400@gmail.com</a
+        <span><Image src={telegram} alt="Telegram" />Telegram: </span><a
+          href="https://t.me/VYm201200"
+          target="_blank">&#10095;&#10095; @VYm201200</a
         >
       </li>
       <li>
-        <span>Telegram: </span><a href="https://t.me/VYm201200" target="_blank"
-          >@VYm201200</a
+        <span><Image src={linkedin} alt="LinkedIn" />LinkedIn: </span><a
+          href="#"
+          target="_blank">&#10095;&#10095; M201400</a
         >
       </li>
       <li>
-        <span>LinkedIn: </span><a href="#" target="_blank">M201400</a>
-      </li>
-      <li>
-        <span>GitHub: </span><a
-          href="https://github.com/M201200?tab=repositories"
-          target="_blank">M201200</a
+        <span><Image src={email} alt="Email" />Email: </span>
+        <a href="mailto:m201400@gmail.com">&#10095;&#10095; m201400@gmail.com</a
         >
       </li>
     </ul>
+    <p>
+      Also you can find me on <a
+        href="https://github.com/M201200"
+        target="_blank"
+      >
+        <Image src={gitHub} alt="GitHub" /> GitHub</a
+      >
+    </p>
   </main>
 </Layout>
+
+<style lang="scss">
+  main {
+    display: grid;
+
+    align-content: start;
+
+    min-height: 90vh;
+
+    color: var(--text-primary);
+    padding: var(--gap-xl);
+
+    h1 {
+      font-size: var(--font-size-fluid-3);
+      font-weight: var(--font-weight-9);
+      line-height: var(--font-lineheight-0);
+
+      font-family: "Merriweather", serif;
+
+      margin-bottom: var(--gap-xs);
+    }
+
+    h2 {
+      font-size: var(--font-size-fluid-0);
+      font-weight: var(--font-weight-6);
+      line-height: var(--font-lineheight-2);
+
+      font-family: "Merriweather", serif;
+      color: var(--text-secondary);
+
+      margin-bottom: var(--gap-l);
+      margin-left: var(--gap-m);
+    }
+
+    ul {
+      display: grid;
+
+      margin-left: var(--gap-l);
+      margin-bottom: var(--gap-l);
+
+      gap: var(--gap-s);
+
+      font-size: var(--font-size-fluid-1);
+      font-weight: var(--font-weight-5);
+      line-height: var(--font-lineheight-2);
+
+      max-inline-size: 40ch;
+
+      li {
+        display: grid;
+        gap: var(--xs);
+
+        align-items: center;
+
+        span {
+          color: var(--text-secondary);
+        }
+
+        span {
+          display: flex;
+
+          gap: var(--gap-s);
+
+          align-items: center;
+        }
+
+        img {
+          width: 1.5rem;
+        }
+
+        a {
+          font-weight: var(--font-weight-9);
+          transition: color 200ms;
+
+          padding: 0.25em;
+
+          justify-self: start;
+          &:hover {
+            color: var(--text-secondary);
+          }
+        }
+
+        @media screen and (min-width: 1024px) {
+          grid-template-columns: 10rem 1fr;
+        }
+      }
+    }
+
+    p {
+      font-size: var(--font-size-fluid-1);
+      font-weight: var(--font-weight-5);
+      line-height: var(--font-lineheight-3);
+
+      color: var(--text-secondary);
+
+      max-inline-size: 40ch;
+
+      display: flex;
+      align-items: center;
+
+      gap: var(--gap-s);
+
+      a {
+        display: flex;
+        gap: var(--gap-s);
+        padding: 0.25rem 0.5rem;
+
+        border-radius: 8px;
+
+        box-shadow: var(--shadow-1);
+
+        border: solid 1px var(--stone-5);
+
+        transition: scale 200ms;
+        img {
+          width: 1.5rem;
+        }
+
+        &:hover {
+          scale: 1.05;
+        }
+
+        &:active {
+          scale: 0.95;
+        }
+      }
+    }
+  }
+</style>

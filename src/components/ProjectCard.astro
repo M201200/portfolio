@@ -63,9 +63,14 @@ const imageLight = images.light.src
         ))
       }
     </ul>
-    <a href={siteLink}> &#10095;&#10095; Live link</a>
-    <a href={githubLink}> &#10095;&#10095; Github repo</a>
-    <p>{description}</p>
+    <div class="links">
+      <a href={siteLink}> &#10095;&#10095; Live link</a>
+      <a href={githubLink}> &#10095;&#10095; Github repo</a>
+    </div>
+    <p>
+      {description}
+      <a href={pageLink}> &#10095;&#10095; More details</a>
+    </p>
   </div>
 </div>
 
@@ -96,21 +101,36 @@ const imageLight = images.light.src
       font-size: var(--font-size-fluid-2);
       font-weight: var(--font-weight-9);
       line-height: var(--font-lineheight-0);
-      padding-left: 1rem;
       margin-bottom: var(--gap-xs);
+
+      padding-left: 1rem;
     }
-    a {
-      justify-self: start;
+    .links {
+      display: flex;
+      gap: var(--gap-l);
+      margin-bottom: var(--gap-xl);
 
-      color: var(--text-impact);
-      text-decoration: none;
+      a {
+        padding: 1em;
+        min-width: 9rem;
 
-      transition: color 100ms;
+        text-align: center;
 
-      font-size: var(--font-size-3);
-      font-weight: var(--font-weight-5);
-      &:hover {
-        color: var(--stone-8);
+        border: solid 1px var(--bg-button);
+        border-radius: 0.5rem;
+
+        box-shadow: var(--shadow-2);
+
+        transition:
+          color 200ms,
+          scale 150ms;
+        &:hover {
+          color: var(--text-secondary);
+        }
+
+        &:active {
+          scale: 0.95;
+        }
       }
     }
 
@@ -118,7 +138,6 @@ const imageLight = images.light.src
       display: flex;
       flex-wrap: wrap;
       gap: var(--gap-xs) var(--gap-s);
-      padding-left: 1rem;
 
       li {
         display: grid;
@@ -160,9 +179,12 @@ const imageLight = images.light.src
 
       color: var(--text-secondary);
 
-      padding: 0.5rem 1em;
+      max-width: 65ch;
 
-      max-width: 70ch;
+      a {
+        color: var(--text-primary);
+        padding-left: var(--gap-s);
+      }
     }
 
     @media screen and (min-width: 1024px) {

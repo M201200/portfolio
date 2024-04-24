@@ -3,6 +3,8 @@ import "@fontsource/merriweather/700.css"
 import "@fontsource/merriweather/900.css"
 
 import menu from "./../images/hamburger-menu.svg"
+import lightTheme from "./../images/sun.svg"
+import darkTheme from "./../images/moon.svg"
 
 import { Image } from "astro:assets"
 ---
@@ -10,138 +12,179 @@ import { Image } from "astro:assets"
 <header>
   <a class="name" href="/">VLAD IUJEV</a>
   <div id="menu-wrapper" aria-expanded="false">
-    <button id="menu-button"><Image src={menu} alt="Menu" /></button>
+    <button id="menu-button"><img src={menu.src} alt="Menu" /> </button>
     <ul>
       <li><a href="/">MAIN</a></li>
       <li><a href="/contacts">CONTACTS</a></li>
-      <li><input data-switcher="theme" type="checkbox" /></li>
+      <li>
+        <button data-switcher="theme" class="theme-button">
+          <Image
+            class="theme-image"
+            data-light={lightTheme.src}
+            data-dark={darkTheme.src}
+            src={darkTheme}
+            alt="Theme"
+          />
+        </button>
+      </li>
     </ul>
   </div>
-</header>
 
-<style lang="scss">
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: var(--gap-xl);
-    min-height: 6.5rem;
+  <style lang="scss">
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--gap-xl);
+      min-height: 6.5rem;
 
-    position: fixed;
-    z-index: 100;
+      position: fixed;
+      z-index: 100;
 
-    top: 0;
-    width: 100%;
+      top: 0;
+      width: 100%;
 
-    background-color: var(--bg);
-    box-shadow: var(--shadow-1);
+      background-color: var(--bg);
+      box-shadow: var(--shadow-1);
 
-    color: var(--text-primary);
+      color: var(--text-primary);
 
-    div {
-      justify-self: end;
-      display: grid;
-      justify-content: end;
-
-      button {
+      div {
         justify-self: end;
+        display: grid;
+        justify-content: end;
 
-        width: 2.5rem;
-        aspect-ratio: 1;
-        padding: 0;
-        border-radius: 5px;
-        border: none;
-        background: var(--bg-button);
-        cursor: pointer;
+        #menu-button {
+          justify-self: end;
 
-        @media screen and (min-width: 1024px) {
-          display: none;
+          width: 2.5rem;
+          aspect-ratio: 1;
+          padding: 0;
+          border-radius: 5px;
+          border: none;
+          background: transparent;
+          color: var(--text-primary);
+
+          cursor: pointer;
+
+          @media screen and (min-width: 1024px) {
+            display: none;
+          }
         }
-      }
 
-      ul {
-        display: flex;
-        gap: var(--gap-xl);
+        ul {
+          display: flex;
+          gap: var(--gap-xl);
 
-        align-items: center;
+          align-items: center;
 
-        transition: transform 150ms ease-in;
+          transition: transform 150ms ease-in;
+
+          @media screen and (max-width: 1024px) {
+            overflow: hidden;
+
+            flex-direction: column;
+            align-items: end;
+
+            padding: var(--gap-xl);
+
+            position: absolute;
+            top: 7rem;
+            right: 3rem;
+            background-color: var(--bg);
+            box-shadow: var(--shadow-1);
+            border-radius: 5px;
+
+            transform: translateX(150%);
+          }
+        }
 
         @media screen and (max-width: 1024px) {
-          overflow: hidden;
-
-          flex-direction: column;
-          align-items: end;
-
-          padding: var(--gap-xl);
-
-          position: absolute;
-          top: 7rem;
-          right: 3rem;
-          background-color: var(--bg);
-          box-shadow: var(--shadow-1);
-          border-radius: 5px;
-
-          transform: translateX(150%);
+          &[aria-expanded="true"] {
+            ul {
+              transform: translateX(12%);
+            }
+          }
         }
-      }
-
-      @media screen and (max-width: 1024px) {
-        &[aria-expanded="true"] {
+        @media screen and (min-width: 1024px) {
           ul {
-            transform: translateX(12%);
+            display: flex;
           }
         }
       }
+
       @media screen and (min-width: 1024px) {
-        ul {
-          display: flex;
-        }
+        grid-template-columns: repeat(2, 1fr);
       }
     }
-
-    @media screen and (min-width: 1024px) {
-      grid-template-columns: repeat(2, 1fr);
+    a {
+      font-size: var(--font-size-3);
+      font-weight: var(--font-weight-9);
+      letter-spacing: var(--font-letterspacing-1);
+      font-family: "Merriweather", serif;
+      padding: 0.5rem;
     }
-  }
-  a {
-    font-size: var(--font-size-3);
-    font-weight: var(--font-weight-9);
-    letter-spacing: var(--font-letterspacing-1);
-    font-family: "Merriweather", serif;
-    padding: 0.5rem;
-  }
-</style>
 
-<script>
-  import applyTheme from "../utils/applyTheme"
-  import getTheme from "../utils/getTheme"
-  import isDescendant from "../utils/isDescendant"
+    .theme-button {
+      width: var(--size-7);
+      aspect-ratio: 1;
 
-  const menuButton = document.querySelector("#menu-button") as HTMLButtonElement
-  const menuWrapper = document.querySelector("#menu-wrapper")
+      border: none;
+      background-color: transparent;
+      padding: 0;
 
-  menuButton.addEventListener("click", () => {
-    menuWrapper?.setAttribute(
-      "aria-expanded",
-      menuWrapper.getAttribute("aria-expanded") === "false" ? "true" : "false"
-    )
-  })
+      color: var(--text-primary);
 
-  document.body.addEventListener("click", (event: MouseEvent) => {
-    if (!isDescendant(menuWrapper, event.target as Node)) {
-      menuWrapper?.setAttribute("aria-expanded", "false")
+      cursor: pointer;
     }
-  })
 
-  const currentTheme = getTheme()
-  const themeSwitcher = document.querySelector<HTMLInputElement>(
-    '[data-switcher="theme"]'
-  )!
+    html[data-theme="dark"] #menu-button,
+    html[data-theme="dark"] .theme-button {
+      filter: invert(100%);
+    }
+  </style>
 
-  themeSwitcher.checked = currentTheme === "dark"
-  themeSwitcher.addEventListener("change", (e) => {
-    const target = e.target as HTMLInputElement
-    applyTheme(target.checked ? "dark" : "light")
-  })
-</script>
+  <script>
+    import applyTheme from "../utils/applyTheme"
+    import isDescendant from "../utils/isDescendant"
+
+    const menuButton = document.querySelector(
+      "#menu-button"
+    ) as HTMLButtonElement
+    const menuWrapper = document.querySelector("#menu-wrapper")
+
+    menuButton.addEventListener("click", () => {
+      menuWrapper?.setAttribute(
+        "aria-expanded",
+        menuWrapper.getAttribute("aria-expanded") === "false" ? "true" : "false"
+      )
+    })
+
+    document.body.addEventListener("click", (event: MouseEvent) => {
+      if (!isDescendant(menuWrapper, event.target as Node)) {
+        menuWrapper?.setAttribute("aria-expanded", "false")
+      }
+    })
+
+    //////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////
+
+    const themeButton = document.querySelector(
+      '[data-switcher="theme"]'
+    ) as HTMLButtonElement
+    const themeImage = document.querySelector(
+      ".theme-image"
+    ) as HTMLImageElement
+
+    const root = document.documentElement
+
+    const lightImage = themeImage.dataset.light!
+    const darkImage = themeImage.dataset.dark!
+
+    themeImage.src = root.dataset.theme === "dark" ? lightImage : darkImage
+    themeButton.addEventListener("click", () => {
+      themeImage.src = root.dataset.theme === "dark" ? darkImage : lightImage
+      applyTheme(root.dataset.theme === "light" ? "dark" : "light")
+    })
+  </script>
+</header>

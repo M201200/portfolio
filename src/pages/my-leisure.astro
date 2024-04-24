@@ -70,7 +70,7 @@ const tech = [
 ]
 ---
 
-<Layout title="Projects: My Leisure">
+<Layout title="Project: My Leisure" lang="en">
   <main>
     <section class="info">
       <div class="intro">
@@ -81,8 +81,8 @@ const tech = [
         </div>
         <div class="description">
           <p>
-            This project allows users to discover the best movies, series, and
-            books all in one place and bookmark media they like.
+            Discover the best movies, series, and books all in one place and
+            bookmark media you like.
           </p>
           <h2>Project features:</h2>
           <ul>
@@ -95,7 +95,9 @@ const tech = [
               User data is securely stored in a PostgreSQL database (deployed on
               Supabase).
             </li>
-            <li>Deployed on Vercel (SSR and edge runtime)</li>
+            <li>
+              Made with NextJS 14 and deployed on Vercel (SSR and edge runtime)
+            </li>
             <li>Basic and extended search</li>
             <li>Authentication (NextAuth)</li>
             <li>Bookmarking</li>
@@ -125,6 +127,7 @@ const tech = [
 <style lang="scss">
   main {
     display: grid;
+    min-height: 90vh;
 
     color: var(--text-primary);
     font-family: Roboto, sans-serif;
