@@ -1,23 +1,23 @@
 ---
 import { Image } from "astro:assets"
-import Layout from "../layouts/Layout.astro"
+import Layout from "../../layouts/Layout.astro"
 
-import typescript from "./../images/tech/typescript.svg"
-import tailwind from "./../images/tech/tailwind.svg"
-import mysql from "./../images/tech/mysql.svg"
-import nextAuth from "./../images/tech/next-auth.svg"
-import drizzle from "./../images/tech/drizzle.svg"
-import nextjs from "./../images/tech/nextjs.svg"
+import typescript from "./../../images/tech/typescript.svg"
+import tailwind from "./../../images/tech/tailwind.svg"
+import mysql from "./../../images/tech/mysql.svg"
+import nextAuth from "./../../images/tech/next-auth.svg"
+import drizzle from "./../../images/tech/drizzle.svg"
+import nextjs from "./../../images/tech/nextjs.svg"
 
-import myLeisureMain from "./../images/projects/page-images/my-leisure/en/main.jpg"
-import myLeisureMainDark from "./../images/projects/page-images/my-leisure/en/main-dark.jpg"
-import myLeisureMovies from "./../images/projects/page-images/my-leisure/en/movies.jpg"
-import myLeisureMoviesDark from "./../images/projects/page-images/my-leisure/en/movies-dark.jpg"
-import myLeisureBooks from "./../images/projects/page-images/my-leisure/en/books.jpg"
-import myLeisureBooksDark from "./../images/projects/page-images/my-leisure/en/books-dark.jpg"
-import myLeisureBookmarks from "./../images/projects/page-images/my-leisure/en/bookmarks.jpg"
-import myLeisureBookmarksDark from "./../images/projects/page-images/my-leisure/en/bookmarks-dark.jpg"
-import Carousel from "../components/Carousel.astro"
+import myLeisureMain from "./../../images/projects/page-images/my-leisure/ro/main.jpg"
+import myLeisureMainDark from "./../../images/projects/page-images/my-leisure/ro/main-dark.jpg"
+import myLeisureMovies from "./../../images/projects/page-images/my-leisure/ro/movies.jpg"
+import myLeisureMoviesDark from "./../../images/projects/page-images/my-leisure/ro/movies-dark.jpg"
+import myLeisureBooks from "./../../images/projects/page-images/my-leisure/ro/books.jpg"
+import myLeisureBooksDark from "./../../images/projects/page-images/my-leisure/ro/books-dark.jpg"
+import myLeisureBookmarks from "./../../images/projects/page-images/my-leisure/ro/bookmarks.jpg"
+import myLeisureBookmarksDark from "./../../images/projects/page-images/my-leisure/ro/bookmarks-dark.jpg"
+import Carousel from "../../components/Carousel.astro"
 
 import "@fontsource/roboto/500.css"
 import "@fontsource/roboto/700.css"
@@ -70,38 +70,39 @@ const tech = [
 ]
 ---
 
-<Layout title="Project: My Leisure" lang="en">
+<Layout title="Project: My Leisure" lang="ro">
   <main>
     <section class="info">
       <div class="intro">
-        <a class="back" href="/">&#10094;&#10094; Go back</a>
+        <a class="back" href="/ro">&#10094;&#10094; Înapoi</a>
         <h1 transition:name={`My Leisure-logo`}>My Leisure</h1>
         <div class="links" transition:name="My Leisure-links">
-          <a href="#"> &#10095;&#10095; Live link</a>
-          <a href="#"> &#10095;&#10095; Github repo</a>
+          <a href="#"> &#10095;&#10095; Link direct</a>
+          <a href="#"> &#10095;&#10095; Depo de cod GitHub</a>
         </div>
         <div class="description" transition:name="My Leisure-description">
           <p>
-            Discover the best movies, series, and books all in one place and
-            bookmark media you like.
+            Descoperă cele mai bune filme, seriale și cărți, toate într-un
+            singur loc și adaugă media care îți place în marcaje.
           </p>
-          <h2>Project features:</h2>
+          <h2>Caracteristici ale proiectului:</h2>
           <ul>
             <li>
-              External databases integration through corresponding API's (The
-              Movie Database (themoviedb.org) and Open Library
+              Integrarea bazelor de date externe prin API-urile corespunzătoare
+              (The Movie Database (themoviedb.org) și Open Library
               (openlibrary.org))
             </li>
             <li>
-              User data is securely stored in a PostgreSQL database (deployed on
-              Supabase).
+              Datele utilizatorilor sunt stocate în siguranță într-o bază de
+              date PostgreSQL (implementată pe Supabase).
             </li>
             <li>
-              Made with NextJS 14 and deployed on Vercel (SSR and edge runtime)
+              Realizat cu NextJS 14 și implementat pe Vercel (SSR și Edge
+              runtime)
             </li>
-            <li>Basic and extended search</li>
-            <li>Authentication (NextAuth)</li>
-            <li>Bookmarking</li>
+            <li>Căutare de bază și extinsă</li>
+            <li>Autentificare (NextAuth)</li>
+            <li>Adăugare în marcaje</li>
           </ul>
         </div>
       </div>
@@ -144,6 +145,20 @@ const tech = [
     line-height: var(--font-lineheight-0);
 
     font-family: "Merriweather", serif;
+  }
+
+  .back {
+    justify-self: start;
+
+    font-size: var(--font-size-fluid-1);
+    font-weight: var(--font-weight-9);
+    color: var(--text-secondary);
+
+    background-color: var(--bg);
+    border: none;
+    padding: 0.75rem;
+
+    cursor: pointer;
   }
 
   .info {

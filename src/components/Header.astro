@@ -7,16 +7,41 @@ import lightTheme from "./../images/sun.svg"
 import darkTheme from "./../images/moon.svg"
 
 import { Image } from "astro:assets"
+
+type Props = {
+  locale: Locale
+}
+
+const { locale } = Astro.props
+
+const prefix = locale === "ro" ? "/ro/" : locale == "ru" ? "/ru/" : "/"
+
+const name =
+  locale === "ro" ? "Vlad Iujev" : locale == "ru" ? "Влад Южев" : "Vlad Yuzhev"
+const main =
+  locale === "ro" ? "Principală" : locale == "ru" ? "Главная" : "Main"
+const contacts =
+  locale === "ro" ? "Contacte" : locale == "ru" ? "Контакты" : "Contacts"
 ---
 
 <header>
-  <a class="name" href="/">VLAD IUJEV</a>
-  <div id="menu-wrapper" aria-expanded="false">
+  <a class="name" href={`${prefix}`}>{name}</a>
+  <div id="menu-wrapper" data-expanded="false">
     <button id="menu-button"><img src={menu.src} alt="Menu" /> </button>
     <ul>
-      <li><a href="/">MAIN</a></li>
-      <li><a href="/contacts">CONTACTS</a></li>
-      <li>
+      <li><a href={`${prefix}`}>{main}</a></li>
+      <li><a href={`${prefix}contacts`}>{contacts}</a></li>
+      <li class="preferences">
+        <select
+          name="locale"
+          id="locale"
+          data-switcher="locale"
+          class="locale-select"
+        >
+          <option selected={locale === "en"} value="/">ENG</option>
+          <option selected={locale === "ro"} value="/ro">ROM</option>
+          <option selected={locale === "ru"} value="/ru">RUS</option>
+        </select>
         <button data-switcher="theme" class="theme-button">
           <Image
             class="theme-image"
@@ -100,7 +125,7 @@ import { Image } from "astro:assets"
         }
 
         @media screen and (max-width: 1024px) {
-          &[aria-expanded="true"] {
+          &[data-expanded="true"] {
             ul {
               transform: translateX(12%);
             }
@@ -123,19 +148,39 @@ import { Image } from "astro:assets"
       letter-spacing: var(--font-letterspacing-1);
       font-family: "Merriweather", serif;
       padding: 0.5rem;
+
+      text-transform: uppercase;
     }
 
-    .theme-button {
-      width: var(--size-7);
-      aspect-ratio: 1;
+    .preferences {
+      display: flex;
+      gap: var(--gap-m);
+      align-content: center;
+      .theme-button {
+        width: var(--size-7);
+        aspect-ratio: 1;
 
-      border: none;
-      background-color: transparent;
-      padding: 0;
+        border: none;
+        background-color: transparent;
+        padding: 0;
 
-      color: var(--text-primary);
+        color: var(--text-primary);
 
-      cursor: pointer;
+        cursor: pointer;
+      }
+
+      .locale-select {
+        border: none;
+        background-color: transparent;
+        padding: 0.25rem;
+
+        color: var(--text-primary);
+        font-weight: 500;
+        font-size: var(--font-size-3);
+        font-family: "Merriweather", serif;
+
+        cursor: pointer;
+      }
     }
 
     html[data-theme="dark"] #menu-button,
@@ -147,44 +192,61 @@ import { Image } from "astro:assets"
   <script>
     import applyTheme from "../utils/applyTheme"
     import isDescendant from "../utils/isDescendant"
+    import { navigate } from "astro:transitions/client"
 
-    const menuButton = document.querySelector(
-      "#menu-button"
-    ) as HTMLButtonElement
-    const menuWrapper = document.querySelector("#menu-wrapper")
+    document.addEventListener("astro:page-load", () => {
+      const menuButton = document.querySelector(
+        "#menu-button"
+      ) as HTMLButtonElement
+      const menuWrapper = document.querySelector("#menu-wrapper")
 
-    menuButton.addEventListener("click", () => {
-      menuWrapper?.setAttribute(
-        "aria-expanded",
-        menuWrapper.getAttribute("aria-expanded") === "false" ? "true" : "false"
-      )
-    })
+      menuButton.addEventListener("click", () => {
+        menuWrapper?.setAttribute(
+          "data-expanded",
+          menuWrapper.getAttribute("data-expanded") === "false"
+            ? "true"
+            : "false"
+        )
+      })
 
-    document.body.addEventListener("click", (event: MouseEvent) => {
-      if (!isDescendant(menuWrapper, event.target as Node)) {
-        menuWrapper?.setAttribute("aria-expanded", "false")
-      }
-    })
+      document.body.addEventListener("click", (event: MouseEvent) => {
+        if (!isDescendant(menuWrapper, event.target as Node)) {
+          menuWrapper?.setAttribute("data-expanded", "false")
+        }
+      })
 
-    //////////////////////////////////////////////////////////////////////////
-    //////////////////////////////////////////////////////////////////////////
+      //////////////////////////////////////////////////////////////////////////
+      //////////////////////////////////////////////////////////////////////////
 
-    const themeButton = document.querySelector(
-      '[data-switcher="theme"]'
-    ) as HTMLButtonElement
-    const themeImage = document.querySelector(
-      ".theme-image"
-    ) as HTMLImageElement
+      const themeButton = document.querySelector(
+        '[data-switcher="theme"]'
+      ) as HTMLButtonElement
+      const themeImage = document.querySelector(
+        ".theme-image"
+      ) as HTMLImageElement
 
-    const root = document.documentElement
+      const root = document.documentElement
 
-    const lightImage = themeImage.dataset.light!
-    const darkImage = themeImage.dataset.dark!
+      const lightImage = themeImage.dataset.light!
+      const darkImage = themeImage.dataset.dark!
 
-    themeImage.src = root.dataset.theme === "dark" ? lightImage : darkImage
-    themeButton.addEventListener("click", () => {
-      themeImage.src = root.dataset.theme === "dark" ? darkImage : lightImage
-      applyTheme(root.dataset.theme === "light" ? "dark" : "light")
+      themeImage.src = root.dataset.theme === "dark" ? lightImage : darkImage
+      themeButton.addEventListener("click", () => {
+        themeImage.src = root.dataset.theme === "dark" ? darkImage : lightImage
+        applyTheme(root.dataset.theme === "light" ? "dark" : "light")
+      })
+
+      //////////////////////////////////////////////////////////////////////////
+      //////////////////////////////////////////////////////////////////////////
+
+      const localeSelect = document.querySelector(
+        '[data-switcher="locale"]'
+      ) as HTMLSelectElement
+
+      localeSelect.addEventListener("change", (e) => {
+        const target = e.target as HTMLSelectElement
+        navigate(target.value)
+      })
     })
   </script>
 </header>

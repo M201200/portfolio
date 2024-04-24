@@ -1,33 +1,33 @@
 ---
-import ProjectCard from "../components/ProjectCard.astro"
-import TechCard from "../components/TechCard.astro"
-import Layout from "../layouts/Layout.astro"
+import ProjectCard from "../../components/ProjectCard.astro"
+import TechCard from "../../components/TechCard.astro"
+import Layout from "../../layouts/Layout.astro"
 
-import myLeisureMain from "./../images/projects/main-page/my-leisure/en/main.jpg"
-import myLeisureMainDark from "./../images/projects/main-page/my-leisure/en/main-dark.jpg"
+import myLeisureMain from "./../../images/projects/main-page/my-leisure/ro/main.jpg"
+import myLeisureMainDark from "./../../images/projects/main-page/my-leisure/ro/main-dark.jpg"
 
-import newFurnitureMain from "./../images/projects/main-page/new-furniture/en/main.jpg"
-import newFurnitureMainDark from "./../images/projects/main-page/new-furniture/en/main-dark.jpg"
+import newFurnitureMain from "./../../images/projects/main-page/new-furniture/ro/main.jpg"
+import newFurnitureMainDark from "./../../images/projects/main-page/new-furniture/ro/main-dark.jpg"
 
-import playgroundMain from "./../images/projects/main-page/playground/main.jpg"
+import playgroundMain from "./../../images/projects/main-page/playground/main.jpg"
 
-import javaScript from "./../images/tech/javascript.svg"
-import html from "./../images/tech/html-5.svg"
-import css from "./../images/tech/css-3.svg"
-import sql from "./../images/tech/sql.svg"
-import typescript from "./../images/tech/typescript.svg"
-import react from "./../images/tech/react.svg"
-import tailwind from "./../images/tech/tailwind.svg"
-import mysql from "./../images/tech/mysql.svg"
-import nextAuth from "./../images/tech/next-auth.svg"
-import drizzle from "./../images/tech/drizzle.svg"
-import astro from "./../images/tech/astro.svg"
-import nextjs from "./../images/tech/nextjs.svg"
-import sass from "./../images/tech/sass.svg"
-import threejs from "./../images/tech/threejs.svg"
-import gsap from "./../images/tech/gsap.svg"
+import javaScript from "./../../images/tech/javascript.svg"
+import html from "./../../images/tech/html-5.svg"
+import css from "./../../images/tech/css-3.svg"
+import sql from "./../../images/tech/sql.svg"
+import typescript from "./../../images/tech/typescript.svg"
+import react from "./../../images/tech/react.svg"
+import tailwind from "./../../images/tech/tailwind.svg"
+import mysql from "./../../images/tech/mysql.svg"
+import nextAuth from "./../../images/tech/next-auth.svg"
+import drizzle from "./../../images/tech/drizzle.svg"
+import astro from "./../../images/tech/astro.svg"
+import nextjs from "./../../images/tech/nextjs.svg"
+import sass from "./../../images/tech/sass.svg"
+import threejs from "./../../images/tech/threejs.svg"
+import gsap from "./../../images/tech/gsap.svg"
 
-import myPic from "./../images/my-pic.jpg"
+import myPic from "./../../images/my-pic.jpg"
 
 import "@fontsource/roboto/500.css"
 import "@fontsource/roboto/700.css"
@@ -206,74 +206,76 @@ const newFurnitureImages = {
 const playgroundImages = { dark: playgroundMain, light: playgroundMain }
 ---
 
-<Layout title="Vladislav Yuzhev" lang="en">
+<Layout title="Vladislav Iujev" lang="ro">
   <main>
     <section class="intro">
       <div class="line">
-        <p class="line_1">Hi, I'm Vlad Yuzhev</p>
-        <p class="line_2">I'm a <span>Front-end</span> developer</p>
+        <p class="line_1">Salut, sunt Vlad Iujev</p>
+        <p class="line_2">Sunt dezvoltator <span>Front-end</span></p>
         <p class="line_3">
-          I genuinely enjoy web development and am always eager to create more,
-          both for the benefit of others and my own personal growth.
+          Sunt pasionat de dezvoltarea web și sunt întotdeauna nerăbdător să
+          creez mai mult, atât pentru beneficiul altora, cât și pentru propria
+          mea creștere personală.
         </p>
       </div>
       <div class="image">
-        <Image src={myPic} alt={"Profile image"} />
+        <Image src={myPic} alt={"Imagine de profil"} />
       </div>
     </section>
 
     <section class="projects">
-      <h1>Recent projects</h1>
+      <h1>Proiecte Recente</h1>
       <p class="projects_description">
-        While Next.js is my main proficiency, I do not limit myself to just one
-        framework or library. I'm able to learn and utilize any tool as needed.
+        Chiar dacă am mai multă experiență cu Next.js, nu mă limitez doar la
+        acest framework sau la această bibliotecă. Sunt capabil să învăț și să
+        folosesc orice instrument în funcție de necesități.
       </p>
       <ul class="projects_cards">
         <li>
           <ProjectCard
-            locale="en"
+            locale="ro"
             title="My Leisure"
             images={myLeisureImages}
             siteLink="#"
             githubLink="#"
             tech={myLeisureTech}
-            pageLink="/my-leisure"
-            description="Discover the best movies, series, and books all in one place and bookmark media you like."
+            pageLink="/ro/my-leisure"
+            description="Descoperă cele mai bune filme, seriale și cărți, toate într-un singur loc și adaugă media care îți place în marcaje."
           />
         </li>
         <li>
           <ProjectCard
-            locale="en"
+            locale="ro"
             title="New Furniture"
             images={newFurnitureImages}
             siteLink="#"
             githubLink="#"
             tech={newFurnitureTech}
-            pageLink="/new-furniture"
-            description="Fully functional feature-complete furniture store."
+            pageLink="/ro/new-furniture"
+            description="Magazin de mobilă complet funcțional și complet echipat."
             flip={true}
           />
         </li>
         <li>
           <ProjectCard
-            locale="en"
+            locale="ro"
             title="The Playground"
             images={playgroundImages}
             siteLink="#"
             githubLink="#"
             tech={playgroundTech}
-            pageLink="/playground"
-            description="Work in progress. Currently, this web site only showcases various animations, but I plan to transform these animations into interactive games."
+            pageLink="/ro/playground"
+            description="Lucrare în curs. În prezent, acest site web doar prezintă diverse animații, dar planific să transform aceste animații în jocuri interactive."
           />
         </li>
       </ul>
     </section>
 
     <section class="tech">
-      <h1>Tech-stack</h1>
+      <h1>Teh-stivă</h1>
       <p class="tech_description">
-        I primarily specialize on Front-end, although I also possess some
-        proficiency in Back-end.
+        Mă specializez în principal în Front-end, deși am și o anumită expertiză
+        în Back-end.
       </p>
       <ul class="tech_cards">
         <TechCard tech={base} />
@@ -283,8 +285,8 @@ const playgroundImages = { dark: playgroundMain, light: playgroundMain }
     </section>
 
     <section class="contact">
-      <a class="contact_link" href="/contacts">
-        &#10095;&#10095; Get in touch</a
+      <a class="contact_link" href="/ro/contacts">
+        &#10095;&#10095; Сontactează-mă</a
       >
     </section>
   </main>
@@ -302,8 +304,8 @@ const playgroundImages = { dark: playgroundMain, light: playgroundMain }
     font-weight: var(--font-weight-9);
     line-height: var(--font-lineheight-0);
 
-    text-transform: uppercase;
     font-family: "Merriweather", serif;
+    text-transform: uppercase;
   }
 
   .intro {

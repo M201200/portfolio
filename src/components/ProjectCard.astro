@@ -20,6 +20,7 @@ type Props = {
   }[]
   description: string
   flip?: boolean
+  locale: Locale
 }
 
 const {
@@ -31,16 +32,37 @@ const {
   tech,
   description,
   flip,
+  locale,
 } = Astro.props
 
 const imageDark = images.dark.src
 const imageLight = images.light.src
+
+const liveLink =
+  locale === "ro"
+    ? "Link direct"
+    : locale === "ru"
+      ? "Прямая ссылка"
+      : "Live link"
+const gitHubLink =
+  locale === "ro"
+    ? "Depo de cod GitHub"
+    : locale === "ru"
+      ? "Репо на GitHub"
+      : "Github repo"
+const moreDetails =
+  locale === "ro"
+    ? "Mai multe detalii"
+    : locale === "ru"
+      ? "Подробнее"
+      : "More details"
 ---
 
 <div class="card">
   <a href={pageLink} title={title}>
     <Image
       class:list={["card_image", { right: flip }]}
+      transition:name={`${title}-image`}
       src={images.dark}
       alt={title}
       data-dark={imageDark}
@@ -48,10 +70,10 @@ const imageLight = images.light.src
     />
   </a>
   <div class:list={[{ left: flip }]}>
-    <h2>
+    <h2 transition:name={`${title}-logo`}>
       {title}
     </h2>
-    <ul>
+    <ul transition:name={`${title}-tech`}>
       {
         tech.map((item) => (
           <li>
@@ -63,13 +85,13 @@ const imageLight = images.light.src
         ))
       }
     </ul>
-    <div class="links">
-      <a href={siteLink}> &#10095;&#10095; Live link</a>
-      <a href={githubLink}> &#10095;&#10095; Github repo</a>
+    <div class="links" transition:name={`${title}-links`}>
+      <a href={siteLink}> &#10095;&#10095; {liveLink}</a>
+      <a href={githubLink}> &#10095;&#10095; {gitHubLink}</a>
     </div>
-    <p>
+    <p transition:name={`${title}-description`}>
       {description}
-      <a href={pageLink}> &#10095;&#10095; More details</a>
+      <a href={pageLink}> &#10095;&#10095; {moreDetails}</a>
     </p>
   </div>
 </div>
@@ -104,6 +126,8 @@ const imageLight = images.light.src
       margin-bottom: var(--gap-xs);
 
       padding-left: 1rem;
+
+      text-transform: uppercase;
     }
     .links {
       display: flex;
@@ -206,30 +230,32 @@ const imageLight = images.light.src
 </style>
 
 <script>
-  const images = document.querySelectorAll(
-    ".card_image"
-  ) as NodeListOf<HTMLImageElement>
+  document.addEventListener("astro:page-load", () => {
+    const images = document.querySelectorAll(
+      ".card_image"
+    ) as NodeListOf<HTMLImageElement>
 
-  const root = document.documentElement
+    const root = document.documentElement
 
-  function changeImage() {
-    images.forEach((image) => {
-      const imageLight = image.dataset.light!
-      const imageDark = image.dataset.dark!
+    function changeImage() {
+      images.forEach((image) => {
+        const imageLight = image.dataset.light!
+        const imageDark = image.dataset.dark!
 
-      image.src = root.dataset.theme === "dark" ? imageDark : imageLight
-    })
-  }
+        image.src = root.dataset.theme === "dark" ? imageDark : imageLight
+      })
+    }
 
-  changeImage()
+    changeImage()
 
-  const observer = new MutationObserver((mutations) =>
-    mutations.forEach((mutation) => {
-      if (mutation.type === "attributes") {
-        changeImage()
-      }
-    })
-  )
+    const observer = new MutationObserver((mutations) =>
+      mutations.forEach((mutation) => {
+        if (mutation.type === "attributes") {
+          changeImage()
+        }
+      })
+    )
 
-  observer.observe(root, { attributes: true })
+    observer.observe(root, { attributes: true })
+  })
 </script>

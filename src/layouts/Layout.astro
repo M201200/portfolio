@@ -1,6 +1,7 @@
 ---
 import Header from "../components/Header.astro"
 import Footer from "../components/Footer.astro"
+import { ViewTransitions } from "astro:transitions"
 
 interface Props {
   title: string
@@ -19,135 +20,148 @@ const { title, lang } = Astro.props
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <ViewTransitions />
+    <script is:inline>
+      const theme =
+        localStorage.getItem("theme") ||
+        (window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light")
+      document.documentElement.setAttribute("data-theme", theme)
+      localStorage.setItem("theme", theme)
 
-    <script>
-      import applyTheme from "../utils/applyTheme"
-      import getTheme from "../utils/getTheme"
-      applyTheme(getTheme())
+      document.addEventListener("astro:after-swap", () => {
+        const theme =
+          localStorage.getItem("theme") ||
+          (window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light")
+        document.documentElement.setAttribute("data-theme", theme)
+        localStorage.setItem("theme", theme)
+      })
     </script>
   </head>
   <body>
-    <Header />
+    <Header locale={lang} />
     <slot />
     <Footer />
-  </body>
+    <style is:global lang="scss">
+      @import "open-props/style";
 
-  <style is:global lang="scss">
-    @import "open-props/style";
-
-    @layer reset {
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-      }
-
-      body {
-        margin: unset;
-      }
-
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6,
-      p {
-        margin: 0;
-        padding: 0;
-        font-size: 1rem;
-        font-weight: normal;
-        font-style: normal;
-        text-wrap: balance;
-      }
-
-      p {
-        line-height: 1.6;
-        letter-spacing: 0.5px;
-      }
-
-      a {
-        text-decoration: none;
-        color: inherit;
-      }
-
-      ul {
-        margin: unset;
-        padding: unset;
-      }
-      li {
-        list-style: none;
-      }
-
-      button,
-      input,
-      textarea,
-      select {
-        font: inherit;
-      }
-
-      img,
-      picture,
-      svg,
-      canvas {
-        display: block;
-        max-inline-size: 100%;
-        block-size: auto;
-      }
-
-      @media (prefers-reduced-motion: reduce) {
+      @layer reset {
         *,
         *::before,
         *::after {
-          animation-duration: 0.01ms !important;
-          animation-iteration-count: 1 !important;
-          transition-duration: 0.01ms !important;
-          scroll-behavior: auto !important;
+          box-sizing: border-box;
+        }
+
+        body {
+          margin: unset;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p {
+          margin: 0;
+          padding: 0;
+          font-size: 1rem;
+          font-weight: normal;
+          font-style: normal;
+          text-wrap: balance;
+        }
+
+        p {
+          line-height: 1.6;
+          letter-spacing: 0.5px;
+        }
+
+        a {
+          text-decoration: none;
+          color: inherit;
+        }
+
+        ul {
+          margin: unset;
+          padding: unset;
+        }
+        li {
+          list-style: none;
+        }
+
+        button,
+        input,
+        textarea,
+        select {
+          font: inherit;
+        }
+
+        img,
+        picture,
+        svg,
+        canvas {
+          display: block;
+          max-inline-size: 100%;
+          block-size: auto;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          *,
+          *::before,
+          *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+          }
         }
       }
-    }
 
-    :root {
-      --gap-xs: 0.128em;
-      --gap-s: 0.272em;
-      --gap-m: 0.618em;
-      --gap-l: 1em;
-      --gap-xl: 1.618em;
-      --gap-xxl: 2.618em;
-    }
-    :root[data-theme="light"] {
-      color-scheme: light;
-      --bg: var(--stone-0);
-      --bg-footer: var(--stone-2);
-      --blend-mode: hard-light;
-      --splash: var(--gradient-16);
-      --text-primary: var(--stone-12);
-      --text-secondary: var(--stone-9);
-      --text-impact: var(--stone-10);
-      --bg-button: var(--stone-3);
-    }
+      :root {
+        --gap-xs: 0.128em;
+        --gap-s: 0.272em;
+        --gap-m: 0.618em;
+        --gap-l: 1em;
+        --gap-xl: 1.618em;
+        --gap-xxl: 2.618em;
+      }
+      :root[data-theme="light"] {
+        color-scheme: light;
+        --bg: var(--stone-0);
+        --bg-footer: var(--stone-2);
+        --blend-mode: hard-light;
+        --splash: var(--gradient-16);
+        --text-primary: var(--stone-12);
+        --text-secondary: var(--stone-9);
+        --text-impact: var(--stone-10);
+        --bg-button: var(--stone-3);
+      }
 
-    :root[data-theme="dark"] {
-      color-scheme: dark;
-      --bg: var(--gray-10);
-      --bg-footer: var(--gray-9);
-      --blend-mode: multiply;
-      --splash: var(--gradient-23);
-      --text-primary: var(--stone-3);
-      --text-secondary: var(--stone-5);
-      --text-impact: var(--stone-4);
-      --bg-button: var(--stone-5);
-    }
+      :root[data-theme="dark"] {
+        color-scheme: dark;
+        --bg: var(--gray-10);
+        --bg-footer: var(--gray-9);
+        --blend-mode: multiply;
+        --splash: var(--gradient-23);
+        --text-primary: var(--stone-3);
+        --text-secondary: var(--stone-5);
+        --text-impact: var(--stone-4);
+        --bg-button: var(--stone-5);
+      }
 
-    html {
-      font-family: Roboto, sans-serif;
-    }
+      html {
+        font-family: Roboto, sans-serif;
+      }
 
-    body {
-      position: relative;
-      background-color: var(--bg);
-      padding-top: 6.5rem;
-      overflow-x: hidden;
-    }
-  </style>
+      body {
+        position: relative;
+        background-color: var(--bg);
+        padding-top: 6.5rem;
+        overflow-x: hidden;
+      }
+    </style>
+  </body>
 </html>

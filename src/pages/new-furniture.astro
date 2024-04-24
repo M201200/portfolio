@@ -74,12 +74,13 @@ const tech = [
   <main>
     <section class="info">
       <div class="intro">
+        <a class="back" href="/">&#10094;&#10094; Go back</a>
         <h1>New Furniture</h1>
-        <div class="links">
+        <div class="links" transition:name={`New Furniture-links`}>
           <a href="#"> &#10095;&#10095; Live link</a>
           <a href="#"> &#10095;&#10095; Github repo</a>
         </div>
-        <div class="description">
+        <div class="description" transition:name="New Furniture-description">
           <p>Fully functional feature-complete furniture store.</p>
           <h2>Project features:</h2>
           <ul>
@@ -99,11 +100,11 @@ const tech = [
           </ul>
         </div>
       </div>
-      <Carousel title="My Leisure" images={newFurnitureSlides} />
+      <Carousel title="New Furniture" images={newFurnitureSlides} />
     </section>
 
     <section class="tech">
-      <ul>
+      <ul transition:name="New Furniture-tech">
         {
           tech.map((item) => (
             <li>
@@ -157,6 +158,20 @@ const tech = [
     color: var(--text-primary);
     h1 {
       margin-bottom: var(--gap-s);
+    }
+
+    .back {
+      justify-self: start;
+
+      font-size: var(--font-size-fluid-1);
+      font-weight: var(--font-weight-9);
+      color: var(--text-secondary);
+
+      background-color: var(--bg);
+      border: none;
+      padding: 0.75rem;
+
+      cursor: pointer;
     }
     .links {
       display: flex;

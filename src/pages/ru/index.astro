@@ -1,33 +1,33 @@
 ---
-import ProjectCard from "../components/ProjectCard.astro"
-import TechCard from "../components/TechCard.astro"
-import Layout from "../layouts/Layout.astro"
+import ProjectCard from "../../components/ProjectCard.astro"
+import TechCard from "../../components/TechCard.astro"
+import Layout from "../../layouts/Layout.astro"
 
-import myLeisureMain from "./../images/projects/main-page/my-leisure/en/main.jpg"
-import myLeisureMainDark from "./../images/projects/main-page/my-leisure/en/main-dark.jpg"
+import myLeisureMain from "./../../images/projects/main-page/my-leisure/ru/main.jpg"
+import myLeisureMainDark from "./../../images/projects/main-page/my-leisure/ru/main-dark.jpg"
 
-import newFurnitureMain from "./../images/projects/main-page/new-furniture/en/main.jpg"
-import newFurnitureMainDark from "./../images/projects/main-page/new-furniture/en/main-dark.jpg"
+import newFurnitureMain from "./../../images/projects/main-page/new-furniture/ru/main.jpg"
+import newFurnitureMainDark from "./../../images/projects/main-page/new-furniture/ru/main-dark.jpg"
 
-import playgroundMain from "./../images/projects/main-page/playground/main.jpg"
+import playgroundMain from "./../../images/projects/main-page/playground/main.jpg"
 
-import javaScript from "./../images/tech/javascript.svg"
-import html from "./../images/tech/html-5.svg"
-import css from "./../images/tech/css-3.svg"
-import sql from "./../images/tech/sql.svg"
-import typescript from "./../images/tech/typescript.svg"
-import react from "./../images/tech/react.svg"
-import tailwind from "./../images/tech/tailwind.svg"
-import mysql from "./../images/tech/mysql.svg"
-import nextAuth from "./../images/tech/next-auth.svg"
-import drizzle from "./../images/tech/drizzle.svg"
-import astro from "./../images/tech/astro.svg"
-import nextjs from "./../images/tech/nextjs.svg"
-import sass from "./../images/tech/sass.svg"
-import threejs from "./../images/tech/threejs.svg"
-import gsap from "./../images/tech/gsap.svg"
+import javaScript from "./../../images/tech/javascript.svg"
+import html from "./../../images/tech/html-5.svg"
+import css from "./../../images/tech/css-3.svg"
+import sql from "./../../images/tech/sql.svg"
+import typescript from "./../../images/tech/typescript.svg"
+import react from "./../../images/tech/react.svg"
+import tailwind from "./../../images/tech/tailwind.svg"
+import mysql from "./../../images/tech/mysql.svg"
+import nextAuth from "./../../images/tech/next-auth.svg"
+import drizzle from "./../../images/tech/drizzle.svg"
+import astro from "./../../images/tech/astro.svg"
+import nextjs from "./../../images/tech/nextjs.svg"
+import sass from "./../../images/tech/sass.svg"
+import threejs from "./../../images/tech/threejs.svg"
+import gsap from "./../../images/tech/gsap.svg"
 
-import myPic from "./../images/my-pic.jpg"
+import myPic from "./../../images/my-pic.jpg"
 
 import "@fontsource/roboto/500.css"
 import "@fontsource/roboto/700.css"
@@ -206,74 +206,75 @@ const newFurnitureImages = {
 const playgroundImages = { dark: playgroundMain, light: playgroundMain }
 ---
 
-<Layout title="Vladislav Yuzhev" lang="en">
+<Layout title="Владислав Южев" lang="ru">
   <main>
     <section class="intro">
       <div class="line">
-        <p class="line_1">Hi, I'm Vlad Yuzhev</p>
-        <p class="line_2">I'm a <span>Front-end</span> developer</p>
+        <p class="line_1">Привет, я Влад Южев</p>
+        <p class="line_2">Я <span>Front-end</span> разработчик</p>
         <p class="line_3">
-          I genuinely enjoy web development and am always eager to create more,
-          both for the benefit of others and my own personal growth.
+          Я искренне увлечен веб-разработкой и всегда готов создавать еще
+          больше, как для блага других, так и для собственного личного роста.
         </p>
       </div>
       <div class="image">
-        <Image src={myPic} alt={"Profile image"} />
+        <Image src={myPic} alt={"Изображение профиля"} />
       </div>
     </section>
 
     <section class="projects">
-      <h1>Recent projects</h1>
+      <h1>Недавние проекты</h1>
       <p class="projects_description">
-        While Next.js is my main proficiency, I do not limit myself to just one
-        framework or library. I'm able to learn and utilize any tool as needed.
+        Хоть у меня больше опыта с Next.js, я не ограничиваю себя только одним
+        фреймворком или библиотекой. Я могу изучать и использовать любой
+        инструмент по мере необходимости.
       </p>
       <ul class="projects_cards">
         <li>
           <ProjectCard
-            locale="en"
+            locale="ru"
             title="My Leisure"
             images={myLeisureImages}
             siteLink="#"
             githubLink="#"
             tech={myLeisureTech}
-            pageLink="/my-leisure"
-            description="Discover the best movies, series, and books all in one place and bookmark media you like."
+            pageLink="/ru/my-leisure"
+            description="Откройте для себя лучшие фильмы, сериалы и книги, все в одном месте, и добавьте медиа, которое вам понравится в закладки."
           />
         </li>
         <li>
           <ProjectCard
-            locale="en"
+            locale="ru"
             title="New Furniture"
             images={newFurnitureImages}
             siteLink="#"
             githubLink="#"
             tech={newFurnitureTech}
-            pageLink="/new-furniture"
-            description="Fully functional feature-complete furniture store."
+            pageLink="/ru/new-furniture"
+            description="Полностью функциональный интернет-магазин мебели."
             flip={true}
           />
         </li>
         <li>
           <ProjectCard
-            locale="en"
+            locale="ru"
             title="The Playground"
             images={playgroundImages}
             siteLink="#"
             githubLink="#"
             tech={playgroundTech}
-            pageLink="/playground"
-            description="Work in progress. Currently, this web site only showcases various animations, but I plan to transform these animations into interactive games."
+            pageLink="/ru/playground"
+            description="Работа в процессе. В настоящее время этот веб-сайт только демонстрирует различные анимации, но я планирую превратить эти анимации в интерактивные игры."
           />
         </li>
       </ul>
     </section>
 
     <section class="tech">
-      <h1>Tech-stack</h1>
+      <h1>Тех-стэк</h1>
       <p class="tech_description">
-        I primarily specialize on Front-end, although I also possess some
-        proficiency in Back-end.
+        Я в основном специализируюсь на Front-end, хотя также обладаю некоторыми
+        навыками Back-end.
       </p>
       <ul class="tech_cards">
         <TechCard tech={base} />
@@ -283,8 +284,8 @@ const playgroundImages = { dark: playgroundMain, light: playgroundMain }
     </section>
 
     <section class="contact">
-      <a class="contact_link" href="/contacts">
-        &#10095;&#10095; Get in touch</a
+      <a class="contact_link" href="/ru/contacts">
+        &#10095;&#10095; Связаться</a
       >
     </section>
   </main>

@@ -1,10 +1,10 @@
 ---
 import { Image } from "astro:assets"
-import Layout from "../layouts/Layout.astro"
-import gitHub from "./../images/contacts/github.svg"
-import telegram from "./../images/contacts/telegram.svg"
-import linkedin from "./../images/contacts/linkedin.svg"
-import email from "./../images/contacts/gmail.svg"
+import Layout from "../../layouts/Layout.astro"
+import gitHub from "./../../images/contacts/github.svg"
+import telegram from "./../../images/contacts/telegram.svg"
+import linkedin from "./../../images/contacts/linkedin.svg"
+import email from "./../../images/contacts/gmail.svg"
 
 const currentTime = new Date().toLocaleString("en-GB", {
   timeZone: "Europe/Chisinau",
@@ -13,11 +13,11 @@ const currentTime = new Date().toLocaleString("en-GB", {
 })
 ---
 
-<Layout title="Contacts" lang="en">
+<Layout title="Контакты" lang="ru">
   <main>
-    <a class="back" href="/">&#10094;&#10094; Go back</a>
-    <h1>Contacts</h1>
-    <h2>Current time in my region: {currentTime}</h2>
+    <a class="back" href="/ru">&#10094;&#10094; Назад</a>
+    <h1>Контакты</h1>
+    <h2>Настоящее время в моём регионе: {currentTime}</h2>
     <ul>
       <li>
         <span><Image src={telegram} alt="Telegram" />Telegram: </span><a
@@ -38,7 +38,7 @@ const currentTime = new Date().toLocaleString("en-GB", {
       </li>
     </ul>
     <p>
-      Also you can find me on <a
+      Также Вы можете меня найти на <a
         href="https://github.com/M201200"
         target="_blank"
       >
@@ -67,6 +67,7 @@ const currentTime = new Date().toLocaleString("en-GB", {
       font-family: "Merriweather", serif;
 
       margin-bottom: var(--gap-xs);
+
       text-transform: uppercase;
     }
 

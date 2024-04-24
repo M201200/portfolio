@@ -60,12 +60,13 @@ const tech = [
   <main>
     <section class="info">
       <div class="intro">
+        <a class="back" href="/">&#10094;&#10094; Go back</a>
         <h1>The Playground</h1>
-        <div class="links">
+        <div class="links" transition:name={`The Playground-links`}>
           <a href="#"> &#10095;&#10095; Live link</a>
           <a href="#"> &#10095;&#10095; Github repo</a>
         </div>
-        <div class="description">
+        <div class="description" transition:name="The Playground-description">
           <p>
             Work in progress. Currently, this web site only showcases various
             animations, but I plan to transform these animations into
@@ -81,11 +82,11 @@ const tech = [
           </ul>
         </div>
       </div>
-      <Carousel title="My Leisure" images={playgroundSlides} />
+      <Carousel title="The Playground" images={playgroundSlides} />
     </section>
 
     <section class="tech">
-      <ul>
+      <ul transition:name="The Playground-tech">
         {
           tech.map((item) => (
             <li>
@@ -139,6 +140,20 @@ const tech = [
     color: var(--text-primary);
     h1 {
       margin-bottom: var(--gap-s);
+    }
+
+    .back {
+      justify-self: start;
+
+      font-size: var(--font-size-fluid-1);
+      font-weight: var(--font-weight-9);
+      color: var(--text-secondary);
+
+      background-color: var(--bg);
+      border: none;
+      padding: 0.75rem;
+
+      cursor: pointer;
     }
     .links {
       display: flex;
