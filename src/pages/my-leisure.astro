@@ -19,6 +19,8 @@ import myLeisureBookmarks from "./../images/projects/page-images/my-leisure/en/b
 import myLeisureBookmarksDark from "./../images/projects/page-images/my-leisure/en/bookmarks-dark.jpg"
 import Carousel from "../components/Carousel.astro"
 
+import { myLeisureLinks } from "../utils/projectLinks"
+
 import "@fontsource/roboto/500.css"
 import "@fontsource/roboto/700.css"
 import "@fontsource/roboto/900.css"
@@ -77,10 +79,10 @@ const tech = [
         <a class="back" href="/">&#10094;&#10094; Go back</a>
         <h1 transition:name={`My Leisure-logo`}>My Leisure</h1>
         <div class="links" transition:name="My Leisure-links">
-          <a target="_blank" href="https://my-leisure.m2project.dev/">
+          <a target="_blank" href={myLeisureLinks.page}>
             &#10095;&#10095; Live link</a
           >
-          <a target="_blank" href="https://github.com/M201200/my-leisure">
+          <a target="_blank" href={myLeisureLinks.github}>
             &#10095;&#10095; Github repo</a
           >
         </div>

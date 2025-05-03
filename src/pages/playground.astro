@@ -14,6 +14,8 @@ import playgroundBoard from "./../images/projects/page-images/playground/board.j
 import playgroundCards from "./../images/projects/page-images/playground/cards.jpg"
 import Carousel from "../components/Carousel.astro"
 
+import { playgroundLinks } from "../utils/projectLinks"
+
 import "@fontsource/roboto/500.css"
 import "@fontsource/roboto/700.css"
 import "@fontsource/roboto/900.css"
@@ -63,10 +65,10 @@ const tech = [
         <a class="back" href="/">&#10094;&#10094; Go back</a>
         <h1>The Playground</h1>
         <div class="links" transition:name={`The Playground-links`}>
-          <a target="_blank" href="https://the-playground.m2project.dev/">
+          <a target="_blank" href={playgroundLinks.page}>
             &#10095;&#10095; Live link</a
           >
-          <a target="_blank" href="https://github.com/M201200/the-playground">
+          <a target="_blank" href={playgroundLinks.github}>
             &#10095;&#10095; Github repo</a
           >
         </div>

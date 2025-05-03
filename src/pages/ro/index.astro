@@ -37,6 +37,11 @@ import "@fontsource/merriweather/700.css"
 import "@fontsource/merriweather/900.css"
 
 import { Image } from "astro:assets"
+import {
+  myLeisureLinks,
+  newFurnitureLinks,
+  playgroundLinks,
+} from "../../utils/projectLinks"
 
 const base = [
   {
@@ -236,8 +241,8 @@ const newFurnitureImages = {
             title="My Leisure"
             images={myLeisureImages}
             imageDefault={myLeisureMain}
-            siteLink="https://my-leisure.vercel.app/"
-            githubLink="https://github.com/M201200/my-leisure"
+            siteLink={myLeisureLinks.page}
+            githubLink={myLeisureLinks.github}
             tech={myLeisureTech}
             pageLink="/ro/my-leisure"
             description="Descoperă cele mai bune filme, seriale și cărți, toate într-un singur loc și adaugă media care îți place în marcaje."
@@ -249,8 +254,8 @@ const newFurnitureImages = {
             title="New Furniture"
             images={newFurnitureImages}
             imageDefault={newFurnitureMain}
-            siteLink="https://new-furniture-mu.vercel.app/"
-            githubLink="https://github.com/M201200/new-furniture"
+            siteLink={newFurnitureLinks.page}
+            githubLink={newFurnitureLinks.github}
             tech={newFurnitureTech}
             pageLink="/ro/new-furniture"
             description="Magazin de mobilă complet funcțional și complet echipat."
@@ -262,8 +267,8 @@ const newFurnitureImages = {
             locale="ro"
             title="The Playground"
             imageDefault={playgroundMain}
-            siteLink="https://the-playground-sigma.vercel.app/"
-            githubLink="https://github.com/M201200/the-playground"
+            siteLink={playgroundLinks.page}
+            githubLink={playgroundLinks.github}
             tech={playgroundTech}
             pageLink="/ro/playground"
             description="Lucrare în curs. În prezent, acest site web doar prezintă diverse animații, dar planific să transform aceste animații în jocuri interactive."

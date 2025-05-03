@@ -37,6 +37,11 @@ import "@fontsource/merriweather/700.css"
 import "@fontsource/merriweather/900.css"
 
 import { Image } from "astro:assets"
+import {
+  myLeisureLinks,
+  newFurnitureLinks,
+  playgroundLinks,
+} from "../utils/projectLinks"
 
 const base = [
   {
@@ -235,8 +240,8 @@ const newFurnitureImages = {
             title="My Leisure"
             images={myLeisureImages}
             imageDefault={myLeisureMain}
-            siteLink="https://my-leisure.m2project.dev/"
-            githubLink="https://github.com/M201200/my-leisure"
+            siteLink={myLeisureLinks.page}
+            githubLink={myLeisureLinks.github}
             tech={myLeisureTech}
             pageLink="/my-leisure"
             description="Discover the best movies, series, and books all in one place and bookmark media you like."
@@ -248,8 +253,8 @@ const newFurnitureImages = {
             title="New Furniture"
             images={newFurnitureImages}
             imageDefault={newFurnitureMain}
-            siteLink="https://new-furniture.m2project.dev/"
-            githubLink="https://github.com/M201200/new-furniture"
+            siteLink={newFurnitureLinks.page}
+            githubLink={newFurnitureLinks.github}
             tech={newFurnitureTech}
             pageLink="/new-furniture"
             description="Fully functional feature-complete furniture store."
@@ -261,8 +266,8 @@ const newFurnitureImages = {
             locale="en"
             title="The Playground"
             imageDefault={playgroundMain}
-            siteLink="https://the-playground.m2project.dev/"
-            githubLink="https://github.com/M201200/the-playground"
+            siteLink={playgroundLinks.page}
+            githubLink={playgroundLinks.github}
             tech={playgroundTech}
             pageLink="/playground"
             description="Work in progress. Currently, this web site only showcases various animations, but I plan to transform these animations into interactive games."

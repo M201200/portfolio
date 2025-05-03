@@ -19,6 +19,7 @@ import "@fontsource/roboto/700.css"
 import "@fontsource/roboto/900.css"
 import "@fontsource/merriweather/700.css"
 import "@fontsource/merriweather/900.css"
+import { playgroundLinks } from "../../utils/projectLinks"
 
 const playgroundSlides = [
   playgroundMain,
@@ -63,10 +64,10 @@ const tech = [
         <a class="back" href="/ro">&#10094;&#10094; Înapoi</a>
         <h1>The Playground</h1>
         <div class="links" transition:name={`The Playground-links`}>
-          <a target="_blank" href="https://the-playground.m2project.dev/">
+          <a target="_blank" href={playgroundLinks.page}>
             &#10095;&#10095; Link direct</a
           >
-          <a target="_blank" href="https://github.com/M201200/the-playground">
+          <a target="_blank" href={playgroundLinks.github}>
             &#10095;&#10095; Depo de cod GitHub</a
           >
         </div>

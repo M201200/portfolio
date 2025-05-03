@@ -37,6 +37,11 @@ import "@fontsource/merriweather/700.css"
 import "@fontsource/merriweather/900.css"
 
 import { Image } from "astro:assets"
+import {
+  myLeisureLinks,
+  newFurnitureLinks,
+  playgroundLinks,
+} from "../../utils/projectLinks"
 
 const base = [
   {
@@ -237,8 +242,8 @@ const newFurnitureImages = {
             title="My Leisure"
             images={myLeisureImages}
             imageDefault={myLeisureMain}
-            siteLink="https://my-leisure.m2project.dev/"
-            githubLink="https://github.com/M201200/my-leisure"
+            siteLink={myLeisureLinks.page}
+            githubLink={myLeisureLinks.github}
             tech={myLeisureTech}
             pageLink="/ru/my-leisure"
             description="Откройте для себя лучшие фильмы, сериалы и книги, все в одном месте, и добавьте медиа, которое вам понравится в закладки."
@@ -250,8 +255,8 @@ const newFurnitureImages = {
             title="New Furniture"
             images={newFurnitureImages}
             imageDefault={newFurnitureMain}
-            siteLink="https://new-furniture.m2project.dev/"
-            githubLink="https://github.com/M201200/new-furniture"
+            siteLink={newFurnitureLinks.page}
+            githubLink={newFurnitureLinks.github}
             tech={newFurnitureTech}
             pageLink="/ru/new-furniture"
             description="Полностью функциональный интернет-магазин мебели."
@@ -263,8 +268,8 @@ const newFurnitureImages = {
             locale="ru"
             title="The Playground"
             imageDefault={playgroundMain}
-            siteLink="https://the-playground.m2project.dev/"
-            githubLink="https://github.com/M201200/the-playground"
+            siteLink={playgroundLinks.page}
+            githubLink={playgroundLinks.github}
             tech={playgroundTech}
             pageLink="/ru/playground"
             description="Работа в процессе. В настоящее время этот веб-сайт только демонстрирует различные анимации, но я планирую превратить эти анимации в интерактивные игры."

@@ -24,6 +24,7 @@ import "@fontsource/roboto/700.css"
 import "@fontsource/roboto/900.css"
 import "@fontsource/merriweather/700.css"
 import "@fontsource/merriweather/900.css"
+import { myLeisureLinks } from "../../utils/projectLinks"
 
 const myLeisureSlides = [
   myLeisureMain,
@@ -77,10 +78,10 @@ const tech = [
         <a class="back" href="/ru">&#10094;&#10094; Назад</a>
         <h1 transition:name={`My Leisure-logo`}>My Leisure</h1>
         <div class="links" transition:name="My Leisure-links">
-          <a target="_blank" href="https://my-leisure.m2project.dev/">
+          <a target="_blank" href={myLeisureLinks.page}>
             &#10095;&#10095; Прямая ссылка</a
           >
-          <a target="_blank" href="https://github.com/M201200/my-leisure">
+          <a target="_blank" href={myLeisureLinks.github}>
             &#10095;&#10095; Репо на GitHub</a
           >
         </div>

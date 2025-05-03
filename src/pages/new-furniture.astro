@@ -19,6 +19,8 @@ import newFurnitureFavs from "./../images/projects/page-images/new-furniture/en/
 import newFurnitureFavsDark from "./../images/projects/page-images/new-furniture/en/favs-dark.jpg"
 import Carousel from "../components/Carousel.astro"
 
+import { newFurnitureLinks } from "../utils/projectLinks"
+
 import "@fontsource/roboto/500.css"
 import "@fontsource/roboto/700.css"
 import "@fontsource/roboto/900.css"
@@ -77,10 +79,10 @@ const tech = [
         <a class="back" href="/">&#10094;&#10094; Go back</a>
         <h1>New Furniture</h1>
         <div class="links" transition:name={`New Furniture-links`}>
-          <a target="_blank" href="https://new-furniture.m2project.dev/">
+          <a target="_blank" href={newFurnitureLinks.page}>
             &#10095;&#10095; Live link</a
           >
-          <a target="_blank" href="https://github.com/M201200/new-furniture">
+          <a target="_blank" href={newFurnitureLinks.github}>
             &#10095;&#10095; Github repo</a
           >
         </div>
