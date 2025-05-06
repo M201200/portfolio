@@ -12,8 +12,12 @@ type Props = {
   }
   imageDefault: ImageMetadata
   pageLink: string
-  siteLink: string
-  githubLink: string
+  siteLink?: string
+  githubLink?: string
+  linksArray?: {
+    name: string
+    url: string
+  }[]
   tech: {
     name: string
     image: ImageMetadata
@@ -30,6 +34,7 @@ const {
   pageLink,
   siteLink,
   githubLink,
+  linksArray,
   tech,
   description,
   flip,
@@ -40,13 +45,13 @@ const {
 const imageDark = images?.dark.src
 const imageLight = images?.light.src
 
-const liveLink =
+const liveLinkText =
   locale === "ro"
     ? "Link direct"
     : locale === "ru"
       ? "Прямая ссылка"
       : "Live link"
-const gitHubLink =
+const gitHubLinkText =
   locale === "ro"
     ? "Depo de cod GitHub"
     : locale === "ru"
@@ -88,8 +93,30 @@ const moreDetails =
       }
     </ul>
     <div class="links" transition:name={`${title}-links`}>
-      <a target="_blank" href={siteLink}> &#10095;&#10095; {liveLink}</a>
-      <a target="_blank" href={githubLink}> &#10095;&#10095; {gitHubLink}</a>
+      {
+        siteLink ? (
+          <a target="_blank" href={siteLink}>
+            {" "}
+            &#10095;&#10095; {liveLinkText}
+          </a>
+        ) : null
+      }
+      {
+        githubLink ? (
+          <a target="_blank" href={githubLink}>
+            {" "}
+            &#10095;&#10095; {gitHubLinkText}
+          </a>
+        ) : null
+      }
+      {
+        linksArray?.map((link) => (
+          <a target="_blank" href={link.url}>
+            {" "}
+            &#10095;&#10095; {link.name}
+          </a>
+        ))
+      }
     </div>
     <p transition:name={`${title}-description`}>
       {description}
