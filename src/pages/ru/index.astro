@@ -3,6 +3,8 @@ import ProjectCard from "../../components/ProjectCard.astro"
 import TechCard from "../../components/TechCard.astro"
 import Layout from "../../layouts/Layout.astro"
 
+import loadhunterDashboard1 from "./../../images/projects/page-images/loadhunter/dashboard-1.png"
+
 import myLeisureMain from "./../../images/projects/main-page/my-leisure/ru/main.jpg"
 import myLeisureMainDark from "./../../images/projects/main-page/my-leisure/ru/main-dark.jpg"
 
@@ -27,6 +29,8 @@ import sass from "./../../images/tech/sass.svg"
 import threejs from "./../../images/tech/threejs.svg"
 import gsap from "./../../images/tech/gsap.svg"
 import postgres from "./../../images/tech/postgresql.svg"
+import chromeExtension from "./../../images/tech/chrome-extension.png"
+import browserApi from "./../../images/tech/browser-api.png"
 
 import myPic from "./../../images/my-pic.jpg"
 
@@ -38,6 +42,7 @@ import "@fontsource/merriweather/900.css"
 
 import { Image } from "astro:assets"
 import {
+  loadhunterLinks,
   myLeisureLinks,
   newFurnitureLinks,
   playgroundLinks,
@@ -107,6 +112,44 @@ const frameworks = [
     name: "Drizzle",
     url: "https://orm.drizzle.team/docs/overview",
     image: drizzle,
+  },
+]
+
+const loadhunterTech = [
+  {
+    name: "Typescript",
+    url: "https://www.typescriptlang.org",
+    image: typescript,
+  },
+  {
+    name: "CSS",
+    url: "https://developer.mozilla.org/docs/Web/CSS",
+    image: css,
+  },
+  {
+    name: "Chrome Extension",
+    url: "https://developer.chrome.com/docs/extensions/mv3/getstarted/",
+    image: chromeExtension,
+  },
+  {
+    name: "Browser API",
+    url: "https://developer.mozilla.org/en-US/docs/Web/API",
+    image: browserApi,
+  },
+  {
+    name: "Tailwind",
+    url: "https://tailwindcss.com/docs/installation",
+    image: tailwind,
+  },
+  {
+    name: "React",
+    url: "https://react.dev/learn",
+    image: react,
+  },
+  {
+    name: "Astro",
+    url: "https://docs.astro.build/getting-started/",
+    image: astro,
   },
 ]
 
@@ -239,6 +282,17 @@ const newFurnitureImages = {
         <li>
           <ProjectCard
             locale="ru"
+            title="Loadhunter"
+            imageDefault={loadhunterDashboard1}
+            linksArray={loadhunterLinks}
+            tech={loadhunterTech}
+            pageLink="/ru/loadhunter"
+            description="Комплексное логистическое решение, включающее расширение для Chrome, панель управления и лендинг."
+          />
+        </li>
+        <li>
+          <ProjectCard
+            locale="ru"
             title="My Leisure"
             images={myLeisureImages}
             imageDefault={myLeisureMain}
@@ -247,6 +301,7 @@ const newFurnitureImages = {
             tech={myLeisureTech}
             pageLink="/ru/my-leisure"
             description="Откройте для себя лучшие фильмы, сериалы и книги, все в одном месте, и добавьте медиа, которое вам понравится в закладки."
+            flip
           />
         </li>
         <li>
@@ -260,7 +315,6 @@ const newFurnitureImages = {
             tech={newFurnitureTech}
             pageLink="/ru/new-furniture"
             description="Полностью функциональный интернет-магазин мебели."
-            flip={true}
           />
         </li>
         <li>
@@ -273,6 +327,7 @@ const newFurnitureImages = {
             tech={playgroundTech}
             pageLink="/ru/playground"
             description="Работа в процессе. В настоящее время этот веб-сайт только демонстрирует различные анимации, но я планирую превратить эти анимации в интерактивные игры."
+            flip
           />
         </li>
       </ul>

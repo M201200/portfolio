@@ -15,7 +15,11 @@ type Props = {
   siteLink?: string
   githubLink?: string
   linksArray?: {
-    name: string
+    name: {
+      en: string
+      ru: string
+      ro: string
+    }
     url: string
   }[]
   tech: {
@@ -113,7 +117,7 @@ const moreDetails =
         linksArray?.map((link) => (
           <a target="_blank" href={link.url}>
             {" "}
-            &#10095;&#10095; {link.name}
+            &#10095;&#10095; {link.name[locale]}
           </a>
         ))
       }
@@ -195,11 +199,13 @@ const moreDetails =
       li {
         display: grid;
         justify-items: center;
+        width: 6rem;
         a {
-          display: grid;
-          justify-items: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
 
-          gap: var(--gap-s);
+          gap: var(--gap-l);
 
           padding: 0.25rem;
           aspect-ratio: 1;
@@ -210,12 +216,14 @@ const moreDetails =
           img {
             width: var(--size-fluid-3);
             aspect-ratio: 1;
+            border-radius: 4px;
           }
 
           p {
             font-size: var(--font-size-0);
             font-weight: var(--font-weight-4);
             padding: 0;
+            text-align: center;
           }
 
           &:hover {
@@ -232,7 +240,7 @@ const moreDetails =
 
       color: var(--text-secondary);
 
-      max-width: 65ch;
+      max-width: 80ch;
 
       a {
         color: var(--text-primary);

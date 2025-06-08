@@ -1,0 +1,357 @@
+---
+import { Image } from "astro:assets"
+import Layout from "../../layouts/Layout.astro"
+
+import typescript from "./../../images/tech/typescript.svg"
+import css from "./../../images/tech/css-3.svg"
+import tailwind from "./../../images/tech/tailwind.svg"
+import react from "./../../images/tech/react.svg"
+import astro from "./../../images/tech/astro.svg"
+import chromeExtension from "./../../images/tech/chrome-extension.png"
+import browserApi from "./../../images/tech/browser-api.png"
+
+import dashboard1 from "./../../images/projects/page-images/loadhunter/dashboard-1.png"
+import dashboard2 from "./../../images/projects/page-images/loadhunter/dashboard-2.png"
+import dashboard3 from "./../../images/projects/page-images/loadhunter/dashboard-3.png"
+import dashboard4 from "./../../images/projects/page-images/loadhunter/dashboard-4.png"
+import landing1 from "./../../images/projects/page-images/loadhunter/landing-1.png"
+import landing2 from "./../../images/projects/page-images/loadhunter/landing-2.png"
+import landing3 from "./../../images/projects/page-images/loadhunter/landing-3.png"
+import landing4 from "./../../images/projects/page-images/loadhunter/landing-4.png"
+import Carousel from "../../components/Carousel.astro"
+
+import "@fontsource/roboto/500.css"
+import "@fontsource/roboto/700.css"
+import "@fontsource/roboto/900.css"
+import "@fontsource/merriweather/700.css"
+import "@fontsource/merriweather/900.css"
+import { loadhunterLinks } from "../../utils/projectLinks"
+
+const loadhunterSlides = [
+  dashboard1,
+  dashboard2,
+  dashboard3,
+  dashboard4,
+  landing1,
+  landing2,
+  landing3,
+  landing4,
+]
+
+const tech = [
+  {
+    name: "Typescript",
+    url: "https://www.typescriptlang.org",
+    image: typescript,
+  },
+  {
+    name: "CSS",
+    url: "https://developer.mozilla.org/docs/Web/CSS",
+    image: css,
+  },
+  {
+    name: "Chrome Extension",
+    url: "https://developer.chrome.com/docs/extensions/mv3/getstarted/",
+    image: chromeExtension,
+  },
+  {
+    name: "Browser API",
+    url: "https://developer.mozilla.org/en-US/docs/Web/API",
+    image: browserApi,
+  },
+  {
+    name: "Tailwind",
+    url: "https://tailwindcss.com/docs/installation",
+    image: tailwind,
+  },
+  {
+    name: "React",
+    url: "https://react.dev/learn",
+    image: react,
+  },
+  {
+    name: "Astro",
+    url: "https://docs.astro.build/getting-started/",
+    image: astro,
+  },
+]
+---
+
+<Layout title="Project: Loadhunter" lang="ro">
+  <main>
+    <section class="info">
+      <div class="intro">
+        <a class="back" href="/ro">&#10094;&#10094; Înapoi</a>
+        <h1 transition:name={`Loadhunter-logo`}>Loadhunter</h1>
+        <div class="links" transition:name="Loadhunter-links">
+          {
+            loadhunterLinks.map((link) => (
+              <a target="_blank" href={link.url} rel="noopener noreferrer">
+                &#10095;&#10095; {link.name.ro}
+              </a>
+            ))
+          }
+        </div>
+        <div class="description" transition:name="Loadhunter-description">
+          <p>
+            O soluție logistică completă care include o extensie Chrome, un
+            tablou de bord și o pagină de prezentare. Acest instrument îi ajută
+            pe dispeceri să identifice și să obțină cele mai bune încărcături
+            disponibile pe diverse platforme de transport integrate cu extensia.
+          </p>
+          <p>
+            Este un proiect comercial complex, dezvoltat în strânsă colaborare
+            cu mai mulți dezvoltatori și designeri. Eu sunt responsabil pentru
+            arhitectura front-end și implementarea designului în interfețe
+            funcționale și responsive.
+          </p>
+          <h2>Caracteristici ale proiectului:</h2>
+          <ul>
+            <li>
+              Integrarea extensiei Chrome cu principalele burse de transport
+              (DAT One, Power DAT, Truckstop, TruckSmarter și altele).
+            </li>
+            <li>
+              Extensia este construită folosind API-ul WebExtension pentru a
+              injecta funcționalități personalizate în paginile burselor de
+              transport. Compatibilă cu Firefox și toate browserele bazate pe
+              Chromium.
+            </li>
+            <li>
+              Funcționalitățile includ trimiterea de emailuri către brokeri
+              dintr-un singur click, trimitere automată de mesaje, filtrarea
+              încărcăturilor, calculatoare RPM, integrare Google Maps și alerte
+              în timp real prin Telegram.
+            </li>
+            <li>
+              Tablou de bord pentru gestionarea șabloanelor de email, accesarea
+              detaliilor încărcăturilor salvate, vizualizarea încărcăturilor
+              atribuite șoferilor pe o cronologie și utilizarea altor
+              instrumente de productivitate.
+            </li>
+            <li>
+              Pagină de prezentare (landing page) construită pentru a evidenția
+              funcționalitățile produsului, dezvoltată cu Astro și Tailwind CSS.
+            </li>
+          </ul>
+        </div>
+      </div>
+      <Carousel title="Loadhunter" images={loadhunterSlides} />
+    </section>
+
+    <section class="tech">
+      <ul transition:name="Loadhunter-tech">
+        {
+          tech.map((item) => (
+            <li>
+              <a href={item.url} title={item.name} target="_blank">
+                <Image src={item.image} alt={item.name} loading="lazy" />
+                <p>{item.name}</p>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </main>
+</Layout>
+
+<style lang="scss">
+  main {
+    display: grid;
+    min-height: 90vh;
+
+    color: var(--text-primary);
+    font-family: Roboto, sans-serif;
+
+    padding: 0 2rem;
+
+    gap: var(--gap-xxl);
+  }
+
+  h1 {
+    font-size: var(--font-size-fluid-3);
+    font-weight: var(--font-weight-9);
+    line-height: var(--font-lineheight-0);
+
+    font-family: "Merriweather", serif;
+  }
+
+  .back {
+    justify-self: start;
+
+    font-size: var(--font-size-fluid-1);
+    font-weight: var(--font-weight-9);
+    color: var(--text-secondary);
+
+    background-color: var(--bg);
+    border: none;
+    padding: 0.75rem;
+
+    cursor: pointer;
+  }
+
+  .info {
+    display: grid;
+    @media screen and (min-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .intro {
+    display: grid;
+
+    align-items: start;
+    align-content: start;
+
+    margin-top: var(--gap-xxl);
+
+    color: var(--text-primary);
+    h1 {
+      margin-bottom: var(--gap-s);
+    }
+
+    [data-back] {
+      justify-self: start;
+
+      font-size: var(--font-size-fluid-1);
+      font-weight: var(--font-weight-9);
+      color: var(--text-secondary);
+
+      background-color: var(--bg);
+      border: none;
+      padding: 0.75rem;
+
+      cursor: pointer;
+    }
+
+    .links {
+      display: flex;
+      gap: var(--gap-l);
+
+      margin-bottom: var(--gap-xl);
+
+      a {
+        padding: 1em;
+        min-width: 9rem;
+
+        text-align: center;
+
+        border: solid 1px var(--bg-button);
+
+        border-radius: 0.5rem;
+
+        box-shadow: var(--shadow-2);
+
+        transition:
+          color 200ms,
+          scale 150ms;
+        &:hover {
+          color: var(--text-secondary);
+        }
+
+        &:active {
+          scale: 0.95;
+        }
+      }
+    }
+
+    .description {
+      padding-left: var(--gap-s);
+      font-size: var(--font-size-1);
+      font-weight: var(--font-weight-5);
+      line-height: var(--font-lineheight-4);
+
+      max-inline-size: 60ch;
+
+      p {
+        margin-bottom: var(--gap-l);
+        color: var(--text-secondary);
+      }
+      h2 {
+        font-size: var(--font-size-fluid-1);
+      }
+
+      ul {
+        display: grid;
+        gap: var(--gap-xs);
+        padding-left: var(--gap-m);
+        max-inline-size: 60ch;
+
+        li {
+          list-style: inside;
+        }
+      }
+    }
+  }
+
+  .tech {
+    display: grid;
+    gap: 2rem;
+    font-family: Roboto, sans-serif;
+
+    margin-bottom: var(--gap-xxl);
+    ul {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, var(--size-fluid-7));
+      grid-template-rows: repeat(auto-fit, var(--size-fluid-7));
+      gap: var(--gap-xl);
+      justify-content: center;
+      align-items: center;
+      justify-items: center;
+
+      @media screen and (max-width: 1024px) {
+        grid-template-columns: repeat(3, var(--size-fluid-7));
+      }
+
+      @media screen and (max-width: 480px) {
+        grid-template-columns: repeat(2, var(--size-fluid-7));
+      }
+
+      li {
+        --_transition: 200ms;
+        a {
+          display: grid;
+          justify-items: center;
+          gap: var(--gap-xs);
+          width: var(--size-fluid-7);
+          aspect-ratio: 1;
+
+          box-shadow: var(--shadow-2);
+
+          padding: 0.5em;
+
+          border-radius: 5px;
+
+          transition: scale var(--_transition);
+
+          p {
+            font-size: var(--font-size-fluid-0);
+            transition: scale var(--_transition);
+          }
+          img {
+            width: var(--size-fluid-5);
+            aspect-ratio: 1;
+            transition: scale var(--_transition);
+            border-radius: 4px;
+          }
+
+          &:hover {
+            scale: 0.9;
+          }
+          &:active {
+            scale: 0.85;
+          }
+          &:hover p,
+          &:hover img {
+            scale: 1.1;
+          }
+
+          &:active p,
+          &:active img {
+            scale: 1.15;
+          }
+        }
+      }
+    }
+  }
+</style>
