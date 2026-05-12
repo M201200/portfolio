@@ -75,33 +75,31 @@ export function MainProject() {
         "Standalone web app. Configure the extension's emailer (templates, factoring accounts), browse broker and shipper directories, run a full TMS timeline, manage profile, billing and team.",
       liveHref: 'https://app.loadhunter.io/',
       pageHref: '/',
-      className: 'md:col-span-2',
     },
     {
       title: 'Landing',
       images: landingImages,
       description: 'Marketing site. Go here for the full product overview.',
       liveHref: 'https://loadhunter.io/',
-      className: 'md:col-span-2',
     },
   ]
 
   return (
     <section
       id="main-project"
-      className="col-start-2 col-end-3 flex flex-col gap-6"
+      className="col-start-2 col-end-3 flex flex-col gap-12"
     >
       <header className="flex flex-col gap-1">
-        <h2 className="text-4xl lg:text-6xl text-secondary-foreground">
+        <h2 className="text-4xl lg:text-6xl font-medium text-secondary-foreground">
           Loadhunter
         </h2>
-        <p className="text-sm lg:text-base text-muted-foreground">
+        <p className="text-sm text-muted-foreground">
           A SaaS for trucking dispatchers. Four surfaces I built — a Chrome
           extension with a custom load board overlay, a full web dashboard, and
           the marketing site.
         </p>
       </header>
-      <div className="grid md:grid-cols-2 gap-3">
+      <div className="grid gap-6">
         {products.map((product) => (
           <MainProductCard {...product} />
         ))}

@@ -33,12 +33,15 @@ export function MainProductCard({
   carouselClassName,
 }: MainProductCardProps) {
   return (
-    <div className={cn('flex flex-col gap-2', className)}>
-      <h3>{title}</h3>
+    <div className={cn('flex flex-col gap-3', className)}>
+      <h3 className="text-xl font-medium">{title}</h3>
       <Carousel opts={{ loop: true }}>
-        <CarouselContent className={carouselClassName}>
+        <CarouselContent
+          className={carouselClassName}
+          viewportClassName="[mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]"
+        >
           {images.map((image, idx) => (
-            <CarouselItem key={image.img.src}>
+            <CarouselItem key={image.img.src} className="basis-4/5">
               <picture>
                 {image.sources.avif ? (
                   <source srcSet={image.sources.avif} type="image/avif" />
@@ -53,13 +56,14 @@ export function MainProductCard({
                   alt={`${title} screenshot ${idx + 1}`}
                   loading="lazy"
                   decoding="async"
+                  className="rounded-md"
                 />
               </picture>
             </CarouselItem>
           ))}
         </CarouselContent>
       </Carousel>
-      <p>{description}</p>
+      <p className="text-sm text-secondary-foreground/80">{description}</p>
       <a href={liveHref}>Live link</a>
       {pageHref ? <Link to={pageHref}>Read more</Link> : null}
     </div>

@@ -7,7 +7,7 @@ export const Route = createFileRoute('/')({ component: Home })
 
 function Home() {
   return (
-    <main className="grid grid-cols-[1fr_minmax(0,80ch)_1fr] min-h-screen">
+    <main className="grid gap-20 grid-cols-[1fr_minmax(0,80ch)_1fr] min-h-screen">
       <Intro />
       <MainProject />
     </main>
