@@ -1,5 +1,6 @@
-import { Intro } from '#/components/blocks/Intro'
 import { createFileRoute } from '@tanstack/react-router'
+
+import { Intro } from '#/components/blocks/Intro'
 
 export const Route = createFileRoute('/')({ component: Home })
 
