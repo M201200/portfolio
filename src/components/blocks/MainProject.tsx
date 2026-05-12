@@ -1,3 +1,11 @@
+import db1Light from '#/assets/dashboard/dashboard.png?picture'
+import db2Light from '#/assets/dashboard/dashboard-2.png?picture'
+import db3Light from '#/assets/dashboard/dashboard-3.png?picture'
+import db4Light from '#/assets/dashboard/dashboard-4.png?picture'
+import db1Dark from '#/assets/dashboard/dashboard-dark.png?picture'
+import db2Dark from '#/assets/dashboard/dashboard-dark-2.png?picture'
+import db3Dark from '#/assets/dashboard/dashboard-dark-3.png?picture'
+import db4Dark from '#/assets/dashboard/dashboard-dark-4.png?picture'
 import ext1Light from '#/assets/extension/ext.png?picture'
 import ext2Light from '#/assets/extension/ext-2.png?picture'
 import ext3Light from '#/assets/extension/ext-3.png?picture'
@@ -6,6 +14,9 @@ import ext1Dark from '#/assets/extension/ext-dark.png?picture'
 import ext2Dark from '#/assets/extension/ext-dark-2.png?picture'
 import ext3Dark from '#/assets/extension/ext-dark-3.png?picture'
 import ext4Dark from '#/assets/extension/ext-dark-4.png?picture'
+import lp1 from '#/assets/landing/landing.png?picture'
+import lp2 from '#/assets/landing/landing-2.png?picture'
+import lp3 from '#/assets/landing/landing-3.png?picture'
 import sb1Light from '#/assets/smartboard/smartboard.png?picture'
 import sb2Light from '#/assets/smartboard/smartboard-2.png?picture'
 import sb3Light from '#/assets/smartboard/smartboard-3.png?picture'
@@ -27,6 +38,13 @@ const smartboardImages = {
   light: [sb1Light, sb2Light, sb3Light, sb4Light],
   dark: [sb1Dark, sb2Dark, sb3Dark, sb4Dark],
 }
+
+const dashboardImages = {
+  light: [db1Light, db2Light, db3Light, db4Light],
+  dark: [db1Dark, db2Dark, db3Dark, db4Dark],
+}
+
+const landingImages = [lp1, lp2, lp3]
 
 export function MainProject() {
   const { resolved } = useTheme()
@@ -52,7 +70,7 @@ export function MainProject() {
     },
     {
       title: 'Dashboard',
-      images: [],
+      images: dashboardImages[resolved],
       description:
         "Standalone web app. Configure the extension's emailer (templates, factoring accounts), browse broker and shipper directories, run a full TMS timeline, manage profile, billing and team.",
       liveHref: 'https://app.loadhunter.io/',
@@ -61,7 +79,7 @@ export function MainProject() {
     },
     {
       title: 'Landing',
-      images: [],
+      images: landingImages,
       description: 'Marketing site. Go here for the full product overview.',
       liveHref: 'https://loadhunter.io/',
       className: 'md:col-span-2',
