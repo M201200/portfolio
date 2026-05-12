@@ -8,7 +8,7 @@
   "files.readonlyInclude": {
     "**/routeTree.gen.ts": true
   },
-  "cSpell.words": ["Embla", "inlang", "Iuzhev", "paraglide"],
+  "cSpell.words": ["Embla", "inlang", "Iuzhev", "paraglide", "smartboard"],
   "js/ts.tsdk.path": "node_modules\\typescript\\lib",
   "tailwindCSS.classFunctions": ["cva", "cx", "cn", "clsx", "twMerge"]
 }

@@ -4,7 +4,7 @@ export function Intro() {
       <h1 className="text-7xl">Vlad Iuzhev</h1>
       <p className="text-2xl">Front-end Lead</p>
       <p className="text-base">I make it work.</p>
-      <a href="#main-projects">View projects</a>
+      <a href="#main-project">View projects</a>
     </header>
   )
 }
