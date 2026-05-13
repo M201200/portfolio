@@ -87,7 +87,7 @@ export function MainProject() {
   return (
     <section
       id="main-project"
-      className="col-start-2 col-end-3 flex flex-col gap-32"
+      className="col-start-2 col-end-3 flex flex-col gap-32 py-12"
     >
       <header className="flex flex-col gap-4 max-w-[70ch]">
         <h2 className="text-headline">Loadhunter</h2>
