@@ -87,19 +87,17 @@ export function MainProject() {
   return (
     <section
       id="main-project"
-      className="col-start-2 col-end-3 flex flex-col gap-20"
+      className="col-start-2 col-end-3 flex flex-col gap-32"
     >
-      <header className="flex flex-col gap-1">
-        <h2 className="text-4xl lg:text-6xl font-medium text-secondary-foreground">
-          Loadhunter
-        </h2>
-        <p className="text-sm text-muted-foreground max-w-[70ch]">
+      <header className="flex flex-col gap-4 max-w-[70ch]">
+        <h2 className="text-headline">Loadhunter</h2>
+        <p className="text-lede text-secondary-foreground/70">
           A SaaS for trucking dispatchers. Four surfaces I built — a Chrome
           extension with a custom load board overlay, a full web dashboard, and
           the marketing site.
         </p>
       </header>
-      <div className="grid gap-14">
+      <div className="grid gap-20">
         {products.map((product) => (
           <MainProductCard key={product.title} {...product} />
         ))}
