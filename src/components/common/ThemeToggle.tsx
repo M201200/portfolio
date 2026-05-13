@@ -1,28 +1,17 @@
-import { useTheme } from '#/hooks/useTheme'
-import type { Theme } from '#/lib/theme'
-
-const NEXT: Record<Theme, Theme> = {
-  light: 'dark',
-  dark: 'system',
-  system: 'light',
-}
-
-const LABEL: Record<Theme, string> = {
-  light: 'Light',
-  dark: 'Dark',
-  system: 'Auto',
-}
+import { useThemeStore } from '#/stores/theme'
 
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme()
+  const theme = useThemeStore((s) => s.theme)
+  const setTheme = useThemeStore((s) => s.setTheme)
+  const next = theme === 'dark' ? 'light' : 'dark'
   return (
     <button
       type="button"
-      onClick={() => setTheme(NEXT[theme])}
-      aria-label={`Theme: ${LABEL[theme]}. Click to switch to ${LABEL[NEXT[theme]]}.`}
+      onClick={() => setTheme(next)}
+      aria-label={`Switch to ${next} theme`}
       className="rounded-md border px-2 py-1 text-sm"
     >
-      {LABEL[theme]}
+      {theme === 'dark' ? 'Dark' : 'Light'}
     </button>
   )
 }

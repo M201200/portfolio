@@ -1,17 +1,22 @@
-export type Theme = 'light' | 'dark' | 'system'
-export type ResolvedTheme = 'light' | 'dark'
+import { createServerFn } from '@tanstack/react-start'
+import { getCookie, setCookie } from '@tanstack/react-start/server'
 
-export const THEME_STORAGE_KEY = 'theme'
+export type Theme = 'light' | 'dark'
 
-export function resolveTheme(theme: Theme): ResolvedTheme {
-  if (theme !== 'system') return theme
-  return window.matchMedia('(prefers-color-scheme: dark)').matches
-    ? 'dark'
-    : 'light'
-}
+export const THEME_COOKIE = 'theme'
 
-export function applyTheme(resolved: ResolvedTheme) {
-  document.documentElement.classList.toggle('dark', resolved === 'dark')
-}
+export const getThemeFromCookie = createServerFn({ method: 'GET' }).handler(
+  (): Theme => (getCookie(THEME_COOKIE) === 'light' ? 'light' : 'dark'),
+)
 
-export const themePreloadScript = `(function(){try{var s=localStorage.getItem('theme');var t=(s==='light'||s==='dark')?s:(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');if(t==='dark')document.documentElement.classList.add('dark');}catch(e){}})();`
+export const setThemeCookie = createServerFn({ method: 'POST' })
+  .inputValidator(
+    (theme: unknown): Theme => (theme === 'light' ? 'light' : 'dark'),
+  )
+  .handler(({ data }) => {
+    setCookie(THEME_COOKIE, data, {
+      path: '/',
+      maxAge: 60 * 60 * 24 * 365,
+      sameSite: 'lax',
+    })
+  })

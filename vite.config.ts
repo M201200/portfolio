@@ -19,7 +19,7 @@ const config = defineConfig({
         if (url.searchParams.has('picture')) {
           return new URLSearchParams({
             format: 'avif;webp;png',
-            w: '800;1600',
+            w: '800;1600;2400',
             as: 'picture',
           })
         }

@@ -27,7 +27,7 @@ import sb3Dark from '#/assets/smartboard/smartboard-dark-3.png?picture'
 import sb4Dark from '#/assets/smartboard/smartboard-dark-4.png?picture'
 import type { MainProductCardProps } from '#/components/common/MainProductCard'
 import { MainProductCard } from '#/components/common/MainProductCard'
-import { useTheme } from '#/hooks/useTheme'
+import { useThemeStore } from '#/stores/theme'
 
 const extensionImages = {
   light: [ext1Light, ext2Light, ext3Light, ext4Light],
@@ -47,12 +47,12 @@ const dashboardImages = {
 const landingImages = [lp1, lp2, lp3]
 
 export function MainProject() {
-  const { resolved } = useTheme()
+  const theme = useThemeStore((s) => s.theme)
 
   const products: MainProductCardProps[] = [
     {
       title: 'Browser Extension',
-      images: extensionImages[resolved],
+      images: extensionImages[theme],
       description:
         'Chrome and Firefox extension for DAT One, Truckstop and Truck Smarter. One-click and auto-emailing across multiple broker accounts, custom load filtering, Telegram bridge. Hosts the SmartBoard overlay.',
       liveHref:
@@ -61,7 +61,7 @@ export function MainProject() {
     },
     {
       title: 'SmartBoard',
-      images: smartboardImages[resolved],
+      images: smartboardImages[theme],
       description:
         'Custom load board UI that replaces the native tables on DAT One and Truckstop. Ships as an iframe overlay injected by the extension on the Pro tier.',
       liveHref:
@@ -70,7 +70,7 @@ export function MainProject() {
     },
     {
       title: 'Dashboard',
-      images: dashboardImages[resolved],
+      images: dashboardImages[theme],
       description:
         "Standalone web app. Configure the extension's emailer (templates, factoring accounts), browse broker and shipper directories, run a full TMS timeline, manage profile, billing and team.",
       liveHref: 'https://app.loadhunter.io/',
@@ -87,21 +87,21 @@ export function MainProject() {
   return (
     <section
       id="main-project"
-      className="col-start-2 col-end-3 flex flex-col gap-12"
+      className="col-start-2 col-end-3 flex flex-col gap-20"
     >
       <header className="flex flex-col gap-1">
         <h2 className="text-4xl lg:text-6xl font-medium text-secondary-foreground">
           Loadhunter
         </h2>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-sm text-muted-foreground max-w-[70ch]">
           A SaaS for trucking dispatchers. Four surfaces I built — a Chrome
           extension with a custom load board overlay, a full web dashboard, and
           the marketing site.
         </p>
       </header>
-      <div className="grid gap-6">
+      <div className="grid gap-14">
         {products.map((product) => (
-          <MainProductCard {...product} />
+          <MainProductCard key={product.title} {...product} />
         ))}
       </div>
     </section>
