@@ -20,7 +20,7 @@ export function Intro({ skip = false }: { skip?: boolean }) {
   )
 
   return (
-    <header className="flex flex-col col-start-2 col-end-3 justify-center min-h-[clamp(600px,80svh,1000px)] gap-12">
+    <header className="flex flex-col col-start-2 col-end-3 justify-center min-h-[clamp(600px,85svh,1200px)] gap-12">
       <p className="text-byline flex items-center gap-1">
         Vlad Iuzhev
         <span className="text-secondary-foreground/40 mx-3">·</span>
