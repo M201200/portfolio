@@ -62,7 +62,7 @@ export function MainProductCard({
           </span>
         </a>
       </h3>
-      <Carousel opts={{ loop: true }} className="relative group mb-10">
+      <Carousel opts={{ loop: true }} className="relative group mb-6">
         <CarouselContent
           className={carouselClassName}
           viewportClassName="[mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)] -mx-[12.5%]"

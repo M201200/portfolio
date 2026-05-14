@@ -20,7 +20,10 @@ export function Intro({ skip = false }: { skip?: boolean }) {
   )
 
   return (
-    <header className="flex flex-col col-start-2 col-end-3 justify-center min-h-[clamp(600px,90svh,1200px)] gap-12">
+    <section
+      id="intro"
+      className="flex flex-col col-start-2 col-end-3 justify-center min-h-[clamp(600px,90svh,1200px)] gap-12"
+    >
       <p className="text-byline flex items-center gap-1">
         Vlad Iuzhev
         <span className="text-secondary-foreground/40 mx-3">·</span>
@@ -47,6 +50,6 @@ export function Intro({ skip = false }: { skip?: boolean }) {
         View projects
         <ArrowDown className="size-4 transition-transform group-hover:translate-y-1" />
       </a>
-    </header>
+    </section>
   )
 }

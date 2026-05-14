@@ -1,5 +1,5 @@
 {
-  "projectName": "portfolio-rewrite",
+  "projectName": "portfolio",
   "mode": "file-router",
   "typescript": true,
   "packageManager": "pnpm",

@@ -54,11 +54,11 @@ export function MainProject() {
       title: 'Browser Extension',
       images: extensionImages[theme],
       description:
-        'Chrome and Firefox extension for DAT One, Truckstop and Truck Smarter. One-click and auto-emailing across multiple broker accounts, custom load filtering, Telegram bridge. Hosts the SmartBoard overlay.',
+        'Chrome/Firefox extension for DAT One, Truckstop and Truck Smarter. One-click and auto-emailing across multiple broker accounts, custom load filtering, Telegram bridge and a lot more. Hosts the SmartBoard overlay.',
       stack: ['Extension APIs', 'Browser APIs', 'React', 'TypeScript'],
       liveHref:
         'https://chromewebstore.google.com/detail/loadhunter/ogepjnnfghfpkpjjieenkcppifhmmcdg',
-      pageHref: '/',
+      // pageHref: '/',
     },
     {
       title: 'SmartBoard',
@@ -68,7 +68,7 @@ export function MainProject() {
       stack: ['Browser APIs', 'React', 'Tailwind', 'TypeScript'],
       liveHref:
         'https://chromewebstore.google.com/detail/loadhunter/ogepjnnfghfpkpjjieenkcppifhmmcdg',
-      pageHref: '/',
+      // pageHref: '/',
     },
     {
       title: 'Dashboard',
@@ -77,7 +77,7 @@ export function MainProject() {
         "Standalone web app. Configure the extension's emailer (templates, factoring accounts), browse broker and shipper directories, run a full TMS timeline, manage profile, billing and team.",
       stack: ['Browser APIs', 'React', 'Tailwind', 'TypeScript'],
       liveHref: 'https://app.loadhunter.io/',
-      pageHref: '/',
+      // pageHref: '/',
     },
     {
       title: 'Landing',
