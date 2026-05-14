@@ -2,6 +2,7 @@ import { TanStackDevtools } from '@tanstack/react-devtools'
 import { createRootRoute, HeadContent, Scripts } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 
+import { NotFound } from '#/components/NotFound'
 import { getThemeFromCookie } from '#/lib/theme'
 import { useThemeStore } from '#/stores/theme'
 import appCss from '#/styles.css?url'
@@ -16,6 +17,7 @@ export const Route = createRootRoute({
     ],
     links: [{ rel: 'stylesheet', href: appCss }],
   }),
+  notFoundComponent: NotFound,
   shellComponent: RootDocument,
 })
 

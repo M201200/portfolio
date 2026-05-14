@@ -4,6 +4,7 @@ import { Mail, SendHorizontal } from 'lucide-react'
 import { useRef } from 'react'
 import { toast, Toaster } from 'sonner'
 
+import { sendContactMessage } from '#/api/contact'
 import { Button } from '#/components/ui/button'
 import { Input } from '#/components/ui/input'
 import { Label } from '#/components/ui/label'
@@ -17,7 +18,6 @@ import {
 import { Spinner } from '#/components/ui/spinner'
 import { Textarea } from '#/components/ui/textarea'
 import { CONTACT_SCHEMA, TOPICS } from '#/lib/contact-schema'
-import { sendContactMessage } from '#/routes/api/contact'
 import { useThemeStore } from '#/stores/theme'
 
 const EMAIL = 'm201200dev@gmail.com'
