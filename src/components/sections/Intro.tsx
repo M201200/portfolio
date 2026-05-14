@@ -22,11 +22,13 @@ export function Intro({ skip = false }: { skip?: boolean }) {
   return (
     <section
       id="intro"
-      className="flex flex-col col-start-2 col-end-3 justify-center min-h-[clamp(600px,90svh,1200px)] gap-12"
+      className="flex flex-col col-start-2 col-end-3 justify-center sm:min-h-[clamp(600px,90svh,1200px)] min-h-[calc(100svh-4rem)] gap-6 sm:gap-12"
     >
-      <p className="text-byline flex items-center gap-1">
+      <p className="text-byline flex flex-col sm:flex-row sm:items-center gap-1">
         Vlad Iuzhev
-        <span className="text-secondary-foreground/40 mx-3">·</span>
+        <span className="text-secondary-foreground/40 sm:block hidden mx-3">
+          ·
+        </span>
         <span className="text-secondary-foreground/60"> Front-end Lead</span>
       </p>
       <h1
@@ -44,7 +46,7 @@ export function Intro({ skip = false }: { skip?: boolean }) {
       </h1>
 
       <a
-        href="#main-project"
+        href="/#main-project"
         className="group inline-flex w-fit items-center gap-2 text-lg font-medium text-secondary-foreground/70 transition-colors hover:text-foreground"
       >
         View projects

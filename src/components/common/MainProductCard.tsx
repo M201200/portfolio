@@ -65,10 +65,10 @@ export function MainProductCard({
       <Carousel opts={{ loop: true }} className="relative group mb-6">
         <CarouselContent
           className={carouselClassName}
-          viewportClassName="[mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)] -mx-[12.5%]"
+          viewportClassName="sm:[mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)] lg:-mx-[12.5%]"
         >
           {images.map((image, idx) => (
-            <CarouselItem key={image.img.src} className="basis-4/5">
+            <CarouselItem key={image.img.src} className="lg:basis-4/5">
               <button onClick={() => handleOpenPreview(idx)} className="w-full">
                 <picture>
                   {image.sources.avif ? (
@@ -91,8 +91,8 @@ export function MainProductCard({
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="absolute top-1/2 -translate-y-1/2 shadow-lg -left-12 backdrop-blur-md size-8 opacity-0 group-hover:opacity-100 transition-opacity" />
-        <CarouselNext className="absolute top-1/2 -translate-y-1/2 shadow-lg -right-12 backdrop-blur-md size-8 opacity-0 group-hover:opacity-100 transition-opacity" />
+        <CarouselPrevious className="absolute top-1/2 -translate-y-1/2 shadow-lg lg:-left-12 left-1 backdrop-blur-md size-8 lg:opacity-0 group-hover:opacity-100 transition-opacity" />
+        <CarouselNext className="absolute top-1/2 -translate-y-1/2 shadow-lg lg:-right-12 right-1 backdrop-blur-md size-8 lg:opacity-0 group-hover:opacity-100 transition-opacity" />
       </Carousel>
       <p className="text-caption text-muted-foreground max-w-[80ch]">
         {description}
@@ -121,17 +121,17 @@ export function MainProductCard({
       )}
 
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="sm:max-w-500 ring-0 bg-transparent sm:p-4 p-2">
+        <DialogContent className="sm:max-w-500 ring-0 bg-transparent lg:p-4 p-2">
           <Carousel
             opts={{ loop: true, startIndex: imageIdx ?? 0 }}
             className="relative"
           >
             <CarouselContent
               className={carouselClassName}
-              viewportClassName="[mask-image:linear-gradient(to_right,transparent,black_4%,black_96%,transparent)]"
+              viewportClassName="lg:[mask-image:linear-gradient(to_right,transparent,black_4%,black_96%,transparent)]"
             >
               {images.map((image, idx) => (
-                <CarouselItem key={image.img.src} className="basis-11/12">
+                <CarouselItem key={image.img.src} className="lg:basis-11/12">
                   <picture>
                     {image.sources.avif ? (
                       <source srcSet={image.sources.avif} type="image/avif" />
@@ -151,8 +151,8 @@ export function MainProductCard({
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="absolute top-1/2 -translate-y-1/2 shadow-lg left-0 backdrop-blur-md size-10 ms:size-12" />
-            <CarouselNext className="absolute top-1/2 -translate-y-1/2 shadow-lg right-0 backdrop-blur-md size-10 ms:size-12" />
+            <CarouselPrevious className="absolute top-1/2 -translate-y-1/2 shadow-lg left-1 backdrop-blur-md size-10 lg:size-12" />
+            <CarouselNext className="absolute top-1/2 -translate-y-1/2 shadow-lg right-1 backdrop-blur-md size-10 lg:size-12" />
           </Carousel>
         </DialogContent>
       </Dialog>

@@ -16,7 +16,7 @@ function Home() {
   const { introSeen } = Route.useRouteContext()
 
   return (
-    <main className="grid gap-20 px-2 grid-cols-[1fr_minmax(0,90ch)_1fr] min-h-screen">
+    <main className="grid overflow-x-clip gap-y-10 sm:gap-y-14 lg:gap-y-20 px-4 grid-cols-[1fr_minmax(0,90ch)_1fr] sm:min-h-screen">
       <Intro skip={introSeen} />
       <MainProject />
       <OtherProjects />
