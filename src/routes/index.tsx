@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 
+import { ContactForm } from '#/components/sections/ContactForm'
 import { Intro } from '#/components/sections/Intro'
 import { MainProject } from '#/components/sections/MainProject'
 import { OtherProjects } from '#/components/sections/OtherProjects'
@@ -13,12 +14,14 @@ export const Route = createFileRoute('/')({
 
 function Home() {
   const { introSeen } = Route.useRouteContext()
+
   return (
     <main className="grid gap-20 px-2 grid-cols-[1fr_minmax(0,90ch)_1fr] min-h-screen">
       <Intro skip={introSeen} />
       <MainProject />
       <OtherProjects />
       <Toolkit />
+      <ContactForm />
     </main>
   )
 }
