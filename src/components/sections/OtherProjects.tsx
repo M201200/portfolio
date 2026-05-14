@@ -7,6 +7,7 @@ import { Card, CardContent, CardFooter } from '#/components/ui/card'
 type ProjectProps = {
   title: string
   description: string
+  stack: string[]
   image: {
     sources: { avif?: string; webp?: string; png?: string; jpeg?: string }
     img: { src: string; w: number; h: number }
@@ -19,6 +20,7 @@ const otherProjects: ProjectProps[] = [
     title: 'Loadhunt Coin',
     description:
       "Landing page for the project's utility token — animated gradient background, scroll-driven sections, live price chart.",
+    stack: ['Next.js', 'Tailwind', 'Three.js', 'GSAP'],
     image: lhuntCoinImg,
     liveHref: 'https://coin.loadhunt.ai/',
   },
@@ -26,6 +28,7 @@ const otherProjects: ProjectProps[] = [
     title: 'Loadhunt',
     description:
       'Marketing site for the parent trucking platform — scroll drives the slide transitions and the rotating product wheel.',
+    stack: ['Next.js', 'Tailwind', 'GSAP'],
     image: loadhuntImg,
     liveHref: 'https://loadhunt.ai/',
   },
@@ -45,14 +48,20 @@ export function OtherProjects() {
       </header>
       <div className="grid lg:grid-cols-2 gap-6">
         {otherProjects.map((project) => (
-          <ProductCard {...project} />
+          <ProductCard key={project.title} {...project} />
         ))}
       </div>
     </section>
   )
 }
 
-function ProductCard({ title, description, image, liveHref }: ProjectProps) {
+function ProductCard({
+  title,
+  description,
+  stack,
+  image,
+  liveHref,
+}: ProjectProps) {
   return (
     <Card className="pt-0">
       <CardContent className="px-0">
@@ -90,6 +99,9 @@ function ProductCard({ title, description, image, liveHref }: ProjectProps) {
         </h3>
         <p className="text-caption text-muted-foreground max-w-[80ch]">
           {description}
+        </p>
+        <p className="text-caption text-muted-foreground/80 font-medium">
+          {stack.join(' · ')}
         </p>
       </CardFooter>
     </Card>

@@ -3,6 +3,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { Intro } from '#/components/sections/Intro'
 import { MainProject } from '#/components/sections/MainProject'
 import { OtherProjects } from '#/components/sections/OtherProjects'
+import { Toolkit } from '#/components/sections/Toolkit'
 import { getIntroSeen } from '#/lib/intro'
 
 export const Route = createFileRoute('/')({
@@ -17,6 +18,7 @@ function Home() {
       <Intro skip={introSeen} />
       <MainProject />
       <OtherProjects />
+      <Toolkit />
     </main>
   )
 }

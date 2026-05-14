@@ -23,6 +23,7 @@ export type MainProductCardProps = {
   title: string
   images: CardImage[]
   description: string
+  stack: string[]
   liveHref: string
   pageHref?: LinkProps['to']
   className?: string
@@ -33,6 +34,7 @@ export function MainProductCard({
   title,
   images,
   description,
+  stack,
   liveHref,
   pageHref,
   className,
@@ -95,18 +97,29 @@ export function MainProductCard({
       <p className="text-caption text-muted-foreground max-w-[80ch]">
         {description}
       </p>
+
       {pageHref ? (
-        <Link
-          target="_blank"
-          className={buttonVariants({
-            variant: 'outline',
-            className: 'text-lg mt-4 w-fit',
-          })}
-          to={pageHref}
-        >
-          Read more <ChevronsRight className="size-4" />
-        </Link>
-      ) : null}
+        <div className="mt-4 flex items-center justify-between gap-4 flex-wrap">
+          <Link
+            target="_blank"
+            className={buttonVariants({
+              variant: 'outline',
+              className: 'text-lg w-fit',
+            })}
+            to={pageHref}
+          >
+            Read more <ChevronsRight className="size-4" />
+          </Link>
+          <p className="text-caption text-muted-foreground/80 font-medium">
+            {stack.join(' · ')}
+          </p>
+        </div>
+      ) : (
+        <p className="text-caption text-muted-foreground/80 font-medium mt-4">
+          {stack.join(' · ')}
+        </p>
+      )}
+
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="sm:max-w-500 ring-0 bg-transparent sm:p-4 p-2">
           <Carousel
