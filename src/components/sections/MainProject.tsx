@@ -1,27 +1,27 @@
-import db1Light from '#/assets/dashboard/dashboard.png?picture'
+import db1Light from '#/assets/dashboard/dashboard-1.png?picture'
 import db2Light from '#/assets/dashboard/dashboard-2.png?picture'
 import db3Light from '#/assets/dashboard/dashboard-3.png?picture'
 import db4Light from '#/assets/dashboard/dashboard-4.png?picture'
-import db1Dark from '#/assets/dashboard/dashboard-dark.png?picture'
+import db1Dark from '#/assets/dashboard/dashboard-dark-1.png?picture'
 import db2Dark from '#/assets/dashboard/dashboard-dark-2.png?picture'
 import db3Dark from '#/assets/dashboard/dashboard-dark-3.png?picture'
 import db4Dark from '#/assets/dashboard/dashboard-dark-4.png?picture'
-import ext1Light from '#/assets/extension/ext.png?picture'
+import ext1Light from '#/assets/extension/ext-1.png?picture'
 import ext2Light from '#/assets/extension/ext-2.png?picture'
 import ext3Light from '#/assets/extension/ext-3.png?picture'
 import ext4Light from '#/assets/extension/ext-4.png?picture'
-import ext1Dark from '#/assets/extension/ext-dark.png?picture'
+import ext1Dark from '#/assets/extension/ext-dark-1.png?picture'
 import ext2Dark from '#/assets/extension/ext-dark-2.png?picture'
 import ext3Dark from '#/assets/extension/ext-dark-3.png?picture'
 import ext4Dark from '#/assets/extension/ext-dark-4.png?picture'
-import lp1 from '#/assets/landing/landing.png?picture'
+import lp1 from '#/assets/landing/landing-1.png?picture'
 import lp2 from '#/assets/landing/landing-2.png?picture'
 import lp3 from '#/assets/landing/landing-3.png?picture'
-import sb1Light from '#/assets/smartboard/smartboard.png?picture'
+import sb1Light from '#/assets/smartboard/smartboard-1.png?picture'
 import sb2Light from '#/assets/smartboard/smartboard-2.png?picture'
 import sb3Light from '#/assets/smartboard/smartboard-3.png?picture'
 import sb4Light from '#/assets/smartboard/smartboard-4.png?picture'
-import sb1Dark from '#/assets/smartboard/smartboard-dark.png?picture'
+import sb1Dark from '#/assets/smartboard/smartboard-dark-1.png?picture'
 import sb2Dark from '#/assets/smartboard/smartboard-dark-2.png?picture'
 import sb3Dark from '#/assets/smartboard/smartboard-dark-3.png?picture'
 import sb4Dark from '#/assets/smartboard/smartboard-dark-4.png?picture'
@@ -90,6 +90,9 @@ export function MainProject() {
       className="col-start-2 col-end-3 flex flex-col gap-32 py-12"
     >
       <header className="flex flex-col gap-4 max-w-[70ch]">
+        <p className="text-caption text-muted-foreground uppercase tracking-wider">
+          Main Project
+        </p>
         <h2 className="text-headline">Loadhunter</h2>
         <p className="text-lede text-secondary-foreground/70">
           A SaaS for trucking dispatchers. Four surfaces I built — a Chrome
