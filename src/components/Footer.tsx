@@ -15,12 +15,12 @@ const linkClass =
 export function Footer() {
   return (
     <footer className="border-t mt-16 px-4 py-6 grid grid-cols-[1fr_minmax(0,90ch)_1fr]">
-      <div className="col-start-2 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div className="col-start-2 col-end-3 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <a href={`mailto:${EMAIL}`} className={linkClass}>
           <Mail className="size-4 translate-y-px" />
           {EMAIL}
         </a>
-        <nav className="flex flex-wrap items-center gap-4 sm:gap-5">
+        <div className="flex flex-wrap items-center gap-4 sm:gap-5">
           <a
             href={GITHUB_URL}
             target="_blank"
@@ -48,7 +48,7 @@ export function Footer() {
             <TelegramIcon className="size-3.5" />
             Telegram
           </a>
-        </nav>
+        </div>
       </div>
     </footer>
   )
