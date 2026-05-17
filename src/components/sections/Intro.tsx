@@ -25,7 +25,7 @@ export function Intro({ skip = false }: { skip?: boolean }) {
       className="flex flex-col col-start-2 col-end-3 justify-center sm:min-h-[clamp(600px,90svh,1200px)] min-h-[calc(100svh-4rem)] gap-6 sm:gap-12"
     >
       <p className="text-byline flex flex-col sm:flex-row sm:items-center gap-1">
-        Vlad Iuzhev
+        Vlad Iujev
         <span className="text-secondary-foreground/40 sm:block hidden mx-3">
           ·
         </span>

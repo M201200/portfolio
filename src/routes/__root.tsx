@@ -10,15 +10,15 @@ import { useThemeStore } from '#/stores/theme'
 import appCss from '#/styles.css?url'
 
 const SITE_URL = 'https://portfolio-beta-amber-46.vercel.app'
-const SITE_TITLE = 'Vlad Iuzhev | Portfolio'
+const SITE_TITLE = 'Vlad Iujev | Portfolio'
 const SITE_DESCRIPTION =
-  'Vlad Iuzhev, Front-end Lead. You set the vision. I ship the product. React, TypeScript, design systems, accessibility.'
+  'Vlad Iujev, Front-end Lead. You set the vision. I ship the product. React, TypeScript, design systems, accessibility.'
 const OG_IMAGE = `${SITE_URL}/og-image.png`
 
 const personJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
-  name: 'Vlad Iuzhev',
+  name: 'Vlad Iujev',
   url: SITE_URL,
   jobTitle: 'Front-end Lead',
   email: 'mailto:m201200dev@gmail.com',
@@ -34,11 +34,11 @@ export const Route = createRootRoute({
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { title: SITE_TITLE },
       { name: 'description', content: SITE_DESCRIPTION },
-      { name: 'author', content: 'Vlad Iuzhev' },
+      { name: 'author', content: 'Vlad Iujev' },
       { name: 'robots', content: 'index, follow' },
       { name: 'theme-color', content: '#09090b' },
       { property: 'og:type', content: 'website' },
-      { property: 'og:site_name', content: 'Vlad Iuzhev' },
+      { property: 'og:site_name', content: 'Vlad Iujev' },
       { property: 'og:title', content: SITE_TITLE },
       { property: 'og:description', content: SITE_DESCRIPTION },
       { property: 'og:url', content: SITE_URL },

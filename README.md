@@ -1,4 +1,4 @@
-# Vlad Iuzhev — Portfolio
+# Vlad Iujev — Portfolio
 
 Front-end Lead. You set the vision. I ship the product.
 
