@@ -6,7 +6,7 @@ import { TelegramIcon } from './svg/TelegramIcon'
 
 const EMAIL = 'm201200dev@gmail.com'
 const GITHUB_URL = 'https://github.com/M201200'
-const LINKEDIN_URL = 'https://www.linkedin.com/in/vlad-yujev-a15454306'
+const LINKEDIN_URL = 'https://www.linkedin.com/in/vlad-iujev-a15454306/'
 const TELEGRAM_URL = 'https://t.me/VYm201200'
 
 const linkClass =
