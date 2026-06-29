@@ -1,6 +1,6 @@
 const toolkit = {
   Languages: ['TypeScript', 'JavaScript'],
-  Frameworks: ['React', 'Next.js', 'Astro'],
+  Frameworks: ['React', 'Next.js', 'Svelte', 'Astro'],
   Styles: ['Tailwind', 'SASS'],
   Graphics: ['Three.js', 'GSAP'],
   Browser: [
@@ -11,7 +11,7 @@ const toolkit = {
   ],
 }
 
-const backend = ['PostgreSQL', 'MySQL', 'Drizzle', 'NextAuth']
+const backend = ['Node', 'PostgreSQL', 'MySQL', 'Drizzle', 'NextAuth']
 
 export function Toolkit() {
   return (
@@ -35,12 +35,6 @@ export function Toolkit() {
             <span>{items.join(', ')}</span>
           </div>
         ))}
-        <div className="mt-2 -mb-4 grid sm:grid-cols-[10rem_1fr] sm:gap-6 sm:items-baseline">
-          <span></span>
-          <span className="text-caption text-muted-foreground italic">
-            From solo projects
-          </span>
-        </div>
         <div className="grid grid-cols-1 gap-1 sm:grid-cols-[10rem_1fr] sm:gap-6 sm:items-baseline text-title">
           <span className="text-muted-foreground/50">Backend</span>
           <span>{backend.join(', ')}</span>
