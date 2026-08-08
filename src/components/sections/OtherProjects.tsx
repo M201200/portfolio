@@ -35,7 +35,7 @@ const otherProjects: ProjectProps[] = [
   {
     title: 'Qrylo',
     description:
-      'Built the MVP end to end — full frontend and REST API integration for a logistics marketplace: search with location filters, listing and posting flows, auth, chat etc. Since rebuilt in-house on Angular.',
+      'Built the entire frontend and REST API integration for a logistics marketplace — search with location filters, listing and posting flows, auth, chat and more. Shipped the complete feature set to spec; the current live site is a later in-house Angular rebuild.',
     stack: ['Next.js', 'TypeScript', 'Tailwind', 'REST API'],
     image: qryloImg,
     liveHref: 'https://qrylo.com/',
