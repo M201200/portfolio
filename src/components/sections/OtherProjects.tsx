@@ -2,7 +2,15 @@ import { ExternalLink } from 'lucide-react'
 
 import lhuntCoinImg from '#/assets/other-projects/lhunt-coin.png?picture'
 import loadhuntImg from '#/assets/other-projects/loadhunt.png?picture'
+import qryloImg from '#/assets/other-projects/qrylo.png?picture'
 import { Card, CardContent, CardFooter } from '#/components/ui/card'
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '#/components/ui/carousel'
 
 type ProjectProps = {
   title: string
@@ -17,20 +25,28 @@ type ProjectProps = {
 
 const otherProjects: ProjectProps[] = [
   {
-    title: 'Loadhunt Coin',
-    description:
-      "Landing page for the project's utility token — animated gradient background, scroll-driven sections, live price chart.",
-    stack: ['Next.js', 'Tailwind', 'Three.js', 'GSAP'],
-    image: lhuntCoinImg,
-    liveHref: 'https://coin.loadhunt.ai/',
-  },
-  {
     title: 'Loadhunt',
     description:
       'Marketing site for the parent trucking platform — scroll drives the slide transitions and the rotating product wheel.',
     stack: ['Next.js', 'Tailwind', 'GSAP'],
     image: loadhuntImg,
     liveHref: 'https://loadhunt.ai/',
+  },
+  {
+    title: 'Qrylo',
+    description:
+      'Built the MVP end to end — full frontend and REST API integration for a logistics marketplace: search with location filters, listing and posting flows, auth, chat etc. Since rebuilt in-house on Angular.',
+    stack: ['Next.js', 'TypeScript', 'Tailwind', 'REST API'],
+    image: qryloImg,
+    liveHref: 'https://qrylo.com/',
+  },
+  {
+    title: 'Loadhunt Coin',
+    description:
+      "Landing page for the project's utility token — animated gradient background, scroll-driven sections, live price chart.",
+    stack: ['Next.js', 'Tailwind', 'Three.js', 'GSAP'],
+    image: lhuntCoinImg,
+    liveHref: 'https://coin.loadhunt.ai/',
   },
 ]
 
@@ -46,11 +62,17 @@ export function OtherProjects() {
           More exists — these are the ones currently public.
         </p>
       </header>
-      <div className="grid lg:grid-cols-2 gap-6">
-        {otherProjects.map((project) => (
-          <ProductCard key={project.title} {...project} />
-        ))}
-      </div>
+      <Carousel opts={{ loop: true }} className="relative group">
+        <CarouselContent viewportClassName="-my-2 py-2 sm:[mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+          {otherProjects.map((project) => (
+            <CarouselItem key={project.title} className="basis-4/5">
+              <ProductCard {...project} />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious className="absolute top-1/2 -translate-y-1/2 shadow-lg lg:-left-12 left-1 backdrop-blur-md size-8 lg:opacity-0 group-hover:opacity-100 transition-opacity" />
+        <CarouselNext className="absolute top-1/2 -translate-y-1/2 shadow-lg lg:-right-12 right-1 backdrop-blur-md size-8 lg:opacity-0 group-hover:opacity-100 transition-opacity" />
+      </Carousel>
     </section>
   )
 }
@@ -63,14 +85,22 @@ function ProductCard({
   liveHref,
 }: ProjectProps) {
   return (
-    <Card className="pt-0">
+    <Card className="pt-0 h-full">
       <CardContent className="px-0">
         <picture>
           {image.sources.avif ? (
-            <source srcSet={image.sources.avif} type="image/avif" />
+            <source
+              srcSet={image.sources.avif}
+              sizes="(min-width: 1000px) 640px, 80vw"
+              type="image/avif"
+            />
           ) : null}
           {image.sources.webp ? (
-            <source srcSet={image.sources.webp} type="image/webp" />
+            <source
+              srcSet={image.sources.webp}
+              sizes="(min-width: 1000px) 640px, 80vw"
+              type="image/webp"
+            />
           ) : null}
           <img
             src={image.img.src}
@@ -79,20 +109,20 @@ function ProductCard({
             alt={title}
             decoding="async"
             loading="lazy"
-            className="rounded-t-md object-cover object-center h-60 w-full"
+            className="object-cover object-top h-64 w-full"
           />
         </picture>
       </CardContent>
-      <CardFooter className="grid gap-3">
+      <CardFooter className="grid gap-3 content-start">
         <h3>
           <a
             target="_blank"
             rel="noopener noreferrer"
             href={liveHref}
-            className="flex text-lede items-baseline gap-3 text-secondary-foreground group hover:text-blue-500 transition-colors"
+            className="flex text-lede items-baseline gap-3 text-secondary-foreground group/link hover:text-blue-500 transition-colors"
           >
             {title}
-            <span className="flex gap-1 items-center text-caption font-medium text-muted-foreground group-hover:text-blue-500 transition-colors">
+            <span className="flex gap-1 items-center text-caption font-medium text-muted-foreground group-hover/link:text-blue-500 transition-colors">
               Live <ExternalLink className="size-4" />
             </span>
           </a>

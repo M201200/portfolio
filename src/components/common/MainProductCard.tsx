@@ -72,10 +72,18 @@ export function MainProductCard({
               <button onClick={() => handleOpenPreview(idx)} className="w-full">
                 <picture>
                   {image.sources.avif ? (
-                    <source srcSet={image.sources.avif} type="image/avif" />
+                    <source
+                      srcSet={image.sources.avif}
+                      sizes="(min-width: 1000px) 800px, 95vw"
+                      type="image/avif"
+                    />
                   ) : null}
                   {image.sources.webp ? (
-                    <source srcSet={image.sources.webp} type="image/webp" />
+                    <source
+                      srcSet={image.sources.webp}
+                      sizes="(min-width: 1000px) 800px, 95vw"
+                      type="image/webp"
+                    />
                   ) : null}
                   <img
                     src={image.img.src}
@@ -134,10 +142,18 @@ export function MainProductCard({
                 <CarouselItem key={image.img.src} className="lg:basis-11/12">
                   <picture>
                     {image.sources.avif ? (
-                      <source srcSet={image.sources.avif} type="image/avif" />
+                      <source
+                        srcSet={image.sources.avif}
+                        sizes="90vw"
+                        type="image/avif"
+                      />
                     ) : null}
                     {image.sources.webp ? (
-                      <source srcSet={image.sources.webp} type="image/webp" />
+                      <source
+                        srcSet={image.sources.webp}
+                        sizes="90vw"
+                        type="image/webp"
+                      />
                     ) : null}
                     <img
                       src={image.img.src}
