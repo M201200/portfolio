@@ -10,7 +10,7 @@ export const getThemeFromCookie = createServerFn({ method: 'GET' }).handler(
 )
 
 export const setThemeCookie = createServerFn({ method: 'POST' })
-  .inputValidator(
+  .validator(
     (theme: unknown): Theme => (theme === 'light' ? 'light' : 'dark'),
   )
   .handler(({ data }) => {

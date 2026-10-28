@@ -7,7 +7,7 @@ function escapeHtml(s: string) {
 }
 
 export const sendContactMessage = createServerFn({ method: 'POST' })
-  .inputValidator((raw: unknown) => CONTACT_SCHEMA.parse(raw))
+  .validator((raw: unknown) => CONTACT_SCHEMA.parse(raw))
   .handler(async ({ data }) => {
     const token = process.env.TELEGRAM_BOT_TOKEN
     const chatId = process.env.TELEGRAM_CHAT_ID
