@@ -1,7 +1,8 @@
 import { ExternalLink } from 'lucide-react'
 
+import huntTmsImg from '#/assets/other-projects/hunt-tms.webp?picture'
 import lhuntCoinImg from '#/assets/other-projects/lhunt-coin.png?picture'
-import loadhuntImg from '#/assets/other-projects/loadhunt.png?picture'
+import loadhuntImg from '#/assets/other-projects/loadhunt.webp?picture'
 import qryloImg from '#/assets/other-projects/qrylo.png?picture'
 import { Card, CardContent, CardFooter } from '#/components/ui/card'
 import {
@@ -27,10 +28,18 @@ const otherProjects: ProjectProps[] = [
   {
     title: 'Loadhunt',
     description:
-      'Marketing site for the parent trucking platform — scroll drives the slide transitions and the rotating product wheel.',
-    stack: ['Next.js', 'Tailwind', 'GSAP'],
+      'Marketing site for the parent freight platform — a scroll-driven "freight road" walks a single load through five products, with live mockups, a role-based views section and an entry-point picker quiz.',
+    stack: ['Next.js', 'Tailwind', 'GSAP', 'Lenis'],
     image: loadhuntImg,
     liveHref: 'https://loadhunt.ai/',
+  },
+  {
+    title: 'huntTMS',
+    description:
+      'Marketing site for a dispatcher-focused TMS — interactive product mockups of the dispatch timeline, live load map and business dashboard, plus pricing tiers and an ecosystem map of the Loadhunt suite.',
+    stack: ['Next.js', 'Tailwind', 'GSAP', 'Lenis'],
+    image: huntTmsImg,
+    liveHref: 'https://tms.loadhunt.ai/',
   },
   {
     title: 'Qrylo',
